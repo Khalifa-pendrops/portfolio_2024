@@ -7,6 +7,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import resume from "/Resume.pdf";
+import movie from "../assets/movie-app.png";
+import weather from "../assets/weather-app.png";
+import whisper from "../assets/whisper-app.png";
+import easydesign from "../assets/easy-design.png";
 import "./Home.css";
 
 function Tech() {
@@ -17,11 +21,12 @@ function Tech() {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.6,
+      threshold: 0.3,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        console.log(entry.target.id, entry.isIntersecting);
         if (entry.isIntersecting) {
           setActiveSession(entry.target.id);
         }
@@ -31,13 +36,13 @@ function Tech() {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, []);
+  }, [activeSession]);
 
   return (
-    <div className="d-flex flex-column gap-4">
-      <section id="home" className=" d-flex flex-column gap-4  my-5">
+    <div className="w-100">
+      <section id="home" className="w-100 d-flex flex-column gap-4 my-5">
         <nav className="container-fluid transparent-bg position-fixed top-0 left-0 w-100 z-3">
-          <ul className="d-flex justify-content-around align-items-center gap-4 py-4 flex-wrap gap-2">
+          <ul className="d-flex justify-content-around align-items-center py-4 flex-wrap gap-2">
             <li
               className="muted-bg px-5"
               data-aos="fade-left"
@@ -48,23 +53,35 @@ function Tech() {
               </Link>
             </li>
 
-            <li className="muted-bg px-5">
+            <li
+              className={`muted-bg px-5 ${
+                activeSession === "home" ? "active" : " "
+              }`}
+            >
               <a href="#home">Home</a>
             </li>
-            <li className="muted-bg px-5">
+            <li
+              className={`muted-bg px-5 ${
+                activeSession === "project" ? "active" : " "
+              }`}
+            >
               <a href="#project">Projects</a>
             </li>
-            <li className="muted-bg px-5">
+            <li
+              className={`muted-bg px-5 ${
+                activeSession === "skills" ? "active" : " "
+              }`}
+            >
               <a href="#skills">Skills</a>
             </li>
           </ul>
         </nav>
-        <div className="d-flex flex-column justify-content-center align-items-center gap-5 hero-section">
-          <h1 className="text-center">
+        <div className="container-sm d-flex flex-column justify-content-center align-items-center gap-5 hero-section">
+          <h1 className="display-4 text-center container-xxl">
             Navigate my Tech Spectrum: From the very Basics to Intermediate
-            Frontiers (for now 🤗)
+            Frontiers.
           </h1>
-          <p className="text-center">
+          <p className="text-center container-xxl">
             Welcome to my digital workshop, a chronicle of my voyage through the
             pulsating heart of tech innovation. Here, you will discover a
             vibrant portfolio of web creations, each a testament of
@@ -152,57 +169,65 @@ function Tech() {
 
       <section
         id="project"
-        className="container-xxl d-flex justify-content-center align-items-center gap-4 my-5"
+        className="container-sm d-flex justify-content-center align-items-center gap-4"
       >
         <div className=" row w-100">
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 mb-4">
             {/* REMEMBER TO ADD EASY DESIGN LIVE LINK HERE AFTER COMPLETION */}
             <a
+              className="anchor-hover d-flex flex-column flex-lg-row justify-content-center align-items-stretch rounded"
               href="https://whisper-app-three.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 border p-3"
+                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
                 data-aos="zoom-in"
                 data-aos-delay="100"
               >
-                <h4>Whisper App</h4>
+                <h4 className="fw-bolder text-primary">Whisper App</h4>
                 <p>
-                  Whisper App is a community where you practically whisper -
-                  anonymously. So no one knows who's behind whatever texts sent
-                  across the platform and yes, it was a cool project by a group
-                  of us. I contributed to the Frontend, and I'm glad to have
-                  been part of this.
+                  Easy Design UK is is a a platform that offers innovative web
+                  development and digital solutions. This was built with
+                  React.JS, Bootstrap, Axios, AOS, CSS, React Router and
+                  Express.JS I built the Frontend of this simple web application
+                  from scratch.
                 </p>
                 <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">HTML</p>
+                  <p className="bg-secondary px-2 rounded">React</p>
                   <p className="bg-secondary px-2 rounded">CSS</p>
-                  <p className="bg-secondary px-2 rounded">JavaScript</p>
-                  <p className="bg-secondary px-2 rounded">Node.js</p>
+                  <p className="bg-secondary px-2 rounded">Bootstrap</p>
                   <p className="bg-secondary px-2 rounded">Express.js</p>
-                  <p className="bg-secondary px-2 rounded">MongoDB</p>
                 </div>
               </div>
+              <img
+                className="d-none d-xl-block img-fluid h-100 border rounded"
+                data-aos="zoom-out"
+                data-aos-delay="100"
+                src={easydesign}
+                alt="whisper thumb-nail image"
+                width="434px"
+              />
             </a>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 mb-4">
             <a
+              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
               href="https://whisper-app-three.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 border p-3"
+                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
                 data-aos="zoom-in"
                 data-aos-delay="300"
               >
-                <h4>Whisper App</h4>
+                <h4 className="fw-bolder text-primary">Whisper App</h4>
                 <p>
                   Whisper App is a community where you practically whisper -
                   anonymously. So no one knows who's behind whatever texts sent
                   across the platform and yes, it was a cool project by a group
-                  of us. I contributed to the Frontend, and I'm glad to have
+                  of us. I contributed to the Frontend, and I am glad to have
                   been part of this.
                 </p>
                 <div className="d-flex flex-wrap gap-2">
@@ -214,21 +239,30 @@ function Tech() {
                   <p className="bg-secondary px-2 rounded">MongoDB</p>
                 </div>
               </div>
+              <img
+                className="d-none d-xl-block img-fluid h-100 border rounded"
+                data-aos="zoom-out"
+                data-aos-delay="300"
+                src={whisper}
+                alt="whisper thumb-nail image"
+                width="434px"
+              />
             </a>
           </div>
 
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 mb-4">
             <a
+              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
               href="https://movie-search-app-by-khalifa.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 border p-3"
+                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
                 data-aos="zoom-in"
                 data-aos-delay="500"
               >
-                <h4>Movie Search App</h4>
+                <h4 className="fw-bolder text-primary">Movie Search App</h4>
                 <p>
                   A movie search web application, built with React.js and CSS.
                   It basically fetches movies via an API (TMDB). There is no
@@ -240,21 +274,30 @@ function Tech() {
                   <p className="bg-secondary px-2 rounded">CSS</p>
                 </div>
               </div>
+              <img
+                className="d-none d-xl-block img-fluid h-100 border rounded"
+                data-aos="zoom-out"
+                data-aos-delay="500"
+                src={movie}
+                alt="whisper thumb-nail image"
+                width="434px"
+              />
             </a>
           </div>
 
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 mb-4">
             <a
+              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
               href="https://whisper-app-three.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 border p-3"
+                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
                 data-aos="zoom-in"
                 data-aos-delay="700"
               >
-                <h4>Weather App</h4>
+                <h4 className="fw-bolder text-primary">Weather App</h4>
                 <p>
                   This is a Weather App. It was a cool project by a small group
                   of us. My major contribution was in the UI/UX. The App uses
@@ -267,12 +310,23 @@ function Tech() {
                   <p className="bg-secondary px-2 rounded">JavaScript</p>
                 </div>
               </div>
+              <img
+                className="d-none d-xl-block img-fluid h-100 border rounded"
+                data-aos="zoom-out"
+                data-aos-delay="700"
+                src={weather}
+                alt="weather thumb-nail image"
+                width="434px"
+              />
             </a>
           </div>
         </div>
       </section>
 
-      <section id="skills" className="container-fluid my-5">
+      <section
+        id="skills"
+        className="container-sm d-flex justify-content-center align-items-center my-5"
+      >
         <div className="d-flex justify-content-center align-items-center flex-wrap gap-4">
           {/* ADD MORE AS SKILLS IMPROVE */}
           <p
@@ -333,7 +387,7 @@ function Tech() {
           </p>
         </div>
       </section>
-      <footer className=" py-4 container-fluid d-flex justify-content-center align-items-center text-center">
+      <footer className=" py-4 container-sm d-flex justify-content-center align-items-center text-center">
         <p>
           &copy; <span className="text-primary">Chikezie Ilodigwe.</span> All
           Rights Reserved

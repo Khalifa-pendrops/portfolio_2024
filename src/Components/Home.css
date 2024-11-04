@@ -24,20 +24,20 @@ a {
     color: aquamarine !important;
 }
 
-.bg-none-btn{
+.bg-none-btn {
     background-color: #4e3912 !important;
     border: none !important;
     border-radius: 5px !important;
 }
 
-.p-text{
+.p-text {
     width: 40%;
 }
 
 @media (max-width: 576px) {
-.p-text{
-    width: 80% !important;
-}
+    .p-text {
+        width: 80% !important;
+    }
 }
 
 button:hover,
@@ -124,82 +124,73 @@ textarea:active {
     border: none !important;
 }
 
-.text-area-min-height{
+.text-area-min-height {
     min-height: 200px !important;
 }
 
-section{
-    height: 100% !important;
+/* #home, #project {
+    height: 100vh !important;
     width: 100% !important;
+    margin: 4rem auto !important;
 }
 
-#home
-li{
+#skills{
+    height: 35vh !important;
+} */
+
+#home li {
     list-style: none;
     text-decoration: none;
     color: #4e3912;
 }
 
-.transparent-bg{
-    background-color: rgba(220, 220, 220, 0.099) !important;
-    /* filter: blur(.5px); */
+.transparent-bg {
+    background-color: rgba(220, 220, 220, 0) !important;
 }
 
-.secondary-bg{
+.secondary-bg {
     background-color: rgba(128, 128, 128, 0.26) !important;
 }
 
-footer span{
+footer span {
     color: #030918 !important;
 }
 
-footer span:hover{
+footer span:hover {
     color: #4e3912 !important;
 }
 
-.hero-section{
+.hero-section {
     margin-top: 10rem;
 }
 
-.hero-section h1{
-    width: 80% !important;
-    font-size: 300% !important;
+.hero-section p {
+    font-size: 105%;
 }
 
-.hero-section p{
-    width: 85%;
+.muted-bg a,
+.back-to-home {
+    color: #b7b7b7 !important;
+    transition: transform 0.3s ease-in-out;
 }
 
-.muted-bg a, .back-to-home{
-    color: #b7b7b7!important;
-}
-
-.muted-bg a:hover, .back-to-home:hover{
+.muted-bg a:hover,
+.back-to-home:hover {
     background-color: gray !important;
     padding: .6rem 1.2rem !important;
     outline: none !important;
 }
 
-.back-to-home:hover{
-
+.active {
+    background-color: #4e39127a;
+    color: white;
+    font-size: .6rem !important;
+    padding: .4rem 0 !important;
+    transform: scale(1.1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.anchor-hover:hover{
+    background-color: #4e3912 !important;
+        color: #07112c !important;
+}
 
