@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jacques+Francois+Shadow&family=Lexend:wght@100..900&family=Pacifico&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh !important;
+    color: #d1d1e0 !important;
+}
+
+button,
+a {
+    outline: none !important;
+    font-weight: 600 !important;
+    color: aquamarine !important;
+    text-decoration: none !important;
+}
+
+.icon {
+    color: aquamarine !important;
+}
+
+.bg-none-btn{
+    background-color: #4e3912 !important;
+    border: none !important;
+    border-radius: 5px !important;
+}
+
+.p-text{
+    width: 40%;
+}
+
+@media (max-width: 576px) {
+.p-text{
+    width: 80% !important;
+}
+}
+
+button:hover,
+a:hover,
+.linked-btn:hover {
+    background-color: #fff !important;
+    color: #030918 !important;
+    border: 1px solid yellowgreen !important;
+    border-radius: 5px !important;
+    transition: all 0.5s ease-in-out;
+}
+
+button:hover .icon,
+a:hover .icon {
+    color: #030918 !important;
+}
+
+p {
+    font-family: Lexend;
+    line-height: 1.6;
+    color: #b7b7b7 !important;
+}
+
+.links {
+    text-decoration: none;
+    box-shadow: 0px 0px 6px 2px cadetblue;
+    border-radius: 5px;
+    color: #fff !important;
+}
+
+.zoom-in,
+.zoom-out {
+    transition: transform 0.5s ease !important;
+}
+
+.zoom-in:hover,
+.zoom-out:hover {
+    background-color: #4e3912 !important;
+    color: #030918 !important;
+}
+
+.zoom-in:hover {
+    transform: scale(1.05) !important;
+}
+
+.zoom-out:hover {
+    transform: scale(0.92) !important;
+}
+
+.icon-2 {
+    font-size: 2rem;
+}
+
+
+.email-text {
+    width: 80%;
+}
+
+.contact-btn {
+    align-self: start;
+    margin-left: 10%;
+}
+
+.contact-btn:hover {
+    border: 1px solid yellowgreen !important;
+}
+
+.email-wider-letters {
+    letter-spacing: 8px !important;
+    border: none !important;
+    background-color: transparent !important;
+    transition: transform (0.5s ease-in-out) !important;
+}
+
+.email-wider-letters:hover {
+    background-color: transparent !important;
+    color: #4e3912 !important;
+    border: none !important;
+    transform: scale(0.8) !important;
+}
+
+input:active,
+textarea:active {
+    border: none !important;
+}
+
+.text-area-min-height{
+    min-height: 200px !important;
+}
+
+section{
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#home
+li{
+    list-style: none;
+    text-decoration: none;
+    color: #4e3912;
+}
+
+.transparent-bg{
+    background-color: rgba(220, 220, 220, 0.099) !important;
+    /* filter: blur(.5px); */
+}
+
+.secondary-bg{
+    background-color: rgba(128, 128, 128, 0.26) !important;
+}
+
+footer span{
+    color: #030918 !important;
+}
+
+footer span:hover{
+    color: #4e3912 !important;
+}
+
+.hero-section{
+    margin-top: 10rem;
+}
+
+.hero-section h1{
+    width: 80% !important;
+    font-size: 300% !important;
+}
+
+.hero-section p{
+    width: 85%;
+}
+
+.muted-bg a, .back-to-home{
+    color: #b7b7b7!important;
+}
+
+.muted-bg a:hover, .back-to-home:hover{
+    background-color: gray !important;
+    padding: .6rem 1.2rem !important;
+    outline: none !important;
+}
+
+.back-to-home:hover{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

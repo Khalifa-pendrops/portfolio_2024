@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jacques+Francois+Shadow&family=Lexend:wght@100..900&family=Pacifico&display=swap');
+
+body {
+    color: #ffff;
+    background: radial-gradient(circle at top left, rgb(85, 3, 185), rgb(111, 51, 222) 5%, rgb(62, 0, 128) 10%, transparent 30%), #030918;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top left;
+    background-size: cover;
+    height: 100vh;
+    font-family: Exo;
+    /* background-image: url("https://source.unsplash.com/random/1920x1080");
+    background-position: center;
+    background-size: cover; */
+}
