@@ -30,6 +30,20 @@ a {
     border-radius: 5px !important;
 }
 
+@media (max-width: 391px) {
+.home_head_h1 {
+        font-size: 2.4rem !important;
+        white-space: wrap !important;
+    }
+
+    button{
+        width: 100% !important;
+        word-break: break-all;
+        overflow-wrap: break-word;
+    }
+}
+
+
 .p-text {
     width: 40%;
 }
@@ -128,15 +142,6 @@ textarea:active {
     min-height: 200px !important;
 }
 
-/* #home, #project {
-    height: 100vh !important;
-    width: 100% !important;
-    margin: 4rem auto !important;
-}
-
-#skills{
-    height: 35vh !important;
-} */
 
 #home li {
     list-style: none;

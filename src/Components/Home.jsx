@@ -10,24 +10,28 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
 import resume from "/Resume.pdf";
+import Contact from "./Contact";
 
 const Home = () => {
   return (
-    <div className="container-xxl d-flex flex-column justify-content-center gap-5 py-5">
+    <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">
       <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
-        <h1 className="display-2 display-sm-5 fw-semibold" data-aos="fade-up">
+        <h1
+          className="home_head_h1 display-2 display-sm-5 fw-semibold"
+          data-aos="fade-u"
+        >
           Chikezie, Ilodigwe
         </h1>
-        <p className=" w-50 w-sm-100" data-aos="fade-down">
+        <p className=" w-100" data-aos="fade-down">
           A Software Developer and AI enthusiast with experience in researching
           and building scalable products.
         </p>
         <div className="home_buttons container-fluid d-flex d-sm-inline-flex justify-content-center align-items-center gap-2 flex-column flex-sm-row px-5">
           <div className="col-10 col-sm-auto">
-            {" "}
-            <Link className="linked-btn" to="/get-in-touch">
-              <button
-                className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+            {/* <Link className="linked-btn" to="/get-in-touch"> */}
+            <div className="linked-btn">
+              {/* <button
+                className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
                 data-aos="fade-right"
                 data-aos-delay="300"
               >
@@ -36,12 +40,52 @@ const Home = () => {
                   icon={faHandPointRight}
                 />
                 Get in Touch
+              </button> */}
+              <button
+                className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+                data-aos="fade-right"
+                data-aos-delay="300"
+                type="button"
+                // className="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <FontAwesomeIcon
+                  className="icon fs-5"
+                  icon={faHandPointRight}
+                />
+                Get in Touch
               </button>
-            </Link>
+            </div>
+            {/* </Link> */}
+            {/* <!-- Button trigger modal --> */}
+
+            {/* <!-- Modal --> */}
+            <div
+              className="modal fade py-5"
+              id="exampleModal"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  {/* <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> */}
+                  {/* <div className="modal-body"> */}
+                  <Contact />
+                  {/* </div> */}
+                  {/* <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Save changes</button>
+      </div> */}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="col-10 col-sm-auto">
-            {" "}
             <a
               className="linked-btn"
               href={resume}
@@ -51,7 +95,7 @@ const Home = () => {
               <button
                 data-aos="fade-right"
                 data-aos-delay="100"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
                 title="curriculum vitae"
               >
                 <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
@@ -61,7 +105,6 @@ const Home = () => {
           </div>
 
           <div className="col-10 col-sm-auto">
-            {" "}
             <a
               className="linked-btn"
               href="/https://github.com/Khalifa-pendrops"
@@ -71,7 +114,7 @@ const Home = () => {
               <button
                 data-aos="fade-left"
                 data-aos-delay="100"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
               >
                 <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
                 GitHub
@@ -80,7 +123,6 @@ const Home = () => {
           </div>
 
           <div className="col-10 col-sm-auto">
-            {" "}
             <a
               className="linked-btn"
               href="/https://www.linkedin.com/in/chikezie-ilodigwe-942262113?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
@@ -90,7 +132,7 @@ const Home = () => {
               <button
                 data-aos="fade-left"
                 data-aos-delay="300"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
               >
                 <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />
                 LinkedIn
@@ -100,8 +142,8 @@ const Home = () => {
         </div>
       </div>
       <div className="home_body px-4 d-flex flex-column justify-content-center align-items-center gap-2">
-        <h2 className="display-5">Paths</h2>
-        <div className="home_body_paths d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4 my-2 ">
+        <h2 className="display-5 fw-bolder">Paths</h2>
+        <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4 my-2 ">
           <Link className="links zoom-in p-4" to="/academic">
             <div
               className="d-flex flex-column gap-2 justify-content-center align-items-start"
@@ -133,8 +175,8 @@ const Home = () => {
               <h4 className="fw-bolder text-primary">Tech Spectrum</h4>
               <p>
                 A tech odyssey: from the basic HTML through CSS and JavaScript
-                to cutting-edge frameworks and libraries in React.js, bootstrap, Tailwind
-                CSS, etc.
+                to cutting-edge frameworks and libraries in React.js, bootstrap,
+                Tailwind CSS, etc.
               </p>
             </div>
           </Link>

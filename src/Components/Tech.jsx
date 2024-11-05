@@ -40,8 +40,8 @@ function Tech() {
 
   return (
     <div className="w-100">
-      <section id="home" className="w-100 d-flex flex-column gap-4 my-5">
-        <nav className="container-fluid transparent-bg position-fixed top-0 left-0 w-100 z-3">
+      <section id="home" className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5">
+        <nav className="container-fluid transparent-bg d-flex justify-content-center align-items-center position-fixed top-0 left-0 w-100 z-3">
           <ul className="d-flex justify-content-around align-items-center py-4 flex-wrap gap-2">
             <li
               className="muted-bg px-5"
@@ -77,11 +77,11 @@ function Tech() {
           </ul>
         </nav>
         <div className="container-sm d-flex flex-column justify-content-center align-items-center gap-5 hero-section">
-          <h1 className="display-4 text-center container-xxl">
+          <h1 className="display-4 text-center container-sm">
             Navigate my Tech Spectrum: From the very Basics to Intermediate
             Frontiers.
           </h1>
-          <p className="text-center container-xxl">
+          <p className="text-center container-sm">
             Welcome to my digital workshop, a chronicle of my voyage through the
             pulsating heart of tech innovation. Here, you will discover a
             vibrant portfolio of web creations, each a testament of
@@ -96,7 +96,7 @@ function Tech() {
             <div className="col-10 col-sm-auto">
               <Link className="linked-btn" to="/get-in-touch">
                 <button
-                  className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                  className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center gap-2 flex-wrap w-100"
                   data-aos="fade-right"
                   data-aos-delay="300"
                 >
@@ -119,7 +119,7 @@ function Tech() {
                 <button
                   data-aos="fade-right"
                   data-aos-delay="100"
-                  className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                  className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
                   title="curriculum vitae"
                 >
                   <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
@@ -138,7 +138,7 @@ function Tech() {
                 <button
                   data-aos="fade-left"
                   data-aos-delay="100"
-                  className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                  className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
                 >
                   <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
                   GitHub
@@ -156,7 +156,7 @@ function Tech() {
                 <button
                   data-aos="fade-left"
                   data-aos-delay="300"
-                  className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center gap-2 w-100"
+                  className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
                 >
                   <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />
                   LinkedIn

@@ -48,80 +48,113 @@ function Contact() {
   };
 
   return (
-    <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid mt-5">
-      <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
-        <h1 className="display-5 display-sm-6 align-self-center">
-          Send an Email
-        </h1>
-        <p className="email-text text-center align-self-center">
-          Fill out the form below or contact me with your favourite email client
-          at
-        </p>
-        <a
-          href="mailto:dikee5200@gmail.com?subject=Let's Talk About Your Services "
-          className="email-wider-letters text-danger align-self-center"
-        >
-          dikee5200@gmail.com
-        </a>
-      </div>
-      <form
-        className="d-flex flex-column justify-content-center align-items-center gap-2"
-        onSubmit={handleSubmit}
-      >
-        <div className="d-flex flex-column gap-4 email-text">
-          <label className="d-flex flex-column justify-content-center gap-2">
-            Email
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="form-control rounded border p-2"
-              required
-            ></input>
-          </label>
-          <label className="d-flex flex-column gap-2">
-            Message
-            <textarea
-              type="text"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="border rounded p-2 form-control text-area-min-height"
-              required
-            ></textarea>
-          </label>
+    <>
+      {/* <div className="modal" tabindex="-1">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Modal title</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
         </div>
-        <p className="email-text text-start">
-          Please include your name or / and the name of your organization in the
-          message.
-        </p>
-        <div className="d-flex justify-content-center align-items-center gap-4 w-100">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="contact-btn bg-danger text-white py-1 px-4 btn d-flex justify-content-center align-items-center gap-2"
-          >
-            <FontAwesomeIcon className="fs-1" icon={faCaretRight} />
-            {isSubmitting ? "Submitting..." : "Send Message"}
-          </button>
-          <Link className="linked-btn" to="/">
-            <button className="bg-none-btn btn border rounded-2 text-black">
-              Back To Home Page
-            </button>
-          </Link>
-        </div>
-        {message && (
-          <p
-            className={
-              message.type === "success" ? "text-primary" : "text-danger"
-            }
-          >
-            {message.text}
+      </div> */}
+
+      <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
+        <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
+          <h1 className="display-5 display-sm-6 align-self-center">
+            Send an Email
+          </h1>
+          <p className="email-text text-center align-self-center">
+            Fill out the form below or contact me with your favourite email
+            client at
           </p>
-        )}
-      </form>
-    </div>
+          <a
+            href="mailto:dikee5200@gmail.com?subject=Let's Talk About Your Services "
+            className="email-wider-letters text-danger align-self-center"
+          >
+            dikee5200@gmail.com
+          </a>
+        </div>
+        <form
+          className="d-flex flex-column justify-content-center align-items-center gap-2"
+          onSubmit={handleSubmit}
+        >
+          <div className="d-flex flex-column gap-4 email-text">
+            <label className="d-flex flex-column justify-content-center align-items-start gap-2">
+              Email
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="form-control rounded border p-2"
+                required
+              ></input>
+            </label>
+            <label className="d-flex flex-column justify-content-center align-items-start gap-2">
+              Message
+              <textarea
+                type="text"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="border rounded p-2 form-control text-area-min-height"
+                required
+              ></textarea>
+            </label>
+          </div>
+          <p className="email-text text-start">
+            Please include your name or / and the name of your organization in
+            the message.
+          </p>
+          <div className="d-flex justify-content-center align-items-center gap-4 w-100">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="contact-btn bg-danger text-white py-1 px-4 btn d-flex justify-content-center align-items-center gap-2"
+            >
+              <FontAwesomeIcon className="fs-1" icon={faCaretRight} />
+              {isSubmitting ? "Submitting..." : "Send Message"}
+            </button>
+            <Link className="linked-btn" to="/">
+              <button className="bg-none-btn btn border rounded-2 text-black">
+                Back To Home Page
+              </button>
+            </Link>
+          </div>
+          {message && (
+            <p
+              className={
+                message.type === "success" ? "text-primary" : "text-danger"
+              }
+            >
+              {message.text}
+            </p>
+          )}
+        </form>
+      </div>
+    </>
   );
 }
 
