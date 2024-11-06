@@ -11,14 +11,58 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
 import resume from "/Resume.pdf";
 import Contact from "./Contact";
+import axios from "axios";
+import "./Home.css";
+import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
+    const [formData, setFormData] = useState({
+      email: "",
+      message: "",
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState(null);
+    // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
+    const url = "http://localhost/waiting";
+
+    const handleChange = (e) => {
+      setIsSubmitting(false);
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setIsSubmitting(true);
+      setMessage(null);
+      try {
+        const response = await axios.post(url, formData );
+        if (response.status === 200) {
+          setMessage({
+            type: "success",
+            text: "Form submitted successfully!",
+          });
+          setFormData({ email: "", message: "" });
+        }
+      } catch (error) {
+        console.log("Form submission error: ", error);
+        setMessage({
+          type: "error",
+          text: "An error occurred while submitting. Please try again later",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
   return (
     <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">
       <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
         <h1
           className="home_head_h1 display-2 display-sm-5 fw-semibold"
-          data-aos="fade-u"
+          data-aos="zoom-in"
         >
           Chikezie, Ilodigwe
         </h1>
@@ -28,39 +72,32 @@ const Home = () => {
         </p>
         <div className="home_buttons container-fluid d-flex d-sm-inline-flex justify-content-center align-items-center gap-2 flex-column flex-sm-row px-5">
           <div className="col-10 col-sm-auto">
-            {/* <Link className="linked-btn" to="/get-in-touch"> */}
-            <div className="linked-btn">
-              {/* <button
-                className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                data-aos="fade-right"
-                data-aos-delay="300"
-              >
-                <FontAwesomeIcon
-                  className="icon fs-5"
-                  icon={faHandPointRight}
-                />
-                Get in Touch
-              </button> */}
-              <button
-                className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                data-aos="fade-right"
-                data-aos-delay="300"
-                type="button"
-                // className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                <FontAwesomeIcon
-                  className="icon fs-5"
-                  icon={faHandPointRight}
-                />
-                Get in Touch
-              </button>
-            </div>
-            {/* </Link> */}
-            {/* <!-- Button trigger modal --> */}
-
-            {/* <!-- Modal --> */}
+            <Link className="linked-btn d-none d-sm-flex" to="/get-in-touch">
+              <div className="linked-btn">
+                <button
+                  className="get_in_touch_1 bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+                  data-aos="fade-right"
+                  data-aos-delay="300"
+                >
+                  <FontAwesomeIcon
+                    className="icon fs-5"
+                    icon={faHandPointRight}
+                  />
+                  Get in Touch
+                </button>
+              </div>
+            </Link>
+            <button
+              className="get_in_touch_1 bg-none-btn btn border rounded-2 d-sm-none d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+              data-aos="fade-right"
+              data-aos-delay="300"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              <FontAwesomeIcon className="icon fs-5" icon={faHandPointRight} />
+              Get in Touch
+            </button>
             <div
               className="modal fade py-5"
               id="exampleModal"
@@ -69,17 +106,88 @@ const Home = () => {
             >
               <div className="modal-dialog">
                 <div className="modal-content">
-                  {/* <div className="modal-header">
-        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> */}
-                  {/* <div className="modal-body"> */}
-                  <Contact />
-                  {/* </div> */}
-                  {/* <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div> */}
+                  <div className="modal-header">
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
+                    <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
+                      <h1 className="display-5 display-sm-6 align-self-center">
+                        Send an Email
+                      </h1>
+                      <p className="email-text text-center align-self-center">
+                        Fill out the form below or contact me with your
+                        favourite email client at
+                      </p>
+                      <a
+                        href="mailto:dikee5200@gmail.com?subject=Let's Talk About Your Services "
+                        className="email-wider-letters text-danger align-self-center"
+                      >
+                        dikee5200@gmail.com
+                      </a>
+                    </div>
+                    <form
+                      className="d-flex flex-column justify-content-center align-items-center gap-2"
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="d-flex flex-column gap-4 email-text">
+                        <label className="d-flex flex-column justify-content-center align-items-start gap-2">
+                          Email
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="form-control rounded border p-2"
+                            required
+                          ></input>
+                        </label>
+                        <label className="d-flex flex-column justify-content-center align-items-start gap-2">
+                          Message
+                          <textarea
+                            type="text"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className="border rounded p-2 form-control text-area-min-height"
+                            required
+                          ></textarea>
+                        </label>
+                      </div>
+                      <p className="email-text text-start">
+                        Please include your name or/and the name of your
+                        organization in the message.
+                      </p>
+                      <div className="d-flex justify-content-center align-items-center gap-4 w-50">
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="contact-btn text-white py-1 px-4 btn d-flex justify-content-center align-items-center gap-2"
+                        >
+                          <FontAwesomeIcon
+                            className="fs-1"
+                            icon={faCaretRight}
+                          />
+                          {isSubmitting ? "Submitting..." : "Send Message"}
+                        </button>
+                      </div>
+                      {message && (
+                        <p
+                          className={
+                            message.type === "success"
+                              ? "text-primary"
+                              : "text-danger"
+                          }
+                        >
+                          {message.text}
+                        </p>
+                      )}
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,7 +215,7 @@ const Home = () => {
           <div className="col-10 col-sm-auto">
             <a
               className="linked-btn"
-              href="/https://github.com/Khalifa-pendrops"
+              href="https://github.com/Khalifa-pendrops"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -125,7 +233,7 @@ const Home = () => {
           <div className="col-10 col-sm-auto">
             <a
               className="linked-btn"
-              href="/https://www.linkedin.com/in/chikezie-ilodigwe-942262113?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              href="https://www.linkedin.com/in/chikezie-ilodigwe-942262113?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
             >

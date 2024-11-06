@@ -40,7 +40,10 @@ function Tech() {
 
   return (
     <div className="w-100">
-      <section id="home" className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5">
+      <section
+        id="home"
+        className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5"
+      >
         <nav className="container-fluid transparent-bg d-flex justify-content-center align-items-center position-fixed top-0 left-0 w-100 z-3">
           <ul className="d-flex justify-content-around align-items-center py-4 flex-wrap gap-2">
             <li
@@ -185,13 +188,13 @@ function Tech() {
                 data-aos="zoom-in"
                 data-aos-delay="100"
               >
-                <h4 className="fw-bolder text-primary">Whisper App</h4>
+                <h4 className="fw-bolder text-primary">Whisper</h4>
                 <p>
-                  Easy Design UK is is a a platform that offers innovative web
+                  Easy Design UK is is a platform that offers innovative web
                   development and digital solutions. This was built with
                   React.JS, Bootstrap, Axios, AOS, CSS, React Router and
-                  Express.JS I built the Frontend of this simple web application
-                  from scratch.
+                  Express.JS. I built the Frontend of this simple web
+                  application from scratch.
                 </p>
                 <div className="d-flex flex-wrap gap-2">
                   <p className="bg-secondary px-2 rounded">React</p>
@@ -222,10 +225,10 @@ function Tech() {
                 data-aos="zoom-in"
                 data-aos-delay="300"
               >
-                <h4 className="fw-bolder text-primary">Whisper App</h4>
+                <h4 className="fw-bolder text-primary">Whisper</h4>
                 <p>
                   Whisper App is a community where you practically whisper -
-                  anonymously. So no one knows who's behind whatever texts sent
+                  anonymously. So no one knows who is behind whatever texts sent
                   across the platform and yes, it was a cool project by a group
                   of us. I contributed to the Frontend, and I am glad to have
                   been part of this.
@@ -272,6 +275,7 @@ function Tech() {
                 <div className="d-flex flex-wrap gap-2">
                   <p className="bg-secondary px-2 rounded">React.js</p>
                   <p className="bg-secondary px-2 rounded">CSS</p>
+                  <p className="bg-secondary px-2 rounded">API</p>
                 </div>
               </div>
               <img
@@ -300,13 +304,13 @@ function Tech() {
                 <h4 className="fw-bolder text-primary">Weather App</h4>
                 <p>
                   This is a Weather App. It was a cool project by a small group
-                  of us. My major contribution was in the UI/UX. The App uses
-                  static methods to display weather conditions of some selected
-                  cities. No APIs was used!
+                  of us. My major contribution was in the Frontend. The App uses
+                  weather API to fetch and display weather conditions.
                 </p>
                 <div className="d-flex flex-wrap gap-2">
                   <p className="bg-secondary px-2 rounded">HTML</p>
                   <p className="bg-secondary px-2 rounded">CSS</p>
+                  <p className="bg-secondary px-2 rounded">Tailwind</p>
                   <p className="bg-secondary px-2 rounded">JavaScript</p>
                 </div>
               </div>
@@ -389,7 +393,7 @@ function Tech() {
       </section>
       <footer className=" py-4 container-sm d-flex justify-content-center align-items-center text-center">
         <p>
-          &copy; <span className="text-primary">Chikezie Ilodigwe.</span> All
+          &copy; <span className="text-primary">Chikezie, Ilodigwe.</span> All
           Rights Reserved
         </p>
       </footer>

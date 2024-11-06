@@ -110,9 +110,19 @@ p {
     width: 80%;
 }
 
+.contact-container h1{
+    color: #07112c !important;
+}
+
+.email-text, label{
+    color: #6f6f6f !important;
+}
+
+
 .contact-btn {
     align-self: start;
     margin-left: 10%;
+    background-color: #4e3912 !important;
 }
 
 .contact-btn:hover {

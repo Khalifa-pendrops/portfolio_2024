@@ -6,80 +6,50 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState(null);
-  // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
-  const url = "http://localhost/waiting";
+    const [formData, setFormData] = useState({
+      email: "",
+      message: "",
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState(null);
+    // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
+    const url = "http://localhost/waiting";
 
-  const handleChange = (e) => {
-    setIsSubmitting(false);
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const response = await axios.post(url, { formData });
-      if (response.status === 200) {
-        setMessage({
-          type: "success",
-          text: "Form submitted successfully!",
-        });
-        setFormData({ email: "", message: "" });
-      }
-    } catch (error) {
-      console.log(error);
-      setMessage({
-        type: "error",
-        text: "An error occurred while submitting. Please try again later",
-      });
-    } finally {
+    const handleChange = (e) => {
       setIsSubmitting(false);
-    }
-  };
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setIsSubmitting(true);
+      setMessage(null);
+      try {
+        const response = await axios.post(url, formData);
+        if (response.status === 200) {
+          setMessage({
+            type: "success",
+            text: "Form submitted successfully!",
+          });
+          setFormData({ email: "", message: "" });
+        }
+      } catch (error) {
+        console.log("Form submission error: ", error);
+        setMessage({
+          type: "error",
+          text: "An error occurred while submitting. Please try again later",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
 
   return (
     <>
-      {/* <div className="modal" tabindex="-1">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Modal title</h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
         <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
           <h1 className="display-5 display-sm-6 align-self-center">
