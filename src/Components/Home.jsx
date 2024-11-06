@@ -166,7 +166,7 @@ const Home = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="contact-btn text-white py-1 px-4 btn d-flex justify-content-center align-items-center gap-2"
+                          className="contact-btn text-white py-1 px-3 btn d-flex justify-content-center align-items-center gap-2"
                         >
                           <FontAwesomeIcon
                             className="fs-1"

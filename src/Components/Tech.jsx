@@ -190,7 +190,7 @@ function Tech() {
               >
                 <h4 className="fw-bolder text-primary">Whisper</h4>
                 <p>
-                  Easy Design UK is is a platform that offers innovative web
+                  Easy Design UK is a platform that offers innovative web
                   development and digital solutions. This was built with
                   React.JS, Bootstrap, Axios, AOS, CSS, React Router and
                   Express.JS. I built the Frontend of this simple web
