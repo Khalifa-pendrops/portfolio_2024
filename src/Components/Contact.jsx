@@ -50,8 +50,8 @@ function Contact() {
 
   return (
     <>
-      <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
-        <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
+      <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3 pt-5">
+        <div className="contact_top d-flex flex-column justify-content-center align-items-center text-center">
           <h1 className="display-5 display-sm-6 align-self-center">
             Send an Email
           </h1>
@@ -60,18 +60,18 @@ function Contact() {
             client at
           </p>
           <a
-            href="mailto:dikee5200@gmail.com?subject=Let's Talk About Your Services "
+            href="mailto:dikee5200@gmail.com"
             className="email-wider-letters text-danger align-self-center"
           >
             dikee5200@gmail.com
           </a>
         </div>
         <form
-          className="d-flex flex-column justify-content-center align-items-center gap-2"
+          className="d-flex flex-column justify-content-center align-items-center gap-2 "
           onSubmit={handleSubmit}
         >
-          <div className="d-flex flex-column gap-4 email-text">
-            <label className="d-flex flex-column justify-content-center align-items-start gap-2">
+          <div className="d-flex flex-column justify-content-center align-items-start gap-4 email-text">
+            <label className="d-flex flex-column justify-content-center align-items-start gap-2 w-100">
               Email
               <input
                 type="email"
@@ -82,7 +82,7 @@ function Contact() {
                 required
               ></input>
             </label>
-            <label className="d-flex flex-column justify-content-center align-items-start gap-2">
+            <label className="d-flex flex-column justify-content-center align-items-start gap-2 w-100">
               Message
               <textarea
                 type="text"
@@ -94,21 +94,21 @@ function Contact() {
               ></textarea>
             </label>
           </div>
-          <p className="email-text text-start">
-            Please include your name or / and the name of your organization in
-            the message.
+          <p className="email-text text-start ">
+            Please include your name or/and the name of your organization in the
+            message.
           </p>
-          <div className="d-flex justify-content-center align-items-center gap-4 w-100">
+          <div className="d-flex justify-content-center align-items-center gap-4 flex-wrap">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="contact-btn bg-danger text-white py-1 px-4 btn d-flex justify-content-center align-items-center gap-2"
+              className="contact-btn-lg bg-white btn d-flex justify-content-center align-items-center gap-2 flex-wrap"
             >
-              <FontAwesomeIcon className="fs-1" icon={faCaretRight} />
+              <FontAwesomeIcon className="icon-right" icon={faCaretRight} />
               {isSubmitting ? "Submitting..." : "Send Message"}
             </button>
-            <Link className="linked-btn" to="/">
-              <button className="bg-none-btn btn border rounded-2 text-black">
+            <Link className="" to="/">
+              <button className="contact-btn-lg button-text btn border rounded-2  bg-white">
                 Back To Home Page
               </button>
             </Link>

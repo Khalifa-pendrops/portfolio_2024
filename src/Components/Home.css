@@ -24,20 +24,28 @@ a {
     color: aquamarine !important;
 }
 
-.bg-none-btn {
-    background-color: #4e3912 !important;
-    border: none !important;
-    border-radius: 5px !important;
+.contact-btn-lg {
+    color: #030918 !important;
 }
 
+.contact-btn-lg:hover {
+color: #fff !important;
+background-color: #030918 !important;
+border: none !important;
+}
+
+
+
+
+
 @media (max-width: 391px) {
-.home_head_h1 {
+    .home_head_h1 {
         font-size: 2.4rem !important;
         white-space: wrap !important;
     }
 
-    button{
-        width: 100% !important;
+    button {
+        /* width: 100% !important; */
         word-break: break-all;
         overflow-wrap: break-word;
     }
@@ -59,8 +67,8 @@ a:hover,
 .linked-btn:hover {
     background-color: #fff !important;
     color: #030918 !important;
-    border: 1px solid yellowgreen !important;
-    border-radius: 5px !important;
+    border: none !important;
+    border-radius: 0px !important;
     transition: all 0.5s ease-in-out;
 }
 
@@ -68,6 +76,8 @@ button:hover .icon,
 a:hover .icon {
     color: #030918 !important;
 }
+
+
 
 p {
     font-family: Lexend;
@@ -107,33 +117,31 @@ p {
 
 
 .email-text {
-    width: 80%;
+    width: 90%;
+
 }
 
-.contact-container h1{
+.modal h1 {
     color: #07112c !important;
 }
 
-.email-text, label{
+.email-text,
+label {
     color: #6f6f6f !important;
 }
 
-
-.contact-btn {
-    align-self: start;
-    margin-left: 10%;
-    background-color: #4e3912 !important;
+.icon-right {
+    font-size: 1.5rem !important;
 }
 
-.contact-btn:hover {
-    border: 1px solid yellowgreen !important;
-}
 
 .email-wider-letters {
     letter-spacing: 8px !important;
     border: none !important;
     background-color: transparent !important;
     transition: transform (0.5s ease-in-out) !important;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .email-wider-letters:hover {
@@ -204,8 +212,7 @@ footer span:hover {
     transform: scale(1.1);
 }
 
-.anchor-hover:hover{
+.anchor-hover:hover {
     background-color: #4e3912 !important;
-        color: #07112c !important;
+    color: #07112c !important;
 }
-

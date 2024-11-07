@@ -12,7 +12,7 @@ function Academic() {
         Page reconstruction in progress, please check back later. Thank you.
       </p>
       <Link className="linked-btn" to="/">
-        <button className="bg-none-btn btn border rounded-2 text-black">
+        <button className="bg-none-btn btn border rounded-2 text-white">
           Go to home
         </button>
       </Link>
