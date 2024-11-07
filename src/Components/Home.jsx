@@ -114,7 +114,7 @@ const Home = () => {
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div className="modal contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
+                  <div className="pseudo-modal contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
                     <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
                       <h1 className="display-5 display-sm-6 align-self-center">
                         Send an Email
@@ -166,7 +166,7 @@ const Home = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="contact-btn text-white py-1 px-1 btn d-flex justify-content-center align-items-center gap-2"
+                          className="contact-btn text-white py-1 px-2 btn d-flex justify-content-center align-items-center gap-2"
                         >
                           <FontAwesomeIcon
                             className="fs-1"

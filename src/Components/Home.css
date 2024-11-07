@@ -29,9 +29,9 @@ a {
 }
 
 .contact-btn-lg:hover {
-color: #fff !important;
-background-color: #030918 !important;
-border: none !important;
+    color: #fff !important;
+    background-color: #030918 !important;
+    border: none !important;
 }
 
 
@@ -51,14 +51,21 @@ border: none !important;
     }
 }
 
+.header-h1-academic {
+    font-size: 3rem !important;
+}
 
 .p-text {
-    width: 40%;
+    font-size: 1.4rem !important;
 }
 
 @media (max-width: 576px) {
+    .header-h1-academic {
+            font-size: 2rem !important;
+        }
     .p-text {
-        width: 80% !important;
+        width: 100% !important;
+        font-size: .9rem !important;
     }
 }
 
@@ -121,8 +128,14 @@ p {
 
 }
 
-.modal h1 {
+.pseudo-modal h1 {
     color: #07112c !important;
+}
+
+.contact-btn {
+    background-color: #030918 !important;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .email-text,
