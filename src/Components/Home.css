@@ -149,12 +149,13 @@ label {
 
 
 .email-wider-letters {
-    letter-spacing: 8px !important;
+    letter-spacing: 3px !important;
     border: none !important;
     background-color: transparent !important;
     transition: transform (0.5s ease-in-out) !important;
     word-break: break-all;
     overflow-wrap: break-word;
+    font-size: .9rem !important;
 }
 
 .email-wider-letters:hover {
