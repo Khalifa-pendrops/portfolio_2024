@@ -16,47 +16,47 @@ import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
-    const [formData, setFormData] = useState({
-      email: "",
-      message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [message, setMessage] = useState(null);
-    // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
-    const url = "http://localhost/waiting";
+  const [formData, setFormData] = useState({
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState(null);
+  // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
+  const url = "https://my-portfolio-most-recent-2024.vercel.app/api/message";
 
-    const handleChange = (e) => {
-      setIsSubmitting(false);
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    };
+  const handleChange = (e) => {
+    setIsSubmitting(false);
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setIsSubmitting(true);
-      setMessage(null);
-      try {
-        const response = await axios.post(url, formData );
-        if (response.status === 200) {
-          setMessage({
-            type: "success",
-            text: "Form submitted successfully!",
-          });
-          setFormData({ email: "", message: "" });
-        }
-      } catch (error) {
-        console.log("Form submission error: ", error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage(null);
+    try {
+      const response = await axios.post(url, formData);
+      if (response.status === 200) {
         setMessage({
-          type: "error",
-          text: "An error occurred while submitting. Please try again later",
+          type: "success",
+          text: "Form submitted successfully!",
         });
-      } finally {
-        setIsSubmitting(false);
+        setFormData({ email: "", message: "" });
       }
-    };
+    } catch (error) {
+      console.log("Form submission error: ", error);
+      setMessage({
+        type: "error",
+        text: "An error occurred while submitting. Please try again later",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">
       <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
