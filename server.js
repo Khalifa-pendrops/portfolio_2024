@@ -56,7 +56,7 @@ app.post("/api/message", async (req, res) => {
       subject: "New Message from Your Portfolio",
       text: `Email: ${email}\nMessage: ${message}`,
     });
-    res.status(201).json({ message: "Message sent successfully!" });
+    res.status(200).json({ message: "Message sent successfully!" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to send message." });
@@ -68,6 +68,6 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-import path from "path";
-console.log("Current directory:", path.resolve("."));
-console.log("MongoDB URI:", process.env.MONGO_URI);
+// import path from "path";
+// console.log("Current directory:", path.resolve("."));
+// console.log("MongoDB URI:", process.env.MONGO_URI);

@@ -6,8 +6,6 @@ import "aos/dist/aos.css";
 import Contact from "./Components/Contact";
 import Academic from "./Components/Academic";
 import Tech from "./Components/Tech";
-// import DeleteAfterUse from "./Components/DeleteAfterUse";
-// import DeleteThisToo from "./Components/DeleteThisToo";
 
 const App = () => {
 useEffect(() => {
@@ -27,8 +25,6 @@ useEffect(() => {
         <Route path="/academic" element={<Academic />} />
         <Route path="/tech" element={<Tech />} />
       </Routes>
-      {/* <DeleteAfterUse name='Khalifa'  heroName='Jon Snow'>This is children props</DeleteAfterUse> */}
-      {/* <DeleteThisToo name='Khalifa'  heroName='Jon Snow'/> */}
     </>
   );
 };
