@@ -25,18 +25,18 @@ const App = () => {
         <Route path="/academic" element={<Academic />} />
         <Route path="/tech" element={<Tech />} />
       </Routes>
-      <a
+      <a className="whatsapp-a"
         href="https://wa.me/2348156416326"
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "80vw",
-          zIndex: 1000,
-        }}
+        // style={{
+        //   position: "fixed",
+        //   bottom: "20px",
+        //   right: "0vw",
+        //   zIndex: 1000,
+        // }}
       >
-        <button className="whatsapp-btn d-flex justify-content-center align-items-center flex-wrap gap-2 w-100">
+        <button className="whatsapp-btn d-flex justify-content-center align-items-center gap-2 w-100">
           Chat on Whatsapp
         </button>
       </a>
