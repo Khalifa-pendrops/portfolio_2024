@@ -142,6 +142,7 @@ function Tech() {
                   data-aos="fade-left"
                   data-aos-delay="100"
                   className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+                  title="GitHub Connect"
                 >
                   <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
                   GitHub
@@ -160,6 +161,7 @@ function Tech() {
                   data-aos="fade-left"
                   data-aos-delay="300"
                   className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+                  title="LinkedIn Connect"
                 >
                   <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />
                   LinkedIn
