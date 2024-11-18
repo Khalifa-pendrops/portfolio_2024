@@ -36,19 +36,7 @@ const App = () => {
           zIndex: 1000,
         }}
       >
-        <button
-          style={{
-            backgroundColor: "#25de36",
-            color: "white",
-            border: "none",
-            padding: "10px 20px",
-            marginBottom: "20px",
-            marginLeft: "40px",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontWeight: "bolder",
-          }}
-        >
+        <button className="whatsapp-btn d-flex justify-content-center align-items-center flex-wrap gap-2 w-100">
           Chat on Whatsapp
         </button>
       </a>
