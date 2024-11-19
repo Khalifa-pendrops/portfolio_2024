@@ -23,7 +23,7 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
   // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
-  const url = "https://portfolio-2024-pq5d.onrender.com/api/form";
+  const url = "https://portfolio-2024-pq5d.onrender.com/api/message";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -46,6 +46,7 @@ const Home = () => {
           text: "Form submitted successfully!",
         });
         setFormData({ email: "", message: "" });
+        console.log("response.data")
       }
     } catch (error) {
       console.log("Form submission error: ", error);

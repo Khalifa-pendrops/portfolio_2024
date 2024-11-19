@@ -23,19 +23,18 @@ body {
 
 
 .whatsapp-btn {
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     /* border: none 1px dotted white; */
     /* border-radius: 3px !important; */
     background-color: transparent !important;
     cursor: pointer !important;
 }
 
+.whatsapp-a:hover,
 .whatsapp-btn:hover {
     border-radius: 3px !important;
+    padding: 5px 10px !important;
+    background-color: transparent !important;
+    color: #fff !important;
 }
 
-/* @media (max-width: 759px) {
-    .whatsapp-btn {
-        margin-left: .5rem !important;
-    }
-} */
