@@ -39,14 +39,18 @@ const Home = () => {
     setIsSubmitting(true);
     setMessage(null);
     try {
-      const response = await axios.post(url, formData);
+      const response = await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (response.status === 200) {
         setMessage({
           type: "success",
           text: "Form submitted successfully!",
         });
         setFormData({ email: "", message: "" });
-        console.log("response.data")
+        console.log("response.data");
       }
     } catch (error) {
       console.log("Form submission error: ", error);
