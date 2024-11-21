@@ -53,6 +53,7 @@ function Contact() {
     } finally {
       setIsSubmitting(false);
     }
+    setFormData({ email: "", message: "" });
   };
 
   return (

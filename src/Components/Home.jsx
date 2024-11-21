@@ -63,6 +63,7 @@ const Home = () => {
     } finally {
       setIsSubmitting(false);
     }
+    setFormData({ email: "", message: "" });
   };
   return (
     <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">

@@ -10,13 +10,32 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "http://localhost:5173",
+  "https://my-portfolio-most-recent-2024.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with your frontend URL
-    methods: "GET,POST",
-    allowedHeaders: "Content-Type",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
   })
 );
+// app.use(
+//   cors({
+//     // origin: "http://localhost:3000", // Replace with your frontend URL
+//     origin: "https://my-portfolio-most-recent-2024.vercel.app",
+//     methods: "GET,POST",
+//     allowedHeaders: "Content-Type",
+//   })
+// );
 
 app.use(bodyParser.json());
 
