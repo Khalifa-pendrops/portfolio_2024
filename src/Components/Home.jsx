@@ -44,12 +44,17 @@ const Home = () => {
         },
       });
       if (response.status === 200) {
+        console.log("Success block triggered");
         setMessage({
           type: "success",
           text: "Form submitted successfully!",
         });
-        setFormData({ email: "", message: "" });
-        console.log("response.data");
+        console.log(message);
+        setTimeout(() => {
+          setFormData({ email: "", message: "" });
+        }, 0);
+        console.log("Response status:", response.status);
+        console.log("Response data:", response.data);
       }
     } catch (error) {
       console.log("Form submission error: ", error);
@@ -60,12 +65,6 @@ const Home = () => {
     } finally {
       setIsSubmitting(false);
     }
-
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
   };
   return (
     <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">
@@ -189,7 +188,7 @@ const Home = () => {
                         <p
                           className={
                             message.type === "success"
-                              ? "text-primary"
+                              ? "text-success"
                               : "text-danger"
                           }
                         >

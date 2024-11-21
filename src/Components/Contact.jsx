@@ -34,12 +34,17 @@ function Contact() {
         },
       });
       if (response.status === 200) {
+        console.log("Success block triggered");
         setMessage({
           type: "success",
           text: "Form submitted successfully!",
         });
-        setFormData({ email: "", message: "" });
-        console.log("response.data");
+        console.log(message);
+        setTimeout(() => {
+          setFormData({ email: "", message: "" });
+        }, 0);
+        console.log("Response status:", response.status);
+        console.log("Response data:", response.data);
       }
     } catch (error) {
       console.log("Form submission error: ", error);
@@ -50,12 +55,6 @@ function Contact() {
     } finally {
       setIsSubmitting(false);
     }
-
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
   };
 
   return (
@@ -126,7 +125,7 @@ function Contact() {
           {message && (
             <p
               className={
-                message.type === "success" ? "text-primary" : "text-danger"
+                message.type === "success" ? "text-success" : "text-danger"
               }
             >
               {message.text}
