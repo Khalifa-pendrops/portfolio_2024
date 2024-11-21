@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-RTCRtpScriptTransform
+// Enable CORS for all routes
 // This should handle preflight requests
 app.options("*", cors());
 app.use(bodyParser.json());

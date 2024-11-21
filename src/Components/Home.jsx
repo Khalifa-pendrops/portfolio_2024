@@ -132,10 +132,10 @@ const Home = () => {
                         favourite email client at
                       </p>
                       <a
-                        href="mailto:dikee5200@gmail.com?subject=Let's Talk About Your Services "
+                        href="mailto:khalifabinzayed.portfolio@gmail.com?subject=Let's Talk About Your Services "
                         className="email-wider-letters text-danger align-self-center"
                       >
-                        dikee5200@gmail.com
+                        khalifabinzayed.portfolio@gmail.com
                       </a>
                     </div>
                     <form
