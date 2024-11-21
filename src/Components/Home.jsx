@@ -50,9 +50,7 @@ const Home = () => {
           text: "Form submitted successfully!",
         });
         console.log(message);
-        setTimeout(() => {
-          setFormData({ email: "", message: "" });
-        }, 0);
+        setFormData({ email: "", message: "" });
         console.log("Response status:", response.status);
         console.log("Response data:", response.data);
       }
@@ -150,7 +148,13 @@ const Home = () => {
                             type="email"
                             name="email"
                             value={formData.email}
-                            onChange={handleChange}
+                            // onChange={handleChange}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                email: e.target.value,
+                              })
+                            }
                             className="form-control rounded border p-2"
                             required
                           ></input>
@@ -161,7 +165,13 @@ const Home = () => {
                             type="text"
                             name="message"
                             value={formData.message}
-                            onChange={handleChange}
+                            // onChange={handleChange}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                message: e.target.value,
+                              })
+                            }
                             className="border rounded p-2 form-control text-area-min-height"
                             required
                           ></textarea>
