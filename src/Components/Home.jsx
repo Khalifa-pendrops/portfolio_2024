@@ -22,7 +22,6 @@ const Home = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
-  // REMEMBER TO ADD ACTUAL API HERE FOR FORM SUBMISSION AND DB STORAGE
   const url = "https://portfolio-2024-1.onrender.com/api/contact";
 
   const handleChange = (e) => {
@@ -61,6 +60,12 @@ const Home = () => {
     } finally {
       setIsSubmitting(false);
     }
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
   return (
     <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">
