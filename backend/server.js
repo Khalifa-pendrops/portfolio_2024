@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import Contact from "./models/Contact.js";
+import router from "./routes/router.js";
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
-  "https://your-production-frontend.com",
+  "https://my-portfolio-most-recent-2024.vercel.app",
   "http://localhost:5173",
 ];
 
@@ -85,5 +86,7 @@ app.post("/api/contact", async (req, res) => {
     res.status(500).json({ error: "Server error. Please try again later" });
   }
 });
+
+app.use(router);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

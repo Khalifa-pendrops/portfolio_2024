@@ -12,7 +12,7 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
-  const url = "https://portfolio-2024-1.onrender.com/api/contact";
+  const url = "https://portfolio-2024-gotg.onrender.com/api/contact";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -85,10 +85,7 @@ function Contact() {
                 type="email"
                 name="email"
                 value={formData.email}
-                // onChange={handleChange}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={handleChange}
                 className="form-control rounded border p-2"
                 required
               ></input>
@@ -99,10 +96,7 @@ function Contact() {
                 type="text"
                 name="message"
                 value={formData.message}
-                // onChange={handleChange}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                onChange={handleChange}
                 className="border rounded p-2 form-control text-area-min-height"
                 required
               ></textarea>
