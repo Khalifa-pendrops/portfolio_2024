@@ -22,7 +22,7 @@ const Home = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
-  const url = "https://portfolio-2024-gotg.onrender.com/api/contact";
+  const url = "http://localhost:3001/submissions";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
