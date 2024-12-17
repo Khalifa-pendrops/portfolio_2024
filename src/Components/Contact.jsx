@@ -12,7 +12,8 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
-  const url = "http://localhost:3001/submissions"; 
+  // const url = "https://portfolio-2024-new.onrender.com/submissions";
+  const url = "https://localhost:3001/submissions";
 
   const handleChange = (e) => {
     setIsSubmitting(false);

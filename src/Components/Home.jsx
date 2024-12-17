@@ -22,7 +22,8 @@ const Home = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
-  const url = "http://localhost:3001/submissions";
+  // const url = "https://portfolio-2024-new.onrender.com/submissions";
+  const url = "https://localhost:3001/submissions";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
