@@ -25,7 +25,8 @@ const App = () => {
         <Route path="/academic" element={<Academic />} />
         <Route path="/tech" element={<Tech />} />
       </Routes>
-      <a className="whatsapp-a"
+      <a
+        className="whatsapp-a"
         href="https://wa.me/2348156416326"
         target="_blank"
         rel="noopener noreferrer"
@@ -36,7 +37,7 @@ const App = () => {
         //   zIndex: 1000,
         // }}
       >
-        <button className="whatsapp-btn d-flex justify-content-center align-items-center gap-2 w-100">
+        <button className="whatsapp-btn d-none d-md-flex justify-content-center align-items-center gap-2 w-100">
           Chat on Whatsapp
         </button>
       </a>

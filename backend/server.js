@@ -1,5 +1,5 @@
 import express from "express";
-import mysql from "mysql";
+import mysql from "mysql2";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -15,14 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: process.env.DB_HOST || "sql311.infinityfree.com",
+  user: process.env.DB_USER || "fi_37957801",
+  password: process.env.DB_PASSWORD || "1RL3UHVsliJkW4X",
+  database: process.env.DB_NAME || "ifi_37957801_portfolio",
   port: process.env.DB_PORT || 3306,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
 });
 
 db.connect((err) => {
@@ -39,6 +36,33 @@ app.post("/submissions", (req, res) => {
   if (!email || !message) {
     return res.status(400).send("Email and message are required");
   }
+
+  // const checkQuery = "SELECT * FROM form_submissions WHERE email = ?";
+  // db.query(checkQuery, [email], (err, results) => {
+  //   if (err) {
+  //     console.error("Error checking email: ", err.message);
+  //     return res.status(500).send("Error processing request");
+  //   }
+
+  //   if (results.length > 0) {
+  //     return res.status(409).json({
+  //       message: "Email already exists",
+  //     });
+  //   }
+  //   const insertQuery =
+  //     "INSERT INTO form_submissions (email, message) VALUES (?, ?)";
+
+  //   db.query(insertQuery, [email, message], (err, result) => {
+  //     if (err) {
+  //       console.error("Error inserting data:", err.message);
+  //       return res.status(500).send("Error saving submission");
+  //     }
+  //     res.status(200).json({
+  //       message: "Submission saved!",
+  //       id: result.insertId,
+  //     });
+  //   });
+  // });
 
   const query = "INSERT INTO form_submissions (email, message) VALUES (?, ?)";
 
