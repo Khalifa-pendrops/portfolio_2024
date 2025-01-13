@@ -14,6 +14,7 @@ import Contact from "./Contact";
 import axios from "axios";
 import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import MovingTexts from "./MovingTexts";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -116,6 +117,7 @@ const Home = () => {
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
+                    <MovingTexts />
                     <button
                       type="button"
                       className="btn-close"

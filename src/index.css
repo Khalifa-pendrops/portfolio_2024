@@ -38,3 +38,23 @@ body {
     color: #fff !important;
 }
 
+.scrolling-text {
+    white-space: nowrap;
+    overflow: hidden !important;
+}
+
+.scrolling-text p {
+    background-color: rgba(52, 52, 52, 0.929) !important;
+    animation: scroll-right 15s linear infinite !important;
+    color: #fff !important;
+}
+
+@keyframes scroll-right {
+    from {
+        transform: translateX(-100%) !important;
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}

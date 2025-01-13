@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Router, Routes, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import AOS from "aos";
 import "aos/dist/aos.css";

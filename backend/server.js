@@ -1,5 +1,6 @@
 import express from "express";
-import mysql from "mysql2";
+// import mysql from "mysql2";
+import { Pool } from "pg";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -14,20 +15,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || "sql311.infinityfree.com",
-  user: process.env.DB_USER || "fi_37957801",
-  password: process.env.DB_PASSWORD || "1RL3UHVsliJkW4X",
-  database: process.env.DB_NAME || "ifi_37957801_portfolio",
-  port: process.env.DB_PORT || 3306,
-});
+// const db = mysql.createConnection({
+//   host: process.env.DB_HOST || "sql311.infinityfree.com",
+//   user: process.env.DB_USER || "fi_37957801",
+//   password: process.env.DB_PASSWORD || "1RL3UHVsliJkW4X",
+//   database: process.env.DB_NAME || "ifi_37957801_portfolio",
+//   port: process.env.DB_PORT || 3306,
+// });
 
-db.connect((err) => {
-  if (err) {
-    console.error("Database connection failed:", err.stack);
-    return;
-  }
-  console.log("Connected to the MySQL database");
+// db.connect((err) => {
+//   if (err) {
+//     console.error("Database connection failed:", err.stack);
+//     return;
+//   }
+//   console.log("Connected to the MySQL database");
+// });
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 app.post("/submissions", (req, res) => {
