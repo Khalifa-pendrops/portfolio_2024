@@ -4,7 +4,7 @@ function MovingTexts() {
   return (
     <div className="container-fluid mt-2">
       <div className="scrolling-text py-1 ">
-        <p className=" py-1 fw-bolder lh-1">
+        <p className=" py-1 fw-bolder lh-1 fs-4 custom-size">
           🔊 Hey, if the form didn't work, tap on my email address 👇
         </p>
       </div>

@@ -41,12 +41,19 @@ body {
 .scrolling-text {
     white-space: nowrap;
     overflow: hidden !important;
+
 }
 
 .scrolling-text p {
     background-color: rgba(52, 52, 52, 0.929) !important;
     animation: scroll-right 15s linear infinite !important;
     color: #fff !important;
+}
+
+@media (max-width: 576px) {
+    .custom-size {
+        font-size: 12px !important;
+    }
 }
 
 @keyframes scroll-right {
