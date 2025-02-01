@@ -45,9 +45,9 @@ body {
 }
 
 .scrolling-text p {
-    background-color: rgba(52, 52, 52, 0.929) !important;
+    background-color: rgba(52, 52, 52, 0.641) !important;
     animation: scroll-right 15s linear infinite !important;
-    color: #fff !important;
+    color: #fff;
 }
 
 @media (max-width: 576px) {

@@ -68,7 +68,14 @@ const Home = () => {
     setFormData({ email: "", message: "" });
   };
   return (
-    <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5">
+    <div className="container-fluid d-flex flex-column justify-content-center align-items-center gap-5 py-5">
+      <div className="container-fluid d-none d-lg-block">
+        <div className="scrolling-text d-flex flex-column justify-content-center textAlign-center ">
+          <p className=" p-2 lh-1 fs-2 ">
+            📢 On-going Project: <span className="fs-4 text-info">Tech Bubble Community. <span className="fs-5 text-warning">Stay tuned</span></span>
+          </p>
+        </div>
+      </div>
       <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
         <h1
           className="home_head_h1 display-2 display-sm-5 fw-semibold"

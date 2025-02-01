@@ -16,6 +16,15 @@ import "./Home.css";
 function Tech() {
   const [activeSession, setActiveSession] = useState("");
 
+  const getYear = () => {
+    return new Date().getFullYear();
+  };
+  //if you want to have a link opened on same browser tab
+  // const handleEasy = () => {
+  //   window.location.href = "https://easydesignuk.co.uk/index";
+  //   return;
+  // };
+
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const observerOptions = {
@@ -89,11 +98,11 @@ function Tech() {
             pulsating heart of tech innovation. Here, you will discover a
             vibrant portfolio of web creations, each a testament of
             possibilities enabled by contemporary technologies like HTML, CSS,
-            JavaScript, React.JS and a touch of Express.JS. As the future
-            unfolds, I hope to delve into DevOps, UI/UX, Designs, Python, and
-            Artificial Intelligence. Together, let's unmask the labyrinth of
-            these technologies, confront their challenges, and unlock and
-            appreciate the magic they present.
+            JavaScript, React.JS, Bootstrap, Tailwind and a touch of Express.JS.
+            As the future unfolds, I hope to delve into DevOps, UI/UX, Designs,
+            Python, and Artificial Intelligence. Together, let's unmask the
+            labyrinth of these technologies, confront their challenges, and
+            unlock and appreciate the magic they present.
           </p>
           <div className="home_buttons container-fluid d-flex d-sm-inline-flex justify-content-center align-items-center gap-2 flex-column flex-sm-row px-5">
             <div className="col-10 col-sm-auto">
@@ -178,10 +187,10 @@ function Tech() {
       >
         <div className=" row w-100">
           <div className="col-12 mb-4">
-            {/* REMEMBER TO ADD EASY DESIGN LIVE LINK HERE AFTER COMPLETION */}
             <a
-              className="anchor-hover d-flex flex-column flex-lg-row justify-content-center align-items-stretch rounded"
-              href="https://whisper-app-three.vercel.app/"
+              className="anchor-hover d-flex flex-column flex-lg-row justify-content-center align-items-stretch rounded cursor-pointer cursor"
+              // onClick={handleEasy}
+              href="https://easydesignuk.co.uk/index"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -190,7 +199,7 @@ function Tech() {
                 data-aos="zoom-in"
                 data-aos-delay="100"
               >
-                <h4 className="fw-bolder text-primary">Whisper</h4>
+                <h4 className="fw-bolder text-primary">Easy Design UK</h4>
                 <p>
                   Easy Design UK is a platform that offers innovative web
                   development and digital solutions. This was built with
@@ -294,7 +303,7 @@ function Tech() {
           <div className="col-12 mb-4">
             <a
               className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              href="https://whisper-app-three.vercel.app/"
+              href="https://simple-weather-app-psi-one.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -395,8 +404,9 @@ function Tech() {
       </section>
       <footer className=" py-4 container-sm d-flex justify-content-center align-items-center text-center">
         <p>
-          &copy; <span className="text-primary">Chikezie, Ilodigwe.</span> All
-          Rights Reserved
+          &copy; {getYear()}
+          <span className="text-primary "> Chikezie, Ilodigwe.</span> All Rights
+          Reserved
         </p>
       </footer>
     </div>

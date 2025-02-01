@@ -37,7 +37,7 @@ const App = () => {
         //   zIndex: 1000,
         // }}
       >
-        <button className="whatsapp-btn d-none d-md-flex justify-content-center align-items-center gap-2 w-100">
+        <button className="whatsapp-btn d-none d-md-flex justify-content-center align-items-center gap-2 w-100 mt-5">
           Chat on Whatsapp
         </button>
       </a>
