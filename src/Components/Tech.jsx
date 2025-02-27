@@ -185,7 +185,7 @@ function Tech() {
         id="project"
         className="container-sm d-flex justify-content-center align-items-center gap-4"
       >
-        <div className=" row w-100">
+        <div className=" row w-100 ">
           <div className="col-12 mb-4">
             <a
               className="anchor-hover d-flex flex-column flex-lg-row justify-content-center align-items-stretch rounded cursor-pointer cursor"
@@ -224,7 +224,8 @@ function Tech() {
               />
             </a>
           </div>
-          <div className="col-12 mb-4">
+
+          <div className=" col-12 mb-4">
             <a
               className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
               href="https://whisper-app-three.vercel.app/"
@@ -264,7 +265,7 @@ function Tech() {
             </a>
           </div>
 
-          <div className="col-12 mb-4">
+          <div className=" col-12 mb-4">
             <a
               className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
               href="https://movie-search-app-by-khalifa.vercel.app/"

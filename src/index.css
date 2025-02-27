@@ -13,21 +13,36 @@ body {
 
 .whatsapp-a {
     position: fixed !important;
-    left: 9% !important;
-    bottom: 2%;
-    width: 94px !important;
-    height: 94px !important;
+    left: 5% !important;
+    bottom: 0%;
+    width: 80px !important;
+    height: 80px !important;
     border-radius: 50% !important;
-
+    border: 2px solid;
 }
 
 
 .whatsapp-btn {
-    /* padding: 5px 10px; */
-    /* border: none 1px dotted white; */
-    /* border-radius: 3px !important; */
     background-color: transparent !important;
     cursor: pointer !important;
+    position: absolute;
+    top: 10%;
+    all: unset !important;
+    overflow: hidden;
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 50% !important;
+    margin: 3px !important;
+}
+
+
+.whatsapp-btn:hover {
+    overflow: hidden;
+    all: unset !important;
+    border: 1px solid transparent !important;
+    margin: 0;
+    padding: 10px 20px;
+    font-weight: normal !important;
 }
 
 .whatsapp-a:hover,
@@ -35,7 +50,9 @@ body {
     border-radius: 3px !important;
     padding: 5px 10px !important;
     background-color: transparent !important;
+    transition: background-color 0.3s ease-in-out !important;
     color: #fff !important;
+
 }
 
 .scrolling-text {
