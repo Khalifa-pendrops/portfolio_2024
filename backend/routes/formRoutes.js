@@ -8,7 +8,8 @@ dotenv.config();
 const router = express.Router();
 
 router.post("/contact", async (req, res) => {
-  const { name, email, message } = req.body;
+  console.log("Request Body:", req.body); 
+  const { email, message } = req.body;
 
   if (!email || !message) {
     return res.status(400).json({
@@ -22,7 +23,7 @@ router.post("/contact", async (req, res) => {
     await newForm.save();
 
     const subject = "New Form Submission";
-    const text = `Name: ${name || "N/A"}\nEmail: ${email}\nMessage: ${message}`;
+    const text = `Email: ${email}\nMessage: ${message}`;
 
     try {
       await sendMail(process.env.EMAIL_USER, subject, text);
