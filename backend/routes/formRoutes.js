@@ -3,15 +3,15 @@ import Form from "../models/FormSchema.js";
 import { sendMail } from "../config/mail.js";
 import dotenv from "dotenv";
 
-dotenv.config(); 
+dotenv.config();
 
 const router = express.Router();
 
 router.post("/contact", async (req, res) => {
-  console.log("Request Body:", req.body); 
+  console.log("Request Body:", req.body);
   const { email, message } = req.body;
 
-  if ( !email || !message) {
+  if (!email || !message) {
     return res.status(400).json({
       success: false,
       message: "Email and message are required.",
@@ -19,7 +19,11 @@ router.post("/contact", async (req, res) => {
   }
 
   try {
-    const newForm = new Form({ email, message });
+    const newForm = new Form({
+      _id: new mongoose.Types.ObjectId(),
+      email,
+      message,
+    });
     await newForm.save();
 
     const subject = "New Form Submission";
