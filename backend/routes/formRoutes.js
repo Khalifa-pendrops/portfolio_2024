@@ -2,6 +2,7 @@ import express from "express";
 import Form from "../models/FormSchema.js";
 import { sendMail } from "../config/mail.js";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 
 dotenv.config();
 
