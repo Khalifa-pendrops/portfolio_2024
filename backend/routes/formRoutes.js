@@ -11,7 +11,7 @@ router.post("/contact", async (req, res) => {
   console.log("Request Body:", req.body); 
   const { email, message } = req.body;
 
-  if (!email || !message) {
+  if ( !email || !message) {
     return res.status(400).json({
       success: false,
       message: "Email and message are required.",
