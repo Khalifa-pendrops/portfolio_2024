@@ -58,13 +58,17 @@ body {
 .scrolling-text {
     white-space: nowrap;
     overflow: hidden !important;
+    /* position: relative; */
 
 }
 
-.scrolling-text p {
-    background-color: rgba(52, 52, 52, 0.641) !important;
-    animation: scroll-right 15s linear infinite !important;
+.scrolling-text_2 {
+    animation: scroll-right 20s linear infinite !important;
     color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 5%;
+    left: 50%;
 }
 
 @media (max-width: 576px) {
@@ -75,10 +79,10 @@ body {
 
 @keyframes scroll-right {
     from {
-        transform: translateX(-100%) !important;
+        transform: translateX(100vw);
     }
 
     to {
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
 }

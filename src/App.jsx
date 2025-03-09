@@ -30,12 +30,6 @@ const App = () => {
         href="https://wa.me/2348156416326"
         target="_blank"
         rel="noopener noreferrer"
-        // style={{
-        //   position: "fixed",
-        //   bottom: "20px",
-        //   right: "0vw",
-        //   zIndex: 1000,
-        // }}
       >
         <button className="whatsapp-btn ">
           Whatsapp

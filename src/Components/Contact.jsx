@@ -13,8 +13,8 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
-  // const url = "https://portfolio-2024-new.onrender.com/submissions";
-  const url = "http://localhost:3001/submissions";
+  const url = "https://portfolio-2024-new.onrender.com/submissions";
+  // const url = "http://localhost:3001/submissions";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -109,6 +109,7 @@ function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
+              onSubmit={handleSubmit}
               className="contact-btn-lg bg-white btn d-flex justify-content-center align-items-center gap-2 flex-wrap"
             >
               <FontAwesomeIcon className="icon-right" icon={faCaretRight} />

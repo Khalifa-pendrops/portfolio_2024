@@ -1,11 +1,14 @@
 import express from "express";
-import Form from "../models/Form.js";
-import { sendEmail } from "../config/mail.js";
+import Form from "../models/FormSchema.js";
+import { sendMail } from "../config/mail.js";
+import dotenv from "dotenv";
+
+dotenv.config(); 
 
 const router = express.Router();
 
-router.post("/api/contact", async (req, res) => {
-  const { email, message } = req.body;
+router.post("/contact", async (req, res) => {
+  const { name, email, message } = req.body;
 
   if (!email || !message) {
     return res.status(400).json({
@@ -18,12 +21,11 @@ router.post("/api/contact", async (req, res) => {
     const newForm = new Form({ email, message });
     await newForm.save();
 
-
     const subject = "New Form Submission";
     const text = `Name: ${name || "N/A"}\nEmail: ${email}\nMessage: ${message}`;
 
     try {
-      await sendEmail(process.env.ADMIN_EMAIL, subject, text);
+      await sendMail(process.env.EMAIL_USER, subject, text);
     } catch (emailError) {
       console.error("Error sending email:", emailError);
       return res.status(500).json({
@@ -31,7 +33,6 @@ router.post("/api/contact", async (req, res) => {
         message: "Failed to send email. Please try again later.",
       });
     }
-
 
     res.status(201).json({
       success: true,
