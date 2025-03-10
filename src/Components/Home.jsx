@@ -10,11 +10,11 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
 import resume from "/Resume.pdf";
-import Contact from "./Contact";
+// import Contact from "./Contact";
 import axios from "axios";
 import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import MovingTexts from "./MovingTexts";
+// import Swal from "sweetalert2";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -22,9 +22,9 @@ const Home = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState(null);
-  // const url = "https://portfolio-2024-new.onrender.com/submissions";
-  const url = "http://localhost:3001/submissions";
+  const [responseMessage, setResponseMessage] = useState(null);
+  const url = "https://portfolio-2024-2cjd.onrender.com/api/contact";
+  // const url = "http://localhost:3001/submissions";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -38,27 +38,43 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage(null);
+    setResponseMessage(null);
+
+    if (!formData.email || !formData.message) {
+      setResponseMessage({
+        type: "error",
+        text: "Please fill out all fields.",
+      });
+      console.log("Validation error message set:", responseMessage);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
+
+      // setResponseMessage(response.data);
+      console.log("Response:", response);
+
       if (response.status === 200) {
-        console.log("Success block triggered");
-        setMessage({
+        setResponseMessage({
           type: "success",
           text: "Form submitted successfully!",
         });
-        console.log(message);
-        setFormData({ email: "", message: "" });
+
+        console.log(responseMessage);
         console.log("Response status:", response.status);
         console.log("Response data:", response.data);
       }
+
+      setFormData({ email: "", message: "" });
     } catch (error) {
       console.log("Form submission error: ", error);
-      setMessage({
+      setResponseMessage({
         type: "error",
         text: "An error occurred while submitting. Please try again later",
       });
@@ -73,11 +89,11 @@ const Home = () => {
         <div className="scrolling-text container-fluid d-flex flex-column justify-content-center textAlign-center ">
           <div className="scrolling-text_2 p-2 lh-1 fs-2 ">
             <p>
-              📢 On-going Project:
+              📢 On-going Project:{" "}
               <span className="fs-4 text-info">
                 Tech Bubble Community.
-                <span className="fs-5 text-warning">Stay tuned</span>
-              </span>{" "}
+                <span className="fs-5 text-warning"> Stay tuned</span>
+              </span>
             </p>
           </div>
         </div>
@@ -130,7 +146,6 @@ const Home = () => {
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <MovingTexts />
                     <button
                       type="button"
                       className="btn-close"
@@ -148,10 +163,10 @@ const Home = () => {
                         favourite email client at
                       </p>
                       <a
-                        href="mailto:khalifabinzayed.portfolio@gmail.com?subject=Let's Talk About Your Services "
+                        href="mailto:chikezie270@gmail.com?subject=Let's Talk About Your Services "
                         className="email-wider-letters text-danger align-self-center"
                       >
-                        khalifabinzayed.portfolio@gmail.com
+                        chikezie270@gmail.com
                       </a>
                     </div>
                     <form
@@ -199,15 +214,14 @@ const Home = () => {
                           {isSubmitting ? "Submitting..." : "Send Message"}
                         </button>
                       </div>
-                      {message && (
+                      {responseMessage && (
                         <p
-                          className={
-                            message.type === "success"
-                              ? "text-success"
-                              : "text-danger"
-                          }
+                          style={{
+                            color:
+                              responseMessage === "success" ? "green" : "red",
+                          }}
                         >
-                          {message.text}
+                          {responseMessage.text}
                         </p>
                       )}
                     </form>

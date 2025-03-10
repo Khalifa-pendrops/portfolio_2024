@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+// import Swal from "sweetalert2";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -33,8 +34,8 @@ function Contact() {
         type: "error",
         text: "Please fill out all fields.",
       });
+      console.log("Validation error message set:", responseMessage);
       setIsSubmitting(false);
-      console.log("Response Message: DID THIS CHECK PASS???", responseMessage);
       return;
     }
 
@@ -54,12 +55,19 @@ function Contact() {
         });
         console.log("Response Message: THIS SIDE CLEAR!", responseMessage);
       }
+
       setFormData({ email: "", message: "" });
     } catch (error) {
       console.error(
         "Form submission error: THIS SIDE NO CLEAR AT ALL 😞",
         error
       );
+      setIsSuccess({
+        type: "error",
+        text:
+          error.response?.data?.message ||
+          "An error occurred while submitting. Please try again later.",
+      });
       setResponseMessage({
         type: "error",
         text:
@@ -86,7 +94,7 @@ function Contact() {
             href="mailto:khalifabinzayed.portfolio@gmail.com?subject=Let's Talk About Your Services"
             className="email-wider-letters text-danger align-self-center"
           >
-            khalifabinzayed.portfolio@gmail.com
+            chikezie270@gmail.com
           </a>
         </div>
         <form
@@ -139,10 +147,9 @@ function Contact() {
           {responseMessage && (
             <p
               style={{
-                color:
-                  responseMessage.type === "success"
-                    ? "text-success"
-                    : "text-danger",
+                color: responseMessage.type === "success" ? "green" : "red",
+                border: "1px solid black",
+                backgroundColor: "yellow",
               }}
             >
               {responseMessage.text}
