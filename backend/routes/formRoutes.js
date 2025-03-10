@@ -1,6 +1,6 @@
 import express from "express";
 import Form from "../models/FormSchema.js";
-import { sendMail } from "../config/mail.js";
+import { sendMail } from "../config/mail.js"; // Necessary for admin email notifications
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
@@ -12,6 +12,7 @@ router.post("/contact", async (req, res) => {
   console.log("Request Body:", req.body);
   const { email, message } = req.body;
 
+  // Validate required fields
   if (!email || !message) {
     return res.status(400).json({
       success: false,
@@ -20,6 +21,7 @@ router.post("/contact", async (req, res) => {
   }
 
   try {
+    // Save the form data to the database
     const newForm = new Form({
       _id: new mongoose.Types.ObjectId(),
       email,
@@ -27,25 +29,28 @@ router.post("/contact", async (req, res) => {
     });
     await newForm.save();
 
+    // Prepare the email notification for the admin
     const subject = "New Form Submission";
-    const text = `Email: ${email}\nMessage: ${message}`;
+    const text = `A new form has been submitted:\n\nEmail: ${email}\nMessage: ${message}`;
 
     try {
-      await sendMail(process.env.EMAIL_USER, subject, text);
+      const adminEmail = "chikezie270@gmail.com"; // Your email address
+      await sendMail(adminEmail, subject, text); // Send email to admin
     } catch (emailError) {
       console.error("Error sending email:", emailError);
       return res.status(500).json({
         success: false,
-        message: "Failed to send email. Please try again later.",
+        message: "Failed to send admin notification. Please try again later.",
       });
     }
 
+    // Respond to the user
     res.status(201).json({
       success: true,
       message: "Form submitted successfully",
     });
   } catch (error) {
-    console.error("Error handling form submission: ", error);
+    console.error("Error handling form submission:", error);
     res.status(500).json({
       success: false,
       message: "Something went wrong. Please try again later.",

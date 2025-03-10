@@ -36,6 +36,14 @@ function Contact() {
         },
       });
 
+      if (!formData.email || !formData.message) {
+        setResponseMessage({
+          type: "error",
+          text: "Please fill out all fields.",
+        });
+        return;
+      }
+
       if (response.status === 200) {
         setResponseMessage({
           type: "success",
@@ -44,10 +52,12 @@ function Contact() {
         setFormData({ email: "", message: "" });
       }
     } catch (error) {
-      console.error("Form submission error:", error.response || error.message);
+      console.error("Form submission error:", error);
       setResponseMessage({
         type: "error",
-        text: "An error occurred while submitting. Please try again later.",
+        text:
+          error.response?.data?.message ||
+          "An error occurred while submitting. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
@@ -108,7 +118,6 @@ function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              onSubmit={handleSubmit}
               className="contact-btn-lg bg-white btn d-flex justify-content-center align-items-center gap-2 flex-wrap"
             >
               <FontAwesomeIcon className="icon-right" icon={faCaretRight} />
