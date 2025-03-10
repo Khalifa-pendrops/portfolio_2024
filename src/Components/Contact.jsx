@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import MovingTexts from "./MovingTexts";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -29,6 +28,16 @@ function Contact() {
     setIsSubmitting(true);
     setResponseMessage(null);
 
+    if (!formData.email || !formData.message) {
+      setResponseMessage({
+        type: "error",
+        text: "Please fill out all fields.",
+      });
+      setIsSubmitting(false);
+      console.log("Response Message: DID THIS CHECK PASS???", responseMessage);
+      return;
+    }
+
     try {
       const response = await axios.post(url, formData, {
         headers: {
@@ -36,23 +45,21 @@ function Contact() {
         },
       });
 
-      if (!formData.email || !formData.message) {
-        setResponseMessage({
-          type: "error",
-          text: "Please fill out all fields.",
-        });
-        return;
-      }
+      console.log("Response:", response);
 
       if (response.status === 200) {
         setResponseMessage({
           type: "success",
           text: "Form submitted successfully!",
         });
-        setFormData({ email: "", message: "" });
+        console.log("Response Message: THIS SIDE CLEAR!", responseMessage);
       }
+      setFormData({ email: "", message: "" });
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error(
+        "Form submission error: THIS SIDE NO CLEAR AT ALL 😞",
+        error
+      );
       setResponseMessage({
         type: "error",
         text:
@@ -66,7 +73,6 @@ function Contact() {
 
   return (
     <>
-      <MovingTexts />
       <div className="contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3 pt-5">
         <div className="contact_top d-flex flex-column justify-content-center align-items-center text-center">
           <h1 className="display-5 display-sm-6 align-self-center">
@@ -123,19 +129,21 @@ function Contact() {
               <FontAwesomeIcon className="icon-right" icon={faCaretRight} />
               {isSubmitting ? "Submitting..." : "Send Message"}
             </button>
-            <Link to="/">
-              <button className="contact-btn-lg button-text btn border rounded-2 bg-white">
-                Back To Home Page
-              </button>
+            <Link
+              to="/"
+              className="contact-btn-lg button-text btn border rounded-2 bg-white"
+            >
+              Back To Home Page
             </Link>
           </div>
           {responseMessage && (
             <p
-              className={
-                responseMessage.type === "success"
-                  ? "text-success"
-                  : "text-danger"
-              }
+              style={{
+                color:
+                  responseMessage.type === "success"
+                    ? "text-success"
+                    : "text-danger",
+              }}
             >
               {responseMessage.text}
             </p>
