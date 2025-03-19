@@ -378,7 +378,14 @@ function Tech() {
             data-aos="fade-up"
             data-aos-delay="1200"
           >
-            Javascript
+            JavaScript
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
+            data-aos-delay="1800"
+          >
+            TypeScript
           </p>
           <p
             className="border px-5 py-2 secondary-bg"
@@ -386,6 +393,13 @@ function Tech() {
             data-aos-delay="1500"
           >
             React.js
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
+            data-aos-delay="1800"
+          >
+            Node.js
           </p>
           <p
             className="border px-5 py-2 secondary-bg"
