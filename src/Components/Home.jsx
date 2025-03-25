@@ -9,12 +9,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
-import resume from "/Resume.pdf";
-// import Contact from "./Contact";
+import resume from "/resume2.pdf";
 import axios from "axios";
 import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
-// import Swal from "sweetalert2";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +22,6 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
   const url = "https://portfolio-2024-2cjd.onrender.com/api/contact";
-  // const url = "http://localhost:3001/submissions";
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -57,7 +54,6 @@ const Home = () => {
         },
       });
 
-      // setResponseMessage(response.data);
       console.log("Response:", response);
 
       if (response.status === 200) {
@@ -91,7 +87,7 @@ const Home = () => {
             <p>
               📢 On-going Project:{" "}
               <span className="fs-4 text-info">
-                Tech Bubble Community.
+                Menstrual Cycle Tracker
                 <span className="fs-5 text-warning"> Stay tuned</span>
               </span>
             </p>

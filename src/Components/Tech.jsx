@@ -11,6 +11,8 @@ import movie from "../assets/movie-app.png";
 import weather from "../assets/weather-app.png";
 import whisper from "../assets/whisper-app.png";
 import easydesign from "../assets/easy-design.png";
+import api1 from "../assets/testAPI.JPG";
+import api2 from "../assets/testAPI2.jpg";
 import "./Home.css";
 
 function Tech() {
@@ -186,6 +188,92 @@ function Tech() {
         className="container-sm d-flex justify-content-center align-items-center gap-4"
       >
         <div className=" row w-100 ">
+          <div className="col-12 mb-4">
+            <a
+              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+              href="https://authentication-m8g6.onrender.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div
+                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                data-aos="zoom-in"
+                data-aos-delay="700"
+              >
+                <h4 className="fw-bolder text-primary">
+                  Note Taking API with Auth
+                </h4>
+                <p>
+                  This is a simple Note-Taking API built with Node.js,
+                  Express.js, TypeScript, and MongoDB Atlas. This API allows you
+                  perform CRUD operations such as create, read, update, and
+                  delete notes. Users can register, log in, create, read,
+                  update, and delete notes. Notes are directly associated with
+                  specific users and categories.
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  <p className="bg-secondary px-2 rounded">NodeJS</p>
+                  <p className="bg-secondary px-2 rounded">ExpressJS</p>
+                  <p className="bg-secondary px-2 rounded">TypeScript</p>
+                  <p className="bg-secondary px-2 rounded">MongoDB</p>
+                </div>
+              </div>
+              <img
+                className="d-none d-xl-block img-fluid h-100 border rounded"
+                data-aos="zoom-out"
+                data-aos-delay="700"
+                src={api1}
+                alt="API thumb-nail image"
+                width="434px"
+              />
+            </a>
+          </div>
+
+          <div className="col-12 mb-4">
+            <a
+              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+              href="https://github.com/Khalifa-pendrops/validate-credit-card-number"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div
+                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                data-aos="zoom-in"
+                data-aos-delay="700"
+              >
+                <h4 className="fw-bolder text-primary">
+                  Credit Card Number Validator
+                </h4>
+                <p>
+                  This program validates credit card numbers for various types
+                  of credit cards. It is implemented on the command line (CL),
+                  where users are prompted to enter a credit card number or
+                  press "0" to exit the program. The program first checks
+                  whether the entered number matches the criteria for the
+                  supported card types (Verve, Visa, and Mastercard – additional
+                  card types can be implemented). This is done by verifying the
+                  number of digits, as well as the first, first two, or first
+                  four digits, as applicable. If this initial check is
+                  successful, the program proceeds to validate the number using
+                  the Luhn algorithm.
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  <p className="bg-secondary px-2 rounded">NodeJS</p>
+                  <p className="bg-secondary px-2 rounded">ExpressJS</p>
+                  <p className="bg-secondary px-2 rounded">JavaScript</p>
+                </div>
+              </div>
+              <img
+                className="d-none d-xl-block img-fluid h-100 border rounded"
+                data-aos="zoom-out"
+                data-aos-delay="700"
+                src={api2}
+                alt="API thumb-nail image"
+                width="434px"
+              />
+            </a>
+          </div>
+
           <div className="col-12 mb-4">
             <a
               className="anchor-hover d-flex flex-column flex-lg-row justify-content-center align-items-stretch rounded cursor-pointer cursor"
