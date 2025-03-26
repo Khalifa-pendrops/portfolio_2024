@@ -83,7 +83,7 @@ const Home = () => {
     <div className=" d-flex flex-column justify-content-center align-items-center gap-5 py-5">
       <div className="container-fluid d-none d-lg-block">
         <div className="scrolling-text container-fluid d-flex flex-column justify-content-center textAlign-center ">
-          <div className="scrolling-text_2 p-2 lh-1 fs-2 ">
+          <div className="scrolling-text_2 p-2 lh-1 fs-2 "> 
             <p>
               📢 On-going Project:{" "}
               <span className="fs-4 text-info">
