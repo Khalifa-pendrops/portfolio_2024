@@ -61,13 +61,16 @@ body {
     width: 100%;
     position: fixed;
     top: 2%;
-    left: 50%; 
+    left: 50%;
 }
 
 @media (max-width: 576px) {
-.scrolling-text_2, .scrolling-text_2 span{
-    font-size: 14px!important;
-}
+
+    .scrolling-text_2,
+    .scrolling-text_2 span {
+        font-size: 14px !important;
+        text-align: center !important;
+    }
 }
 
 @media (max-width: 576px) {
