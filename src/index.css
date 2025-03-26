@@ -60,8 +60,14 @@ body {
     color: #fff;
     width: 100%;
     position: fixed;
-    top: 0%;
+    top: 2%;
     left: 50%; 
+}
+
+@media (max-width: 576px) {
+.scrolling-text_2, .scrolling-text_2 span{
+    font-size: 14px!important;
+}
 }
 
 @media (max-width: 576px) {

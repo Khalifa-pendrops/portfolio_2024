@@ -83,7 +83,7 @@ const Home = () => {
     <div className=" d-flex flex-column justify-content-center align-items-center gap-5 py-5">
       <div className="container-fluid d-block">
         <div className="scrolling-text container-fluid d-flex flex-column justify-content-center textAlign-center ">
-          <div className="scrolling-text_2 p-2 lh-1 fs-5 fs-sm-2 text-center">  
+          <div className="scrolling-text_2 p-2 lh-1 fs-2">
             <p>
               📢 On-going Project:{" "}
               <span className="fs-4 text-info">
@@ -229,56 +229,45 @@ const Home = () => {
 
           <div className="col-10 col-sm-auto">
             <a
-              className="linked-btn"
+              className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100 position-relative z-999"
               href={resume}
               target="_blank"
               rel="noopener noreferrer"
+              data-aos="fade-right"
+              data-aos-delay="100"
+              // className=""
+              title="curriculum vitae"
             >
-              <button
-                data-aos="fade-right"
-                data-aos-delay="100"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100 position-relative z-999"
-                title="curriculum vitae"
-              >
-                <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
-                CV
-              </button>
+              <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
+              CV
             </a>
           </div>
 
           <div className="col-10 col-sm-auto">
             <a
-              className="linked-btn"
+              className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
               href="https://github.com/Khalifa-pendrops"
               target="_blank"
               rel="noopener noreferrer"
+              data-aos="fade-left"
+              data-aos-delay="100"
             >
-              <button
-                data-aos="fade-left"
-                data-aos-delay="100"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-              >
-                <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
-                GitHub
-              </button>
+              <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
+              GitHub
             </a>
           </div>
 
           <div className="col-10 col-sm-auto">
             <a
-              className="linked-btn"
               href="https://www.linkedin.com/in/chikezie-ilodigwe-942262113?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
+              data-aos="fade-left"
+              data-aos-delay="300"
+              className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
             >
-              <button
-                data-aos="fade-left"
-                data-aos-delay="300"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-              >
-                <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />
-                LinkedIn
-              </button>
+              <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />
+              LinkedIn
             </a>
           </div>
         </div>
