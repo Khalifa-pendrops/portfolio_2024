@@ -11,7 +11,7 @@ import movie from "../assets/movie-app.png";
 import weather from "../assets/weather-app.png";
 import whisper from "../assets/whisper-app.png";
 import easydesign from "../assets/easy-design.png";
-import api1 from "../assets/testAPI.JPG";
+import api1 from "../assets/testAPI.jpg";
 import api2 from "../assets/testAPI2.jpg";
 import "./Home.css";
 
