@@ -55,20 +55,13 @@ body {
 
 }
 
-.scrolling-text {
-    white-space: nowrap;
-    overflow: hidden !important;
-    /* position: relative; */
-
-}
-
 .scrolling-text_2 {
     animation: scroll-right 20s linear infinite !important;
     color: #fff;
     width: 100%;
     position: fixed;
-    top: 4%;
-    left: 50%;
+    top: 0%;
+    left: 50%; 
 }
 
 @media (max-width: 576px) {

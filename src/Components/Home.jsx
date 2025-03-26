@@ -81,9 +81,9 @@ const Home = () => {
   };
   return (
     <div className=" d-flex flex-column justify-content-center align-items-center gap-5 py-5">
-      <div className="container-fluid d-none d-lg-block">
+      <div className="container-fluid d-block">
         <div className="scrolling-text container-fluid d-flex flex-column justify-content-center textAlign-center ">
-          <div className="scrolling-text_2 p-2 lh-1 fs-2 "> 
+          <div className="scrolling-text_2 p-2 lh-1 fs-2 ">  
             <p>
               📢 On-going Project:{" "}
               <span className="fs-4 text-info">
@@ -237,7 +237,7 @@ const Home = () => {
               <button
                 data-aos="fade-right"
                 data-aos-delay="100"
-                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+                className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100 position-relative z-999"
                 title="curriculum vitae"
               >
                 <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
