@@ -79,6 +79,22 @@ const Home = () => {
     }
     setFormData({ email: "", message: "" });
   };
+
+  // handle logic to download or open pdf file authomatically on apple devices
+  const handleDownload = (e) => {
+    const isiOS = /ipad|iphone|ipod/.test(navigator.userAgent);
+
+    if (isiOS) {
+      e.preventDefault();
+      window.open(resume, "_blank");
+    } else {
+      window.open(
+        resume,
+        "_blank",
+        "location=yes,height=600,width=800,scrollbars=yes,status=yes"
+      );
+    }
+  };
   return (
     <div className=" d-flex flex-column justify-content-center align-items-center gap-5 py-5">
       <div className="container-fluid d-block">
@@ -235,7 +251,8 @@ const Home = () => {
               rel="noopener noreferrer"
               data-aos="fade-right"
               data-aos-delay="100"
-              // className=""
+              onClick={handleDownload}
+              download={resume}
               title="curriculum vitae"
             >
               <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
