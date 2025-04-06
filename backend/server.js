@@ -17,7 +17,7 @@ app.use("/api/", submissionRoute);
 app.get("/api/tech-news", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.THE_NEWS_API_KEY}&categories=technology&language=en`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=AI&api-key=${NYT_API_KEY}`
     );
     res.json(response.data);
   } catch (err) {
