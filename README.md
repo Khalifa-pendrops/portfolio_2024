@@ -72,7 +72,7 @@ NEWS_API_KEY=your_thenewsapi_key
 1. Backend
 
 ```
-cd server
+cd backend
 npm install
 
 ```
@@ -81,7 +81,7 @@ npm install
 2. Frontend
 
 ```
-cd ../client
+cd portfolio
 npm install
 
 ```
@@ -93,8 +93,8 @@ npm install
 1. Start Backend
 
 ```
-cd server
-npm run dev
+cd backend
+node server.js
 
 ```
 
@@ -102,7 +102,7 @@ npm run dev
 2. Start Frontend
 
 ```
-cd ../client
+cd portfolio
 npm run dev
 
 ```
