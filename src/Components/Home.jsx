@@ -303,9 +303,9 @@ const Home = () => {
                 className="icon-2 text-warning"
                 icon={faGraduationCap}
               />
-              <h4 className="fw-bolder text-primary">Academics & Research</h4>
+              <h4 className="fw-bolder text-primary">Tech News & Research</h4>
               <p>
-                Exploring societal intricacies: public heealth, ageing, peace
+                Exploring Tech and societal intricacies: AI, public heealth, ageing, peace
                 dynamics, power alliances, relations, sports - with emphasis on
                 football.
               </p>

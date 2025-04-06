@@ -3,6 +3,7 @@ import cors from "cors";
 import submissionRoute from "./routes/formRoutes.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import axios from "axios";
 
 dotenv.config();
 
@@ -16,14 +17,11 @@ app.use("/api/", submissionRoute);
 app.get("/api/tech-news", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://gnews.io/api/v4/top-headlines?topic=technology&lang=en&token=${process.env.GNEWS_API_KEY}`
+      `https://api.thenewsapi.com/v1/news/top?api_token=${process.env.THE_NEWS_API_KEY}`
     );
-    res.status(200).json({
-      success: true,
-      message: "Data fetched successfully from API 🎉",
-      response: response.data,
-    });
+    res.json(response.data);
   } catch (err) {
+    console.error(err.message);
     res.status(500).json("Server error! 🚫");
   }
 });
