@@ -276,7 +276,7 @@ function Tech() {
 
           <div className="col-12 mb-4">
             <a
-              className="anchor-hover d-flex flex-column flex-lg-row justify-content-center align-items-stretch rounded cursor-pointer cursor"
+              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
               // onClick={handleEasy}
               href="https://easydesignuk.co.uk/index"
               target="_blank"
