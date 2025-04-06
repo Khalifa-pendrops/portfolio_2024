@@ -10,7 +10,8 @@ function Academic() {
     <div className="container-fluid d-flex flex-column justify-content-center align-items-center gap-1 pt-5 text-center">
       <h1 className="header-h1-academic w-100 ">Tech News</h1>
       <p className="p-text fs-5 text-center">
-        Page reconstruction in progress, please check back later. Thank you.
+        Page reconstruction still in progress. If you don't find what interests
+        you, please check back later. Thank you 🙏
       </p>
       <Link className="linked-btn" to="/">
         <button className="bg-none-btn btn border rounded-2 text-white">

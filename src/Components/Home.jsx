@@ -305,7 +305,7 @@ const Home = () => {
               />
               <h4 className="fw-bolder text-primary">Tech News & Research</h4>
               <p>
-                Exploring Tech and societal intricacies: AI, public heealth, ageing, peace
+                Exploring Tech and societal intricacies: AI, public health, ageing, peace
                 dynamics, power alliances, relations, sports - with emphasis on
                 football.
               </p>
