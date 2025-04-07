@@ -1,28 +1,48 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 
 function News() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("https://portfolio-2024-2cjd.onrender.com/api/tech-news")
-      .then((res) => {
-        setNews(response.data.response.docs);
+    const fetchNews = async () => {
+      try {
+        const { data } = await axios.get(
+          "https://portfolio-2024-2cjd.onrender.com/api/tech-news",
+          { timeout: 30000 }
+        );
+
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid data format received");
+        }
+
+        setNews(data);
+      } catch (err) {
+        console.error("Fetch error:", err);
+        setError(err.response?.data?.error || err.message);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        "Error fetching news: ", err;
-      });
+      }
+    };
+
+    fetchNews();
   }, []);
 
   if (loading) {
     return (
       <div className="text-center my-5">Loading Tech News/Articles...</div>
     );
+  }
+
+  if (error) {
+    return <div className="text-center my-5 text-danger">{error}</div>;
+  }
+
+  if (news.length === 0) {
+    return <div className="text-center my-5">No news articles found.</div>;
   }
 
   return (
@@ -32,24 +52,16 @@ function News() {
         {news.map((article, index) => (
           <div className="col-md-6 col-lg-4 mb-4" key={index}>
             <div className="card h-100 shadow-sm">
-              {/* {article.image_url && (
-                <img
-                  src={article.image_url}
-                  className="card-img-top"
-                  alt={article.title}
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-              )} */}
+              <img className="card-img" src={article.image} />
               <div className="card-body d-flex flex-column">
-                <h3 className="card-title">{article.headline.main}</h3>
+                <h3 className="card-title">{article.title}</h3>
+                <p className="card-text">{article.description}</p>
                 <p className="card-text">
-                  <strong>Published:</strong>
-                  {new Date(article.pub_date).toDateString()}
+                  <strong>Published:</strong>{" "}
+                  {new Date(article.publishedAt).toDateString()}
                 </p>
-                {/* <p className="card-text">{article.published_At}</p> */}
-                {/* <span className="card-text">{article.source}</span> */}
                 <a
-                  href={article.web_url}
+                  href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-btn-lg btn btn-outline-primary mt-auto"
