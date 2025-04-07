@@ -11,7 +11,7 @@ function News() {
     axios
       .get("https://portfolio-2024-2cjd.onrender.com/api/tech-news")
       .then((res) => {
-        setNews(res.data.response.docs);
+        setNews(response.data.response.docs);
         setLoading(false);
       })
       .catch((err) => {
