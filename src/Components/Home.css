@@ -58,8 +58,9 @@ a {
 
 @media (max-width: 576px) {
     .header-h1-academic {
-            font-size: 2rem !important;
-        }
+        font-size: 2rem !important;
+    }
+
     .p-text {
         width: 100% !important;
         font-size: .9rem !important;
@@ -226,4 +227,14 @@ footer span:hover {
 .anchor-hover:hover {
     background-color: #4e3912 !important;
     color: #07112c !important;
+}
+
+.custom-btn {
+    background-color: #030918 !important;
+    color: #fff !important;
+}
+
+.custom-btn:hover {
+    background-color: #fff !important;
+    color: #030918 !important;
 }

@@ -12,10 +12,10 @@ function News() {
     setError(null);
     try {
       const response = await axios.get(
-        "https://portfolio-2024-2cjd.onrender.com/api/top-headlines",
+        "https://portfolio-2024-1.onrender.com/api/top-headlines",
         {
           params: {
-            category: "general",
+            category: "technology",
             max: 10,
             lang: "en",
             country: "us",
@@ -56,42 +56,33 @@ function News() {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Latest Tech News</h2>
+      <h2 className="text-center mb-5 font-monospace fs-1 text-decoration-underline fw-bold">
+        Latest Tech News
+      </h2>
       <div className="row">
         {news.map((article, index) => (
           <div className="col-md-6 col-lg-4 mb-4" key={index}>
-            <div className="news-item card h-100 shadow-sm">
+            <div className="card h-100 shadow-sm d-flex flex-column gap-4">
               {article.image && (
                 <img
                   src={article.image}
                   alt={article.title}
                   className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
+                  style={{ height: "300px", objectFit: "cover" }}
                 />
               )}
               <div className="card-body d-flex flex-column">
                 <h3 className="card-title">{article.title}</h3>
                 <p className="card-text">{article.description}</p>
-                <div className="mt-auto">
+                <div className="mt-auto d-flex flex-column justify-content-center align-items-center gap-3">
                   <a
                     href={article.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-primary custom-btn"
                   >
                     Read more
                   </a>
-                  {article.source?.name && (
-                    <small className="d-block mt-2 text-muted">
-                      Source: {article.source.name}
-                    </small>
-                  )}
-                  {article.publishedAt && (
-                    <small className="d-block text-muted">
-                      Published:{" "}
-                      {new Date(article.publishedAt).toLocaleDateString()}
-                    </small>
-                  )}
                 </div>
               </div>
             </div>

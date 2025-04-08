@@ -4,7 +4,7 @@ import submissionRoute from "./routes/formRoutes.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import axios from "axios";
-// import rateLimit from "express-rate-limit";
+
 
 dotenv.config();
 
@@ -22,16 +22,9 @@ if (!process.env.MONGODB_URI) {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, 
-//   max: 100, 
-//   message: "Too many requests from this IP, please try again later",
-// });
-
 app.use(cors());
 app.use(express.json());
-// app.use(limiter);
+
 
 
 app.use("/api/", submissionRoute);
