@@ -4,48 +4,77 @@ import submissionRoute from "./routes/formRoutes.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import axios from "axios";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json());
-
-app.use("/api/", submissionRoute);
-
-app.use("/api/tech-news", async (req, res) => {
-  // const { q = "tech", max = 10 } = req.query;
-  res.json({ status: "healthy" });
-  try {
-    const response = await axios.get(
-      `https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=${process.env.API_KEY}`
-    );
-    res.json(response.data);
-  } catch (err) {
-    console.error("News API error:", err);
-    if (err.response) {
-      res.status(err.response.status).json({ error: "Error fetching news" });
-    } else {
-      res.status(500).json({ error: "Server error! ⛔" });
-    }
-  }
-});
-
-if (!process.env.API_KEY) {
-  console.warn("API_KEY is not defined - news feature might not work");
+if (!process.env.GNEWS_API_KEY) {
+  console.error("GNEWS_API_KEY is not defined in .env");
+  process.exit(1);
 }
-
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB ✅"))
-  .catch((err) => console.error("Error connecting to MongoDB ⛔: ", err));
 
 if (!process.env.MONGODB_URI) {
   console.error("MONGODB_URI is not defined in .env");
   process.exit(1);
 }
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100, 
+  message: "Too many requests from this IP, please try again later",
+});
+
+app.use(cors());
+app.use(express.json());
+app.use(limiter);
+
+
+app.use("/api/", submissionRoute);
+
+
+app.get("/api/top-headlines", async (req, res) => {
+  try {
+    const { category, lang, country, max } = req.query;
+
+    const response = await axios.get("https://gnews.io/api/v4/top-headlines", {
+      params: {
+        category: category || "general",
+        lang: lang || "en",
+        country: country || "us",
+        max: max || 10,
+        apikey: process.env.GNEWS_API_KEY,
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    const status = error.response?.status || 500;
+    const message = error.response?.data?.message || "Failed to fetch news";
+    res.status(status).json({
+      error: message,
+      details: error.message,
+    });
+  }
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
+
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("Connected to MongoDB ✅"))
+  .catch((err) => {
+    console.error("Error connecting to MongoDB ⛔: ", err);
+    process.exit(1);
+  });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

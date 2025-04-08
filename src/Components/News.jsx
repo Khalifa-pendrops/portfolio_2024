@@ -7,28 +7,37 @@ function News() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://portfolio-2024-2cjd.onrender.com/api/tech-news",
-          { timeout: 30000 }
-        );
-
-        if (!Array.isArray(data)) {
-          throw new Error("Invalid data format received");
+  const fetchGoogleNews = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        "https://portfolio-2024-2cjd.onrender.com/api/top-headlines",
+        {
+          params: {
+            category: "general",
+            max: 10,
+            lang: "en",
+            country: "us",
+          },
         }
+      );
+      setNews(response.data.articles || []);
+    } catch (err) {
+      setError(
+        err.response?.data?.error ||
+          err.response?.data?.message ||
+          err.message ||
+          "Failed to load news/articles"
+      );
+      console.error("News fetch error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        setNews(data);
-      } catch (err) {
-        console.error("Fetch error:", err);
-        setError(err.response?.data?.error || err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
+  useEffect(() => {
+    fetchGoogleNews();
   }, []);
 
   if (loading) {
@@ -38,36 +47,52 @@ function News() {
   }
 
   if (error) {
-    return <div className="text-center my-5 text-danger">{error}</div>;
+    return <div className="text-center my-5 text-danger">Error: {error}</div>;
   }
 
-  if (news.length === 0) {
+  if (!news || news.length === 0) {
     return <div className="text-center my-5">No news articles found.</div>;
   }
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Latest Tech News From New York Times</h2>
+      <h2 className="text-center mb-4">Latest Tech News</h2>
       <div className="row">
         {news.map((article, index) => (
           <div className="col-md-6 col-lg-4 mb-4" key={index}>
-            <div className="card h-100 shadow-sm">
-              <img className="card-img" src={article.image} />
+            <div className="news-item card h-100 shadow-sm">
+              {article.image && (
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="card-img-top"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+              )}
               <div className="card-body d-flex flex-column">
                 <h3 className="card-title">{article.title}</h3>
                 <p className="card-text">{article.description}</p>
-                <p className="card-text">
-                  <strong>Published:</strong>{" "}
-                  {new Date(article.publishedAt).toDateString()}
-                </p>
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-btn-lg btn btn-outline-primary mt-auto"
-                >
-                  Read full article
-                </a>
+                <div className="mt-auto">
+                  <a
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-primary"
+                  >
+                    Read more
+                  </a>
+                  {article.source?.name && (
+                    <small className="d-block mt-2 text-muted">
+                      Source: {article.source.name}
+                    </small>
+                  )}
+                  {article.publishedAt && (
+                    <small className="d-block text-muted">
+                      Published:{" "}
+                      {new Date(article.publishedAt).toLocaleDateString()}
+                    </small>
+                  )}
+                </div>
               </div>
             </div>
           </div>
