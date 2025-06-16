@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +13,7 @@ import resume from "/resume2.pdf";
 import axios from "axios";
 import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+// import Typewriter2 from "./TypeWriter2";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,31 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
   const url = "https://portfolio-2024-2cjd.onrender.com/api/contact";
+
+  // for text animation on UI
+
+  const texts = [
+    {
+      text: "CHIKEZIE",
+      className: "text-danger, fw-bold, display-2",
+    },
+    {
+      text: "ILODIGWE",
+      className: "text-warning, fw-bold, display-2",
+    },
+  ];
+
+  const typingSpeed = 200;
+  const deletingSpeed = 200;
+  const pauseAfterTyping = 2000;
+
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopIndex, setLoopIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+
+  const current = texts[loopIndex];
+  const fullText = current.text;
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -95,28 +121,59 @@ const Home = () => {
       );
     }
   };
+
+  useEffect(() => {
+    let timeout;
+
+    if (!isDeleting && charIndex <= fullText.length) {
+      setDisplayText(fullText.substring(0, charIndex));
+      timeout = setTimeout(() => {
+        setCharIndex((prev) => prev + 1);
+      }, typingSpeed);
+    } else if (isDeleting && charIndex >= 0) {
+      setDisplayText(fullText.substring(0, charIndex));
+      timeout = setTimeout(() => {
+        setCharIndex((prev) => prev - 1);
+      }, deletingSpeed);
+    }
+
+    if (!isDeleting && charIndex === fullText.length + 1) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseAfterTyping);
+    }
+
+    if (isDeleting && charIndex === 0) {
+      setIsDeleting(false);
+      setLoopIndex((prev) => (prev + 1) % texts.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, loopIndex]);
+
   return (
-    <div className=" d-flex flex-column justify-content-center align-items-center gap-5 py-5">
-      <div className="container-fluid d-block">
-        <div className="scrolling-text container-fluid d-flex flex-column justify-content-center textAlign-center ">
-          <div className="scrolling-text_2 p-2 lh-1 fs-2">
-            <p>
-              📢 On-going Project:{" "}
-              <span className="fs-4 text-info">
-                Menstrual Cycle Tracker
-                <span className="fs-5 text-warning"> Stay tuned</span>
-              </span>
-            </p>
+    <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5" style={{paddingBottom: "5rem"}}>
+
+      {/* UNCOMMENT WHEN A NEW PROJECT STARTS */}
+      {/* <div className="container-fluid d-block typewriter-wraper">
+        <p className="container-fluid typewriter-text">On-going Project: SafeWatch NG🎉
+        </p>
+      </div> */}
+
+      <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
+        <div className="typewriter2-wrapper container-fluid">
+          <div className="container-fluid d-block typewriter-wrapper ">
+            <span
+              className={`typewriter-text2 ${current.className}`}
+              data-aos="zoom-in"
+              // data-aos-delay="300"
+              data-aos-once="false"
+              style={{ opacity: 1 }}
+            >
+              {displayText}
+            </span>
           </div>
         </div>
-      </div>
-      <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
-        <h1
-          className="home_head_h1 display-2 display-sm-5 fw-semibold"
-          data-aos="zoom-in"
-        >
-          Chikezie, Ilodigwe
-        </h1>
         <p className=" w-100" data-aos="fade-down">
           A Software Developer and AI enthusiast with experience in researching
           and building scalable products.
@@ -305,9 +362,9 @@ const Home = () => {
               />
               <h4 className="fw-bolder text-primary">Tech News & Research</h4>
               <p>
-                Exploring Tech and societal intricacies: AI, public health, ageing, peace
-                dynamics, power alliances, relations, sports - with emphasis on
-                football.
+                Exploring Tech and societal intricacies: AI, public health,
+                ageing, peace dynamics, power alliances, relations, sports -
+                with emphasis on football.
               </p>
             </div>
           </Link>

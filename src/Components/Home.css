@@ -7,9 +7,23 @@
     box-sizing: border-box;
 }
 
+/* html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+} */
+
 body {
     height: 100vh !important;
     color: #d1d1e0 !important;
+
 }
 
 button,
@@ -237,4 +251,84 @@ footer span:hover {
 .custom-btn:hover {
     background-color: #fff !important;
     color: #030918 !important;
+}
+
+/* MOVING TEXT STYLING */
+.typewriter-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.typewriter-text {
+    border-right: 1px solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: full-loop 15s steps(30, end) infinite, blink 1s step-end infinite;
+}
+
+
+
+@keyframes full-loop {
+    0% {
+        width: 0;
+    }
+
+    25% {
+        width: 30ch;
+    }
+
+    50% {
+        width: 30ch;
+    }
+
+    75% {
+        width: 0;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.typewriter-wrapper2 {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 1.5rem;
+}
+
+.typewriter-text2 {
+    border-right: 0.5px solid orange;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.typewriter2-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    /* optional for vertical alignment */
+    /* width: 100%; */
+    padding: 1rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
 }

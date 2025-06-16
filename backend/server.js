@@ -37,25 +37,17 @@ app.get("/api/top-headlines", async (req, res) => {
     const response = await axios.get("https://gnews.io/api/v4/top-headlines", {
       params: {
         apikey: process.env.GNEWS_API_KEY,
-        category: category || "general",
-        lang: lang || "en",
-        country: country || "us",
-        max: max || 10,
+        lang: req.query.lang || "en",
+        country: req.query.country || "us",
+        max: req.query.max || 10,
       },
     });
 
     res.json(response.data);
   } catch (error) {
-    console.error("Error fetching news:", error);
-    const status = error?.response?.status || 500;
-    const message =
-      error?.response?.data?.message ||
-      error.message ||
-      "Failed to fetch gNews";
-
-    res.status(status).json({
-      error: message,
-      details: error.message,
+    console.error("News fetch error:", error.response?.data || error.message);
+    res.status(error.response?.status || 500).json({
+      error: error.response?.data || "Unknown error fetching news",
     });
   }
 });
@@ -68,25 +60,18 @@ app.get("/api/news", async (req, res) => {
       params: {
         apikey: process.env.NEWS_DATA_KEY,
         q: "artificial intelligence",
-        language: language || "en",
-        country: country || "us",
-        category: category || "technology",
-        page_size: 10,
+        language: req.query.language || "en",
+        country: req.query.country || "us",
+        category: req.query.category || "technology",
+        page_size: req.query.page_size || 10,
       },
     });
 
     res.json(response.data);
   } catch (error) {
-    console.error("Error fetching news:", error);
-    const status = error?.response?.status || 500;
-    const message =
-      error?.response?.data?.message ||
-      error.message ||
-      "Failed to fetch AI news";
-
-    res.status(status).json({
-      error: message,
-      details: error.message,
+    console.error("News fetch error:", error.response?.data || error.message);
+    res.status(error.response?.status || 500).json({
+      error: error.response?.data || "Unknown error fetching news",
     });
   }
 });

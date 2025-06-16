@@ -18,15 +18,15 @@ function News() {
     setError(null);
     try {
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/top-headlines",
-        {
-          params: {
-            category: "technology",
-            max: 10,
-            lang: "en",
-            country: "us",
-          },
-        }
+        "https://portfolio-2024-1.onrender.com/api/top-headlines?lang=en&country=us"
+        // {
+        //   params: {
+        //     category: "technology",
+        //     max: 10,
+        //     lang: "en",
+        //     country: "us",
+        //   },
+        // }
       );
       setNews(response.data.articles || []);
     } catch (err) {
@@ -58,15 +58,15 @@ function News() {
 
     try {
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/news",
-        {
-          params: {
-            category: "technology",
-            page_size: 10,
-            lang: "en",
-            country: "us",
-          },
-        }
+        "https://portfolio-2024-1.onrender.com/api/news?language=en&country=us&category=technology&page_size=10"
+        // {
+        //   params: {
+        //     category: "technology",
+        //     page_size: 10,
+        //     lang: "en",
+        //     country: "us",
+        //   },
+        // }
       );
 
       const results = response.data.results || [];
