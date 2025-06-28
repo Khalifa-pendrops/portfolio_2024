@@ -39,7 +39,8 @@ app.get("/api/top-headlines", async (req, res) => {
         apikey: process.env.GNEWS_API_KEY,
         lang: req.query.lang || "en",
         country: req.query.country || "us",
-        max: req.query.max || 10,
+        // max: req.query.max || 10,
+        max: 9,
       },
     });
 
@@ -63,7 +64,7 @@ app.get("/api/news", async (req, res) => {
         language: req.query.language || "en",
         country: req.query.country || "us",
         category: req.query.category || "technology",
-        page_size: req.query.page_size || 10,
+        // page_size: req.query.page_size || 10,
       },
     });
 

@@ -58,7 +58,7 @@ function News() {
 
     try {
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/news?language=en&country=us&category=technology&page_size=10"
+        "https://portfolio-2024-1.onrender.com/api/news?language=en&country=us&category=technology"
         // {
         //   params: {
         //     category: "technology",
