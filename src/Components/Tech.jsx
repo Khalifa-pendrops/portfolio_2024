@@ -13,6 +13,8 @@ import whisper from "../assets/whisper-app.png";
 import easydesign from "../assets/easy-design.png";
 import api1 from "../assets/testAPI.jpg";
 import api2 from "../assets/testAPI2.jpg";
+import api3 from "../assets/bank-creation.png";
+import api4 from "../assets/Griggs.png";
 import "./Home.css";
 
 function Tech() {
@@ -50,10 +52,10 @@ function Tech() {
   }, [activeSession]);
 
   return (
-    <div className="w-100">
+    <div className="w-100 ">
       <section
         id="home"
-        className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5"
+        className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5 "
       >
         <nav className="container-fluid transparent-bg d-flex justify-content-center align-items-center position-fixed top-0 left-0 w-100 z-3">
           <ul className="d-flex justify-content-around align-items-center py-4 flex-wrap gap-2">
@@ -187,242 +189,350 @@ function Tech() {
         id="project"
         className="container-sm d-flex justify-content-center align-items-center gap-4"
       >
-        <div className=" row w-100 ">
-          <div className="col-12 mb-4">
-            <a
-              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              href="https://authentication-m8g6.onrender.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
-                data-aos="zoom-in"
-                data-aos-delay="700"
+        <div className=" row w-100  ">
+          <div className="flex flex-col justify-content-center align-items-center ">
+            <h2 className="text-capitalize font-monospace container">
+              <span
+                className="text-decoration-underline me-2"
+                style={{
+                  textUnderlineOffset: "8px",
+                  textDecorationThickness: "1px",
+                  textDecorationColor: "#F79D29",
+                }}
               >
-                <h4 className="fw-bolder text-primary">
-                  Note Taking API with Auth
-                </h4>
-                <p>
-                  This is a simple Note-Taking API built with Node.js,
-                  Express.js, TypeScript, and MongoDB Atlas. This API allows you
-                  perform CRUD operations such as create, read, update, and
-                  delete notes. Users can register, log in, create, read,
-                  update, and delete notes. Notes are directly associated with
-                  specific users and categories.
-                </p>
-                <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">NodeJS</p>
-                  <p className="bg-secondary px-2 rounded">ExpressJS</p>
-                  <p className="bg-secondary px-2 rounded">TypeScript</p>
-                  <p className="bg-secondary px-2 rounded">MongoDB</p>
+                Backend
+              </span>
+              Projects
+            </h2>
+            <div className="col-12 mb-4 ">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                href="https://authentication-m8g6.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="700"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Bank Account API with Virtual Card (AES-256 Encrypted)
+                  </h4>
+                  <p>
+                    This is a secure Node.js + TypeScript API for creating bank
+                    accounts with automatically generated virtual cards,
+                    featuring encryption for sensitive data.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">NodeJS</p>
+                    <p className="bg-secondary px-2 rounded">ExpressJS</p>
+                    <p className="bg-secondary px-2 rounded">TypeScript</p>
+                    <p className="bg-secondary px-2 rounded">MongoDB</p>
+                  </div>
                 </div>
-              </div>
-              <img
-                className="d-none d-xl-block img-fluid h-100 border rounded"
-                data-aos="zoom-out"
-                data-aos-delay="700"
-                src={api1}
-                alt="API thumb-nail image"
-                width="434px"
-              />
-            </a>
-          </div>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="700"
+                  src={api3}
+                  alt="API thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
 
-          <div className="col-12 mb-4">
-            <a
-              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              href="https://github.com/Khalifa-pendrops/validate-credit-card-number"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
-                data-aos="zoom-in"
-                data-aos-delay="700"
+            <div className="col-12 mb-4 ">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                href="https://authentication-m8g6.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <h4 className="fw-bolder text-primary">
-                  Credit Card Number Validator
-                </h4>
-                <p>
-                  This program validates credit card numbers for various types
-                  of credit cards. It is implemented on the command line (CL),
-                  where users are prompted to enter a credit card number or
-                  press "0" to exit the program. The program first checks
-                  whether the entered number matches the criteria for the
-                  supported card types (Verve, Visa, and Mastercard – additional
-                  card types can be implemented). This is done by verifying the
-                  number of digits, as well as the first, first two, or first
-                  four digits, as applicable. If this initial check is
-                  successful, the program proceeds to validate the number using
-                  the Luhn algorithm.
-                </p>
-                <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">NodeJS</p>
-                  <p className="bg-secondary px-2 rounded">ExpressJS</p>
-                  <p className="bg-secondary px-2 rounded">JavaScript</p>
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="700"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Note Taking API with Auth
+                  </h4>
+                  <p>
+                    This is a simple Note-Taking API built with Node.js,
+                    Express.js, TypeScript, and MongoDB Atlas. This API allows
+                    you perform CRUD operations such as create, read, update,
+                    and delete notes. Users can register, log in, create, read,
+                    update, and delete notes. Notes are directly associated with
+                    specific users and categories.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">NodeJS</p>
+                    <p className="bg-secondary px-2 rounded">ExpressJS</p>
+                    <p className="bg-secondary px-2 rounded">TypeScript</p>
+                    <p className="bg-secondary px-2 rounded">MongoDB</p>
+                  </div>
                 </div>
-              </div>
-              <img
-                className="d-none d-xl-block img-fluid h-100 border rounded"
-                data-aos="zoom-out"
-                data-aos-delay="700"
-                src={api2}
-                alt="API thumb-nail image"
-                width="434px"
-              />
-            </a>
-          </div>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="700"
+                  src={api1}
+                  alt="API thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
 
-          <div className="col-12 mb-4">
-            <a
-              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              // onClick={handleEasy}
-              href="https://easydesignuk.co.uk/index"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
-                data-aos="zoom-in"
-                data-aos-delay="100"
+            <div className="col-12 mb-4">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                href="https://github.com/Khalifa-pendrops/validate-credit-card-number"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <h4 className="fw-bolder text-primary">Easy Design UK</h4>
-                <p>
-                  Easy Design UK is a platform that offers innovative web
-                  development and digital solutions. This was built with
-                  React.JS, Bootstrap, Axios, AOS, CSS, React Router and
-                  Express.JS. I built the Frontend of this simple web
-                  application from scratch.
-                </p>
-                <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">React</p>
-                  <p className="bg-secondary px-2 rounded">CSS</p>
-                  <p className="bg-secondary px-2 rounded">Bootstrap</p>
-                  <p className="bg-secondary px-2 rounded">Express.js</p>
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="700"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Credit Card Number Validator
+                  </h4>
+                  <p>
+                    This program validates credit card numbers for various types
+                    of credit cards. It is implemented on the command line (CL),
+                    where users are prompted to enter a credit card number or
+                    press "0" to exit the program. The program first checks
+                    whether the entered number matches the criteria for the
+                    supported card types (Verve, Visa, and Mastercard –
+                    additional card types can be implemented). This is done by
+                    verifying the number of digits, as well as the first, first
+                    two, or first four digits, as applicable. If this initial
+                    check is successful, the program proceeds to validate the
+                    number using the Luhn algorithm.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">NodeJS</p>
+                    <p className="bg-secondary px-2 rounded">ExpressJS</p>
+                    <p className="bg-secondary px-2 rounded">JavaScript</p>
+                  </div>
                 </div>
-              </div>
-              <img
-                className="d-none d-xl-block img-fluid h-100 border rounded"
-                data-aos="zoom-out"
-                data-aos-delay="100"
-                src={easydesign}
-                alt="whisper thumb-nail image"
-                width="434px"
-              />
-            </a>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="700"
+                  src={api2}
+                  alt="API thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
           </div>
-
-          <div className=" col-12 mb-4">
-            <a
-              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              href="https://whisper-app-three.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
-                data-aos="zoom-in"
-                data-aos-delay="300"
+          {/* */}
+          <div className="flex flex-col justify-content-center align-items-center gap-4">
+            <h2 className="text-capitalize font-monospace container">
+              <span
+                className="text-decoration-underline me-2"
+                style={{
+                  textUnderlineOffset: "8px",
+                  textDecorationThickness: "1px",
+                  textDecorationColor: "#F79D29",
+                }}
               >
-                <h4 className="fw-bolder text-primary">Whisper</h4>
-                <p>
-                  Whisper App is a community where you practically whisper -
-                  anonymously. So no one knows who is behind whatever texts sent
-                  across the platform and yes, it was a cool project by a group
-                  of us. I contributed to the Frontend, and I am glad to have
-                  been part of this.
-                </p>
-                <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">HTML</p>
-                  <p className="bg-secondary px-2 rounded">CSS</p>
-                  <p className="bg-secondary px-2 rounded">JavaScript</p>
-                  <p className="bg-secondary px-2 rounded">Node.js</p>
-                  <p className="bg-secondary px-2 rounded">Express.js</p>
-                  <p className="bg-secondary px-2 rounded">MongoDB</p>
-                </div>
-              </div>
-              <img
-                className="d-none d-xl-block img-fluid h-100 border rounded"
-                data-aos="zoom-out"
-                data-aos-delay="300"
-                src={whisper}
-                alt="whisper thumb-nail image"
-                width="434px"
-              />
-            </a>
-          </div>
-
-          <div className=" col-12 mb-4">
-            <a
-              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              href="https://movie-search-app-by-khalifa.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
-                data-aos="zoom-in"
-                data-aos-delay="500"
+                Frontend
+              </span>{" "}
+              Projects
+            </h2>
+            <div className="col-12 mb-4">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                // onClick={handleEasy}
+                href="https://easydesignuk.co.uk/index"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <h4 className="fw-bolder text-primary">Movie Search App</h4>
-                <p>
-                  A movie search web application, built with React.js and CSS.
-                  It basically fetches movies via an API (TMDB). There is no
-                  in-built video player. Searches are directed to YouTube for
-                  streaming. I built this from scratch to finish.
-                </p>
-                <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">React.js</p>
-                  <p className="bg-secondary px-2 rounded">CSS</p>
-                  <p className="bg-secondary px-2 rounded">API</p>
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Griggs Specialist Hopsital Website
+                  </h4>
+                  <p>
+                    The Griggs Hopsital Website is a project I collaborated on.
+                    It was built with React on the frontend and Tailiwind for
+                    styling, php for the backend and mySQL for database.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React</p>
+                    <p className="bg-secondary px-2 rounded">Tailwind</p>
+                    <p className="bg-secondary px-2 rounded">PHP</p>
+                    <p className="bg-secondary px-2 rounded">MySQL</p>
+                  </div>
                 </div>
-              </div>
-              <img
-                className="d-none d-xl-block img-fluid h-100 border rounded"
-                data-aos="zoom-out"
-                data-aos-delay="500"
-                src={movie}
-                alt="whisper thumb-nail image"
-                width="434px"
-              />
-            </a>
-          </div>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={api4}
+                  alt="Griggs hospital thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
 
-          <div className="col-12 mb-4">
-            <a
-              className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
-              href="https://simple-weather-app-psi-one.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div
-                className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
-                data-aos="zoom-in"
-                data-aos-delay="700"
+            <div className="col-12 mb-4">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                // onClick={handleEasy}
+                href="https://easydesignuk.co.uk/index"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <h4 className="fw-bolder text-primary">Weather App</h4>
-                <p>
-                  This is a Weather App. It was a cool project by a small group
-                  of us. My major contribution was in the Frontend. The App uses
-                  weather API to fetch and display weather conditions.
-                </p>
-                <div className="d-flex flex-wrap gap-2">
-                  <p className="bg-secondary px-2 rounded">HTML</p>
-                  <p className="bg-secondary px-2 rounded">CSS</p>
-                  <p className="bg-secondary px-2 rounded">Tailwind</p>
-                  <p className="bg-secondary px-2 rounded">JavaScript</p>
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">Easy Design UK</h4>
+                  <p>
+                    Easy Design UK is a platform that offers innovative web
+                    development and digital solutions. This was built with
+                    React.JS, Bootstrap, Axios, AOS, CSS, React Router and
+                    Express.JS. I built the Frontend of this simple web
+                    application from scratch.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React</p>
+                    <p className="bg-secondary px-2 rounded">CSS</p>
+                    <p className="bg-secondary px-2 rounded">Bootstrap</p>
+                    <p className="bg-secondary px-2 rounded">Express.js</p>
+                  </div>
                 </div>
-              </div>
-              <img
-                className="d-none d-xl-block img-fluid h-100 border rounded"
-                data-aos="zoom-out"
-                data-aos-delay="700"
-                src={weather}
-                alt="weather thumb-nail image"
-                width="434px"
-              />
-            </a>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={easydesign}
+                  alt="whisper thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
+
+            <div className=" col-12 mb-4">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                href="https://whisper-app-three.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="300"
+                >
+                  <h4 className="fw-bolder text-primary">Whisper</h4>
+                  <p>
+                    Whisper App is a community where you practically whisper -
+                    anonymously. So no one knows who is behind whatever texts
+                    sent across the platform and yes, it was a cool project by a
+                    group of us. I contributed to the Frontend, and I am glad to
+                    have been part of this.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">HTML</p>
+                    <p className="bg-secondary px-2 rounded">CSS</p>
+                    <p className="bg-secondary px-2 rounded">JavaScript</p>
+                    <p className="bg-secondary px-2 rounded">Node.js</p>
+                    <p className="bg-secondary px-2 rounded">Express.js</p>
+                    <p className="bg-secondary px-2 rounded">MongoDB</p>
+                  </div>
+                </div>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="300"
+                  src={whisper}
+                  alt="whisper thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
+
+            <div className=" col-12 mb-4">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                href="https://movie-search-app-by-khalifa.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="500"
+                >
+                  <h4 className="fw-bolder text-primary">Movie Search App</h4>
+                  <p>
+                    A movie search web application, built with React.js and CSS.
+                    It basically fetches movies via an API (TMDB). There is no
+                    in-built video player. Searches are directed to YouTube for
+                    streaming. I built this from scratch to finish.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React.js</p>
+                    <p className="bg-secondary px-2 rounded">CSS</p>
+                    <p className="bg-secondary px-2 rounded">API</p>
+                  </div>
+                </div>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="500"
+                  src={movie}
+                  alt="whisper thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
+
+            <div className="col-12 mb-4">
+              <a
+                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                href="https://simple-weather-app-psi-one.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="700"
+                >
+                  <h4 className="fw-bolder text-primary">Weather App</h4>
+                  <p>
+                    This is a Weather App. It was a cool project by a small
+                    group of us. My major contribution was in the Frontend. The
+                    App uses weather API to fetch and display weather
+                    conditions.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">HTML</p>
+                    <p className="bg-secondary px-2 rounded">CSS</p>
+                    <p className="bg-secondary px-2 rounded">Tailwind</p>
+                    <p className="bg-secondary px-2 rounded">JavaScript</p>
+                  </div>
+                </div>
+                <img
+                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="700"
+                  src={weather}
+                  alt="weather thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </section>

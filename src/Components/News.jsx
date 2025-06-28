@@ -105,7 +105,14 @@ function News() {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-5 font-monospace fs-1 text-decoration-underline fw-bold">
+      <h2
+        className="text-center mb-5 font-monospace fs-1 text-decoration-underline fw-bold"
+        style={{
+          textUnderlineOffset: "10px",
+          textDecorationThickness: "1px",
+          textDecorationColor: "#F79D29",
+        }}
+      >
         Latest Tech News
       </h2>
       <div className="row">
@@ -139,6 +146,7 @@ function News() {
         ))}
       </div>
       <h2 className="mb-4 text-primary ">🧠 AI News</h2>
+      <span>Section under maintenance...</span>
       {loading ? (
         <div className="text-center">
           <div className="spinner-border text-primary" role="status" />
