@@ -6,7 +6,7 @@ import {
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import resume from "/Resume.pdf";
+import resume from "/Resume3.pdf";
 import movie from "../assets/movie-app.png";
 import weather from "../assets/weather-app.png";
 import whisper from "../assets/whisper-app.png";
@@ -15,6 +15,7 @@ import api1 from "../assets/testAPI.jpg";
 import api2 from "../assets/testAPI2.jpg";
 import api3 from "../assets/bank-creation.png";
 import api4 from "../assets/Griggs.png";
+import api5 from "../assets/cmoPort.png";
 import "./Home.css";
 
 function Tech() {
@@ -136,7 +137,7 @@ function Tech() {
                   data-aos="fade-right"
                   data-aos-delay="100"
                   className="get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                  title="curriculum vitae"
+                  title="Download resume from home page "
                 >
                   <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
                   CV
@@ -187,7 +188,7 @@ function Tech() {
 
       <section
         id="project"
-        className="container-sm d-flex justify-content-center align-items-center gap-4"
+        className="container-sm d-flex justify-content-center align-items-center gap-4 h-[100%] "
       >
         <div className=" row w-100  ">
           <div className="flex flex-col justify-content-center align-items-center ">
@@ -204,9 +205,9 @@ function Tech() {
               </span>
               Projects
             </h2>
-            <div className="col-12 mb-4 ">
+            <div className="col-12 mb-4 mt-4">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row justify-content-center align-items-stretch rounded"
                 href="https://authentication-m8g6.onrender.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -232,7 +233,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="700"
                   src={api3}
@@ -244,7 +245,7 @@ function Tech() {
 
             <div className="col-12 mb-4 ">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded "
                 href="https://authentication-m8g6.onrender.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -273,7 +274,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="700"
                   src={api1}
@@ -283,9 +284,9 @@ function Tech() {
               </a>
             </div>
 
-            <div className="col-12 mb-4">
+            <div className="col-12 mb-4 ">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded "
                 href="https://github.com/Khalifa-pendrops/validate-credit-card-number"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -318,7 +319,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="700"
                   src={api2}
@@ -343,11 +344,51 @@ function Tech() {
               </span>{" "}
               Projects
             </h2>
+            <div className="col-12 mb-4 mt-4 ">
+              <a
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
+                // onClick={handleEasy}
+                href="https://cmonwezeandassociates.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Cyprain Nweze & Associates
+                  </h4>
+                  <p>
+                    The Cyprian Nweze & Associates Website is a project I
+                    collaborated on. It was built with React on the frontend and
+                    Tailiwind for styling, php for the backend and mySQL for
+                    database. I built the UI of this website with React +
+                    Tailwind.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React</p>
+                    <p className="bg-secondary px-2 rounded">Tailwind</p>
+                    <p className="bg-secondary px-2 rounded">PHP</p>
+                    <p className="bg-secondary px-2 rounded">MySQL</p>
+                  </div>
+                </div>
+                <img
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={api5}
+                  alt="Griggs hospital thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
             <div className="col-12 mb-4">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
                 // onClick={handleEasy}
-                href="https://easydesignuk.co.uk/index"
+                href="https://griggsspecialisthospital.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -361,8 +402,8 @@ function Tech() {
                   </h4>
                   <p>
                     The Griggs Hopsital Website is a project I collaborated on.
-                    It was built with React on the frontend and Tailiwind for
-                    styling, php for the backend and mySQL for database.
+                    I built the frontend with React, and Tailiwind for styling,
+                    php for the backend and mySQL for database.
                   </p>
                   <div className="d-flex flex-wrap gap-2">
                     <p className="bg-secondary px-2 rounded">React</p>
@@ -372,7 +413,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="100"
                   src={api4}
@@ -384,7 +425,7 @@ function Tech() {
 
             <div className="col-12 mb-4">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
                 // onClick={handleEasy}
                 href="https://easydesignuk.co.uk/index"
                 target="_blank"
@@ -411,7 +452,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="100"
                   src={easydesign}
@@ -423,7 +464,7 @@ function Tech() {
 
             <div className=" col-12 mb-4">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
                 href="https://whisper-app-three.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -451,7 +492,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="300"
                   src={whisper}
@@ -463,7 +504,7 @@ function Tech() {
 
             <div className=" col-12 mb-4">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
                 href="https://movie-search-app-by-khalifa.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -487,7 +528,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="500"
                   src={movie}
@@ -499,7 +540,7 @@ function Tech() {
 
             <div className="col-12 mb-4">
               <a
-                className="anchor-hover d-flex justify-content-center align-items-stretch rounded"
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
                 href="https://simple-weather-app-psi-one.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -524,7 +565,7 @@ function Tech() {
                   </div>
                 </div>
                 <img
-                  className="d-none d-xl-block img-fluid h-100 border rounded"
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="700"
                   src={weather}
@@ -539,7 +580,7 @@ function Tech() {
 
       <section
         id="skills"
-        className="container-sm d-flex justify-content-center align-items-center my-5"
+        className="container-sm d-flex justify-content-center align-items-center my-5 "
       >
         <div className="d-flex justify-content-center align-items-center flex-wrap gap-4">
           {/* ADD MORE AS SKILLS IMPROVE */}

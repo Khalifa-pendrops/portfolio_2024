@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
-import resume from "/resume2.pdf";
+import resume from "/Resume3.pdf";
 import axios from "axios";
 import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
@@ -152,8 +152,10 @@ const Home = () => {
   }, [charIndex, isDeleting, loopIndex]);
 
   return (
-    <div className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5" style={{paddingBottom: "5rem"}}>
-
+    <div
+      className="container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5"
+      style={{ paddingBottom: "5rem" }}
+    >
       {/* UNCOMMENT WHEN A NEW PROJECT STARTS */}
       {/* <div className="container-fluid d-block typewriter-wraper">
         <p className="container-fluid typewriter-text">On-going Project: SafeWatch NG🎉
@@ -310,7 +312,7 @@ const Home = () => {
               data-aos-delay="100"
               onClick={handleDownload}
               download={resume}
-              title="curriculum vitae"
+              title="Downloadable resume"
             >
               <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
               CV
@@ -325,6 +327,7 @@ const Home = () => {
               rel="noopener noreferrer"
               data-aos="fade-left"
               data-aos-delay="100"
+              title="Github connect"
             >
               <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
               GitHub
@@ -338,6 +341,7 @@ const Home = () => {
               rel="noopener noreferrer"
               data-aos="fade-left"
               data-aos-delay="300"
+              title="LinkedIn connect"
               className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
             >
               <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />

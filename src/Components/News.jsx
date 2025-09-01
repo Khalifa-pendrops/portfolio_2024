@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 
+const isMobile = window.innerWidth <= 768; // define smaller screen width:
+const cacheKey = "aiNewsCache";
+const cacheExpiry = 1000 * 60 * 60; //set to 1 hour
+
 function News() {
   const [news, setNews] = useState([]);
   const [aiNews, setAiNews] = useState([]);
+  const [googleLoading, setGoogleLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(4);
-  const [loading, setLoading] = useState(true);
+  const [ailoading, setAiLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const isMobile = window.innerWidth <= 768; // define smaller screen width:
-  const cacheKey = "aiNewsCache";
-  const cacheExpiry = 1000 * 60 * 60; //set to 1 hour
+  const loading = googleLoading || ailoading;
 
   const fetchGoogleNews = async () => {
-    setLoading(true);
+    setGoogleLoading(true);
     setError(null);
     try {
       const response = await axios.get(
@@ -38,22 +41,27 @@ function News() {
       );
       console.error("News fetch error:", err);
     } finally {
-      setLoading(false);
+      setGoogleLoading(false);
     }
   };
 
   const fetchAiNews = async () => {
-    //first check if response is cahced in localStorage
-    const cached = localStorage.getItem(cacheKey);
+    let cached = null;
 
-    if (cached) {
-      const { data, timestamp } = JSON.parse(cached);
+    try {
+      const raw = localStorage.get(cacheKey);
 
-      if (Date.now() - timestamp < cacheExpiry) {
-        setAiNews(data);
-        setLoading(false);
-        return;
+      if (raw) {
+        cached = JSON.parse(raw);
       }
+    } catch (error) {
+      console.warn("Invalid or corrupted AI news cache. Ignoring...");
+    }
+
+    if (cached && Date.now() - cached.timestamp < cacheExpiry) {
+      setAiNews(cached.data);
+      setAiLoading(false);
+      return;
     }
 
     try {
@@ -78,7 +86,7 @@ function News() {
     } catch (error) {
       console.error("Error fetching AI news: ", error);
     } finally {
-      setLoading(false);
+      setAiLoading(false);
     }
   };
 
