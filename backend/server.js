@@ -112,7 +112,24 @@ app.post("/api/ai", async (req, res) => {
     res.json({ response: text });
   } catch (error) {
     return res.status(error.response?.status || 500).json({
-      error: error.response?.data?.error?.message || "AI request failed",
+      error:
+        error.response?.data?.error?.message ||
+        "AI request failed. Try a different model.",
+    });
+  }
+});
+
+app.get("/api/ai/models", async (req, res) => {
+  try {
+    const apiKey = process.env.GERMINI_API_KEY;
+    const response = await axios.get(
+      `https://generativelanguage.googleapis.com/v1/models?key=${apiKey}`,
+      { timeout: 15000 }
+    );
+    res.json(response.data);
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({
+      error: error.response?.data?.error?.message || "Failed to list models",
     });
   }
 });

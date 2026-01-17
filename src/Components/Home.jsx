@@ -28,6 +28,7 @@ const Home = () => {
   const [aiLoading, setAiLoading] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAiOpen, setIsAiOpen] = useState(false);
+  const [showAiNotice, setShowAiNotice] = useState(false);
   const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
   const url = `${apiBase}/api/contact`;
   const aiUrl = `${apiBase}/api/ai`;
@@ -150,7 +151,7 @@ const Home = () => {
         error.response?.data?.error ||
           error.response?.data?.message ||
           error.message ||
-          "AI request failed"
+          "AI request failed",
       );
     } finally {
       setAiLoading(false);
@@ -158,9 +159,23 @@ const Home = () => {
   };
 
   useEffect(() => {
-    document.body.style.overflow =
-      isContactOpen || isAiOpen ? "hidden" : "";
+    document.body.style.overflow = isContactOpen || isAiOpen ? "hidden" : "";
   }, [isContactOpen, isAiOpen]);
+
+  useEffect(() => {
+    if (!isAiOpen) return;
+    setShowAiNotice(true);
+    const timer = setTimeout(() => setShowAiNotice(false), 5000);
+    return () => clearTimeout(timer);
+  }, [isAiOpen]);
+
+  const closeAiModal = () => {
+    setIsAiOpen(false);
+    setAiPrompt("");
+    setAiResponse("");
+    setAiError(null);
+    setAiLoading(false);
+  };
 
   useEffect(() => {
     let timeout;
@@ -365,24 +380,25 @@ const Home = () => {
           onClick={() => setIsContactOpen(false)}
         >
           <div
-            className="custom-modal modal-content"
+            className="custom-modal modal-content custom-modal-surface"
             role="dialog"
             aria-modal="true"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-header">
+            <div className="modal-header custom-modal-header flex flex-row justify-content-between align-items-center px-2">
+              <h5 className="modal-title custom-modal-title">Send a Message</h5>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close custom-modal-close  "
                 aria-label="Close"
                 onClick={() => setIsContactOpen(false)}
               ></button>
             </div>
             <div className="pseudo-modal contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
               <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
-                <h1 className="display-5 display-sm-6 align-self-center">
-                  Send an Email
-                </h1>
+                <p className="custom-modal-subtitle text-center align-self-center">
+                  Send a quick note or reach out directly at
+                </p>
                 <p className="email-text text-center align-self-center">
                   Fill out the form below or contact me with your favourite
                   email client at
@@ -398,7 +414,7 @@ const Home = () => {
                 className="d-flex flex-column justify-content-center align-items-center gap-2"
                 onSubmit={handleSubmit}
               >
-                <div className="d-flex flex-column gap-4 email-text">
+                <div className="d-flex flex-column gap-4 email-text custom-modal-body">
                   <label className="d-flex flex-column justify-content-center align-items-start gap-2">
                     Email
                     <input
@@ -406,7 +422,7 @@ const Home = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="form-control rounded border p-2"
+                      className="form-control rounded border p-2 custom-modal-input"
                       required
                     ></input>
                   </label>
@@ -417,7 +433,7 @@ const Home = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      className="border rounded p-2 form-control text-area-min-height"
+                      className="border rounded p-2 form-control text-area-min-height custom-modal-input"
                       required
                     ></textarea>
                   </label>
@@ -430,7 +446,7 @@ const Home = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="contact-btn text-white py-1 px-2 btn d-flex justify-content-center align-items-center gap-2"
+                    className="contact-btn text-white py-1 px-2 btn d-flex justify-content-center align-items-center gap-2 custom-modal-cta"
                   >
                     <FontAwesomeIcon className="fs-1" icon={faCaretRight} />
                     {isSubmitting ? "Submitting..." : "Send Message"}
@@ -454,24 +470,34 @@ const Home = () => {
       {isAiOpen && (
         <div
           className="custom-modal-backdrop"
-          onClick={() => setIsAiOpen(false)}
+          onClick={closeAiModal}
         >
           <div
-            className="custom-modal modal-content"
+            className="custom-modal modal-content custom-modal-surface"
             role="dialog"
             aria-modal="true"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-header">
-              <h5 className="modal-title">Ask the AI Assistant</h5>
+            <div className="modal-header custom-modal-header flex flex-row justify-content-between align-items-center ">
+              <h5 className="modal-title custom-modal-title">
+                Ask the AI Assistant
+              </h5>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close custom-modal-close mx-2 "
                 aria-label="Close"
-                onClick={() => setIsAiOpen(false)}
+                onClick={closeAiModal}
               ></button>
             </div>
-            <div className="modal-body">
+            <div className="modal-body custom-modal-body">
+              <p className="custom-modal-subtitle">
+                Ask anything about tech, my work, or ideas you want to explore.
+              </p>
+              {showAiNotice && (
+                <div className="custom-modal-notice">
+                  Hey there! This chat clears when you close this modal.
+                </div>
+              )}
               <form
                 className="d-flex flex-column gap-3"
                 onSubmit={handleAiSubmit}
@@ -479,28 +505,32 @@ const Home = () => {
                 <label className="d-flex flex-column gap-2">
                   Your question
                   <textarea
-                    className="border rounded p-2 form-control text-area-min-height"
+                    className="border rounded p-2 form-control text-area-min-height custom-modal-input"
                     value={aiPrompt}
                     onChange={(e) => setAiPrompt(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        handleAiSubmit(e);
+                      }
+                    }}
                     placeholder="Ask anything..."
                     rows={4}
                   ></textarea>
                 </label>
                 <button
                   type="submit"
-                  className="btn custom-btn"
+                  className="btn custom-btn custom-modal-cta"
                   disabled={aiLoading}
                 >
                   {aiLoading ? "Thinking..." : "Ask"}
                 </button>
               </form>
-              {aiError && (
-                <p className="text-danger mt-3">Error: {aiError}</p>
-              )}
+              {aiError && <p className="text-danger mt-3">Error: {aiError}</p>}
               {aiResponse && (
                 <div className="mt-3">
                   <h6 className="mb-2">Response</h6>
-                  <p>{aiResponse}</p>
+                  <p className="custom-modal-response">{aiResponse}</p>
                 </div>
               )}
             </div>

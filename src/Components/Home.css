@@ -55,7 +55,9 @@ body {
 .custom-modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(3, 9, 24, 0.65);
+    background: radial-gradient(circle at 15% 10%, rgba(64, 180, 200, 0.15), transparent 40%),
+        rgba(3, 9, 24, 0.72);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,6 +70,74 @@ body {
     max-height: 90vh;
     overflow: auto;
     border-radius: 0.5rem;
+}
+
+.custom-modal-surface {
+    background: linear-gradient(160deg, rgba(9, 18, 38, 0.96), rgba(4, 8, 20, 0.98));
+    border: 1px solid rgba(70, 200, 210, 0.18);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    color: #d1d1e0;
+}
+
+.custom-modal-header {
+    border-bottom: 1px solid rgba(70, 200, 210, 0.18);
+}
+
+.custom-modal-header .custom-modal-close {
+    margin-left: auto;
+}
+
+.custom-modal-title {
+    font-family: "Exo", sans-serif;
+    letter-spacing: 0.4px;
+    color: #ccebf1;
+}
+
+.custom-modal-subtitle {
+    color: #9fb9c4;
+    margin-bottom: 0.75rem;
+}
+
+.custom-modal-body {
+    padding-top: 0.5rem;
+}
+
+.custom-modal-input {
+    background-color: rgba(9, 16, 32, 0.85) !important;
+    border: 1px solid rgba(60, 180, 200, 0.25) !important;
+    color: #e4f6f8 !important;
+}
+
+.custom-modal-input::placeholder {
+    color: rgba(194, 222, 228, 0.7) !important;
+}
+
+.custom-modal-cta {
+    background: linear-gradient(90deg, #1aa3b1, #4ecdc4) !important;
+    color: #07112c !important;
+    border: none !important;
+}
+
+.custom-modal-cta:hover {
+    background: linear-gradient(90deg, #4ecdc4, #1aa3b1) !important;
+    color: #07112c !important;
+}
+
+.custom-modal-response {
+    color: #ccebf1;
+}
+
+.custom-modal-notice {
+    background: rgba(26, 163, 177, 0.12);
+    border: 1px solid rgba(26, 163, 177, 0.35);
+    color: #ccebf1;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.custom-modal-close {
+    filter: invert(1);
 }
 
 button,
