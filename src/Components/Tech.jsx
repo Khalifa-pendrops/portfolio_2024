@@ -6,7 +6,7 @@ import {
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import resume from "/Resume3.pdf";
+import resume4 from "/resume4.pdf";
 import movie from "../assets/movie-app.png";
 import weather from "../assets/weather-app.png";
 import whisper from "../assets/whisper-app.png";
@@ -132,7 +132,7 @@ function Tech() {
             <div className="col-10 col-sm-auto">
               <a
                 className="linked-btn"
-                href={resume}
+                href={resume4}
                 target="_blank"
                 rel="noopener noreferrer"
               >
