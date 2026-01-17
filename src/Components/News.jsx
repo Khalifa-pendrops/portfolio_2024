@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 
-const isMobile = window.innerWidth <= 768; // define smaller screen width:
 const cacheKey = "aiNewsCache";
 const cacheExpiry = 1000 * 60 * 60; //set to 1 hour
 
@@ -13,6 +12,8 @@ function News() {
   const [visibleCount, setVisibleCount] = useState(4);
   const [ailoading, setAiLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [aiError, setAiError] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const loading = googleLoading || ailoading;
 
@@ -21,7 +22,7 @@ function News() {
     setError(null);
     try {
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/top-headlines?lang=en&country=us"
+        "https://portfolio-2024-1.onrender.com/api/top-headlines?lang=en&country=us",
         // {
         //   params: {
         //     category: "technology",
@@ -37,7 +38,7 @@ function News() {
         err.response?.data?.error ||
           err.response?.data?.message ||
           err.message ||
-          "Failed to load news/articles"
+          "Failed to load news/articles",
       );
       console.error("News fetch error:", err);
     } finally {
@@ -49,7 +50,7 @@ function News() {
     let cached = null;
 
     try {
-      const raw = localStorage.get(cacheKey);
+      const raw = localStorage.getItem(cacheKey);
 
       if (raw) {
         cached = JSON.parse(raw);
@@ -65,8 +66,9 @@ function News() {
     }
 
     try {
+      setAiError(null);
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/news?language=en&country=us&category=technology"
+        "https://portfolio-2024-1.onrender.com/api/news?language=en&country=us&category=technology",
         // {
         //   params: {
         //     category: "technology",
@@ -81,9 +83,15 @@ function News() {
       setAiNews(results);
       localStorage.setItem(
         cacheKey,
-        JSON.stringify({ data: results, timestamp: Date.now() })
+        JSON.stringify({ data: results, timestamp: Date.now() }),
       );
     } catch (error) {
+      setAiError(
+        error.response?.data?.error ||
+          error.response?.data?.message ||
+          error.message ||
+          "Failed to load AI news",
+      );
       console.error("Error fetching AI news: ", error);
     } finally {
       setAiLoading(false);
@@ -95,17 +103,29 @@ function News() {
     fetchAiNews();
   }, []);
 
-  if (loading) {
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const sync = () => setIsMobile(media.matches);
+    sync();
+    if (media.addEventListener) {
+      media.addEventListener("change", sync);
+      return () => media.removeEventListener("change", sync);
+    }
+    media.addListener(sync);
+    return () => media.removeListener(sync);
+  }, []);
+
+  if (loading && !news.length && !aiNews.length) {
     return (
       <div className="text-center my-5">Loading Tech News/Articles...</div>
     );
   }
 
-  if (error) {
+  if (error && !news.length) {
     return <div className="text-center my-5 text-danger">Error: {error}</div>;
   }
 
-  if (!news || news.length === 0) {
+  if ((!news || news.length === 0) && (!aiNews || aiNews.length === 0)) {
     return <div className="text-center my-5">No news articles found.</div>;
   }
 
@@ -154,11 +174,13 @@ function News() {
         ))}
       </div>
       <h2 className="mb-4 text-primary ">🧠 AI News</h2>
-      <span>Section under maintenance...</span>
-      {loading ? (
+
+      {ailoading ? (
         <div className="text-center">
           <div className="spinner-border text-primary" role="status" />
         </div>
+      ) : aiError ? (
+        <div className="text-center text-danger my-3">Error: {aiError}</div>
       ) : (
         <>
           <div className="row">

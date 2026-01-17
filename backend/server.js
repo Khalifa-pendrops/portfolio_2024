@@ -22,6 +22,11 @@ if (!process.env.MONGODB_URI) {
   process.exit(1);
 }
 
+if (!process.env.GERMINI_API_KEY) {
+  console.error("GERMINI_API_KEY is not defined in .env");
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -73,6 +78,41 @@ app.get("/api/news", async (req, res) => {
     console.error("News fetch error:", error.response?.data || error.message);
     res.status(error.response?.status || 500).json({
       error: error.response?.data || "Unknown error fetching news",
+    });
+  }
+});
+
+app.post("/api/ai", async (req, res) => {
+  const prompt = (req.body?.prompt || "").trim();
+
+  if (!prompt) {
+    return res.status(400).json({ error: "Prompt is required." });
+  }
+
+  try {
+    const model = process.env.GERMINI_MODEL || "gemini-1.5-flash";
+    const apiKey = process.env.GERMINI_API_KEY;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+    const response = await axios.post(
+      url,
+      {
+        contents: [
+          {
+            parts: [{ text: prompt }],
+          },
+        ],
+      },
+      { timeout: 20000 }
+    );
+
+    const text =
+      response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+
+    res.json({ response: text });
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({
+      error: error.response?.data?.error?.message || "AI request failed",
     });
   }
 });

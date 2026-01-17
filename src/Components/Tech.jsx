@@ -16,6 +16,9 @@ import api2 from "../assets/testAPI2.jpg";
 import api3 from "../assets/bank-creation.png";
 import api4 from "../assets/Griggs.png";
 import api5 from "../assets/cmoPort.png";
+import api6 from "../assets/api4.png";
+import api7 from "../assets/klinic.png";
+import api8 from "../assets/real.png";
 import "./Home.css";
 
 function Tech() {
@@ -205,6 +208,51 @@ function Tech() {
               </span>
               Projects
             </h2>
+
+            <div className="col-12 mb-4 mt-4">
+              <a
+                className="anchor-hover d-flex flex-column flex-md-row justify-content-center align-items-stretch rounded"
+                href="https://high-performance-and-scalable-apis.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="700"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Secure Authentication API
+                  </h4>
+                  <p>
+                    Built this production-grade authentication system focused on
+                    security, scalability, and correctness. Key features: -
+                    Secure password handling (bcrypt hashing, no raw passwords)
+                    - JWT-based access & refresh tokens - Refresh token rotation
+                    with reuse detection - Logout & logout-all (multi-device
+                    session revocation) - Rate-limited auth endpoints to prevent
+                    brute-force attacks - Request ID tracing and centralized
+                    error handling - Strong separation of concerns (entities,
+                    services, controllers, middleware) Designed with real-world
+                    threat models in mind and tested end-to-end using Postman.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">NodeJS</p>
+                    <p className="bg-secondary px-2 rounded">ExpressJS</p>
+                    <p className="bg-secondary px-2 rounded">TypeScript</p>
+                    <p className="bg-secondary px-2 rounded">MongoDB</p>
+                  </div>
+                </div>
+                <img
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="700"
+                  src={api6}
+                  alt="API thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
             <div className="col-12 mb-4 mt-4">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row justify-content-center align-items-stretch rounded"
@@ -341,9 +389,101 @@ function Tech() {
                 }}
               >
                 Frontend
-              </span>{" "}
+              </span>
               Projects
             </h2>
+
+            <div className="col-12 mb-4 mt-4 ">
+              <a
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
+                // onClick={handleEasy}
+                href="https://my-cyber-clinics.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Mycyberclinics RN App (web & mobile)
+                  </h4>
+                  <p>
+                    This is a React Native application for healthcare
+                    professionals and those who needs to access medical
+                    services. It allows users to manage patient records,
+                    appointments, and communication. Built with React Native for
+                    cross-platform compatibility. Nativewind is used for
+                    styling, ensuring a responsive and user-friendly interface.
+                    The backend is powered by Nodejs + aok + TS, handling data
+                    storage and retrieval with mongoDB + redis . I built the
+                    client side of this mobile application with React Native +
+                    Tailwind, while contributing to the server side too.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React Native</p>
+                    <p className="bg-secondary px-2 rounded">Nativewind</p>
+                    <p className="bg-secondary px-2 rounded">Nodejs</p>
+                    <p className="bg-secondary px-2 rounded">MongoDB</p>
+                    <p className="bg-secondary px-2 rounded">Redis</p>
+                    <p className="bg-secondary px-2 rounded">Zustand</p>
+                    <p className="bg-secondary px-2 rounded">Tanstack Query</p>
+                  </div>
+                </div>
+                <img
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={api7}
+                  alt="mycyberclinics thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
+
+            <div className="col-12 mb-4 mt-4 ">
+              <a
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
+                // onClick={handleEasy}
+                href="https://react-e-commerce-app-henna.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Real Trift E-commerce Website
+                  </h4>
+                  <p>
+                    Real Trift is a modernized e-commerce front end built with
+                    React, Redux Toolkit, and styled-components. It includes a
+                    neon/dark UI refresh, smooth UX touches, and a resilient
+                    data layer that falls back to local sample products when the
+                    remote API is unavailable.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React</p>
+                    <p className="bg-secondary px-2 rounded">
+                      Styled Component
+                    </p>
+                    <p className="bg-secondary px-2 rounded">Redux Toolkit</p>
+                    <p className="bg-secondary px-2 rounded">JavaScript</p>
+                  </div>
+                </div>
+                <img
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={api8}
+                  alt="e-com thumb-nail image"
+                  width="434px"
+                />
+              </a>
+            </div>
             <div className="col-12 mb-4 mt-4 ">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
@@ -615,6 +755,13 @@ function Tech() {
           <p
             className="border px-5 py-2 secondary-bg"
             data-aos="fade-up"
+            data-aos-delay="900"
+          >
+            Nativewind
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
             data-aos-delay="1200"
           >
             JavaScript
@@ -632,6 +779,13 @@ function Tech() {
             data-aos-delay="1500"
           >
             React.js
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            React Native
           </p>
           <p
             className="border px-5 py-2 secondary-bg"
