@@ -28,8 +28,9 @@ const Home = () => {
   const [aiLoading, setAiLoading] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAiOpen, setIsAiOpen] = useState(false);
-  const url = "https://portfolio-2024-2cjd.onrender.com/api/contact";
-  const aiUrl = "https://portfolio-2024-2cjd.onrender.com/api/ai";
+  const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
+  const url = `${apiBase}/api/contact`;
+  const aiUrl = `${apiBase}/api/ai`;
 
   // for text animation on UI
 

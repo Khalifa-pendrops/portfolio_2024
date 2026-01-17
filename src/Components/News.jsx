@@ -21,8 +21,9 @@ function News() {
     setGoogleLoading(true);
     setError(null);
     try {
+      const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/top-headlines?lang=en&country=us",
+        `${apiBase}/api/top-headlines?lang=en&country=us`,
         // {
         //   params: {
         //     category: "technology",
@@ -67,8 +68,9 @@ function News() {
 
     try {
       setAiError(null);
+      const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
       const response = await axios.get(
-        "https://portfolio-2024-1.onrender.com/api/news?language=en&country=us&category=technology",
+        `${apiBase}/api/news?language=en&country=us&category=technology`,
         // {
         //   params: {
         //     category: "technology",

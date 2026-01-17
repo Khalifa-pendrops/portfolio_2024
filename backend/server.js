@@ -92,7 +92,7 @@ app.post("/api/ai", async (req, res) => {
   try {
     const model = process.env.GERMINI_MODEL || "gemini-1.5-flash";
     const apiKey = process.env.GERMINI_API_KEY;
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`;
 
     const response = await axios.post(
       url,
