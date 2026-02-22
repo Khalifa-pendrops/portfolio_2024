@@ -234,8 +234,13 @@ const Home = () => {
             </div>
           </div>
           <p className=" w-100" data-aos="fade-down">
-            A Software Developer and AI enthusiast with experience in
-            researching and building scalable products.
+            A Full-stack Software Engineer with 3+ years of experience building
+            and scaling production-grade web and cross-platform mobile
+            applications. Proficient in React, React Native, Next.js, Node.js,
+            Express, and TypeScript, with hands-on experience shipping
+            real-world products — including the MyCyber Clinics app. Focused on
+            performance, clean architecture, reliable systems, and passionate
+            about AI-driven innovation.
           </p>
           <div className="home_buttons container-fluid d-flex d-sm-inline-flex justify-content-center align-items-center gap-2 flex-column flex-sm-row px-5">
             <div className="col-10 col-sm-auto">
@@ -331,26 +336,6 @@ const Home = () => {
         <div className="home_body px-4 d-flex flex-column justify-content-center align-items-center gap-2">
           <h2 className="display-5 fw-bolder">Paths</h2>
           <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4 my-2 ">
-            <Link className="links zoom-in p-4" to="/academic">
-              <div
-                className="d-flex flex-column gap-2 justify-content-center align-items-start"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-                data-aos-offset="200"
-              >
-                <FontAwesomeIcon
-                  className="icon-2 text-warning"
-                  icon={faGraduationCap}
-                />
-                <h4 className="fw-bolder text-primary">Tech News & Research</h4>
-                <p>
-                  Exploring Tech and societal intricacies: AI, public health,
-                  ageing, peace dynamics, power alliances, relations, sports -
-                  with emphasis on football.
-                </p>
-              </div>
-            </Link>
-
             <Link className="links zoom-out p-4" to="/tech">
               <div
                 className="d-flex flex-column gap-2 justify-content-center align-items-start"
@@ -366,7 +351,26 @@ const Home = () => {
                 <p>
                   A tech odyssey: from the basic HTML through CSS and JavaScript
                   to cutting-edge frameworks and libraries in React.js,
-                  bootstrap, Tailwind CSS, etc.
+                  Typescript, Node.js, Express, Next.js, React Native, and more.
+                  Also exploring the latest in AI.
+                </p>
+              </div>
+            </Link>
+            <Link className="links zoom-in p-4" to="/academic">
+              <div
+                className="d-flex flex-column gap-2 justify-content-center align-items-start"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+                data-aos-offset="200"
+              >
+                <FontAwesomeIcon
+                  className="icon-2 text-warning"
+                  icon={faGraduationCap}
+                />
+                <h4 className="fw-bolder text-primary">Tech News & Research</h4>
+                <p>
+                  Exploring Tech and societal intricacies: A blend of tech
+                  insights and societal analysis.
                 </p>
               </div>
             </Link>
@@ -468,10 +472,7 @@ const Home = () => {
       )}
 
       {isAiOpen && (
-        <div
-          className="custom-modal-backdrop"
-          onClick={closeAiModal}
-        >
+        <div className="custom-modal-backdrop" onClick={closeAiModal}>
           <div
             className="custom-modal modal-content custom-modal-surface"
             role="dialog"
