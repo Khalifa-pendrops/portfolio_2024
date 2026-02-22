@@ -7,12 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://portfolio-2024-pq5d.onrender.com/api/message",
+        target: "https://portfolio-2024-pq5d.onrender.com",
         changeOrigin: true,
         secure: true,
       },
     },
   },
 });
-
 

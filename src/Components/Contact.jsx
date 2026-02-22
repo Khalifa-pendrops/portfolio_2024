@@ -13,7 +13,8 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
-  const url = "https://portfolio-2024-2cjd.onrender.com/api/contact";
+  const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
+  const url = `${apiBase}/api/contact`;
 
   const handleChange = (e) => {
     setIsSubmitting(false);
@@ -48,10 +49,10 @@ function Contact() {
 
       console.log("Response:", response);
 
-      if (response.status === 200) {
+      if (response.status >= 200 && response.status < 300) {
         setResponseMessage({
           type: "success",
-          text: "Form submitted successfully!",
+          text: response.data?.message || "Form submitted successfully!",
         });
         console.log("Response Message: THIS SIDE CLEAR!", responseMessage);
       }
@@ -62,12 +63,6 @@ function Contact() {
         "Form submission error: THIS SIDE NO CLEAR AT ALL 😞",
         error
       );
-      setIsSuccess({
-        type: "error",
-        text:
-          error.response?.data?.message ||
-          "An error occurred while submitting. Please try again later.",
-      });
       setResponseMessage({
         type: "error",
         text:

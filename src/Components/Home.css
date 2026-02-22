@@ -140,8 +140,12 @@ body {
     filter: invert(1);
 }
 
-button,
-a {
+.home-screen button,
+.home-screen a,
+#home button,
+#home a,
+.contact-container button,
+.contact-container a {
     outline: none !important;
     font-weight: 600 !important;
     color: aquamarine !important;
@@ -169,7 +173,9 @@ a {
         white-space: wrap !important;
     }
 
-    button {
+    .home-screen button,
+    #home button,
+    .contact-container button {
         /* width: 100% !important; */
         word-break: break-all;
         overflow-wrap: break-word;
@@ -195,8 +201,12 @@ a {
     }
 }
 
-button:hover,
-a:hover,
+.home-screen button:hover,
+.home-screen a:hover,
+#home button:hover,
+#home a:hover,
+.contact-container button:hover,
+.contact-container a:hover,
 .linked-btn:hover {
     background-color: #fff !important;
     color: #030918 !important;
@@ -205,8 +215,12 @@ a:hover,
     transition: all 0.5s ease-in-out;
 }
 
-button:hover .icon,
-a:hover .icon {
+.home-screen button:hover .icon,
+.home-screen a:hover .icon,
+#home button:hover .icon,
+#home a:hover .icon,
+.contact-container button:hover .icon,
+.contact-container a:hover .icon {
     color: #030918 !important;
 }
 
@@ -223,6 +237,16 @@ p {
     box-shadow: 0px 0px 6px 2px cadetblue;
     border-radius: 5px;
     color: #fff !important;
+}
+
+.paths-grid {
+    width: min(100%, 1600px);
+}
+
+.path-card {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 320px;
 }
 
 .zoom-in,
@@ -357,6 +381,27 @@ footer span:hover {
     color: #07112c !important;
 }
 
+.anchor-hover {
+    align-items: center !important;
+    text-decoration: none !important;
+}
+
+.anchor-hover h4,
+.anchor-hover p,
+.anchor-hover span,
+.anchor-hover div {
+    text-decoration: none !important;
+}
+
+#project .anchor-hover,
+#project .anchor-hover * {
+    text-decoration: none !important;
+}
+
+.anchor-hover img {
+    align-self: center;
+}
+
 .custom-btn {
     background-color: #030918 !important;
     color: #fff !important;
@@ -365,6 +410,15 @@ footer span:hover {
 .custom-btn:hover {
     background-color: #fff !important;
     color: #030918 !important;
+}
+
+.hero-cta-btn {
+    background: linear-gradient(90deg, rgba(26, 163, 177, 0.18), rgba(78, 205, 196, 0.08));
+    border-color: rgba(78, 205, 196, 0.7) !important;
+}
+
+.hero-cta-btn:hover {
+    background: linear-gradient(90deg, rgba(78, 205, 196, 0.28), rgba(26, 163, 177, 0.18)) !important;
 }
 
 /* MOVING TEXT STYLING */
@@ -445,4 +499,12 @@ footer span:hover {
     font-size: 1.5rem;
     white-space: nowrap;
     overflow: hidden;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #4ecdc4 !important;
+    outline-offset: 2px !important;
 }

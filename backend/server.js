@@ -30,7 +30,26 @@ if (!process.env.GERMINI_API_KEY) {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = (process.env.CORS_ORIGINS || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (
+      allowedOrigins.includes(origin) ||
+      /^https?:\/\/localhost(?::\d+)?$/.test(origin) ||
+      /^https?:\/\/127\.0\.0\.1(?::\d+)?$/.test(origin)
+    ) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/", submissionRoute);
@@ -84,10 +103,29 @@ app.get("/api/news", async (req, res) => {
 
 app.post("/api/ai", async (req, res) => {
   const prompt = (req.body?.prompt || "").trim();
+  const ip = req.ip || req.socket.remoteAddress || "unknown";
 
   if (!prompt) {
     return res.status(400).json({ error: "Prompt is required." });
   }
+
+  if (prompt.length > 1500) {
+    return res.status(400).json({ error: "Prompt too long." });
+  }
+
+  const now = Date.now();
+  if (!global.__aiRateLimitStore) {
+    global.__aiRateLimitStore = new Map();
+  }
+  const bucket = global.__aiRateLimitStore.get(ip) || [];
+  const recent = bucket.filter((ts) => now - ts < 60_000);
+  if (recent.length >= 15) {
+    return res.status(429).json({
+      error: "Rate limit exceeded. Please wait a minute and try again.",
+    });
+  }
+  recent.push(now);
+  global.__aiRateLimitStore.set(ip, recent);
 
   try {
     const model = process.env.GERMINI_MODEL || "gemini-1.5-flash";

@@ -14,45 +14,56 @@ body {
 .whatsapp-a {
     position: fixed !important;
     left: 5% !important;
-    bottom: 0%;
-    width: 80px !important;
-    height: 80px !important;
+    bottom: 3% !important;
+    width: 72px !important;
+    height: 72px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     border-radius: 50% !important;
-    border: 2px solid;
+    border: 2px solid rgba(37, 211, 102, 0.9) !important;
+    background: rgba(37, 211, 102, 0.16) !important;
+    color: #d9ffe8 !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
 }
 
 
 .whatsapp-btn {
     background-color: transparent !important;
     cursor: pointer !important;
-    position: absolute;
-    top: 10%;
-    all: unset !important;
-    overflow: hidden;
-    width: 70px !important;
-    height: 70px !important;
+    width: 100% !important;
+    height: 100% !important;
     border-radius: 50% !important;
-    margin: 3px !important;
+    border: 0 !important;
+    color: inherit !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    font-size: 0.9rem !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 
 .whatsapp-btn:hover {
-    overflow: hidden;
-    all: unset !important;
-    border: 1px solid transparent !important;
-    margin: 0;
-    padding: 10px 20px;
-    font-weight: normal !important;
+    background: transparent !important;
+    color: inherit !important;
+    border-radius: 50% !important;
 }
 
 .whatsapp-a:hover,
 .whatsapp-btn:hover {
-    border-radius: 3px !important;
-    padding: 5px 10px !important;
-    background-color: transparent !important;
-    transition: background-color 0.3s ease-in-out !important;
-    color: #fff !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    background-color: rgba(37, 211, 102, 0.24) !important;
+    color: #f2fff7 !important;
+}
 
+.whatsapp-a:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.18), 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .scrolling-text_2 {

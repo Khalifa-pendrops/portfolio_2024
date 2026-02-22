@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-2024-pq5d.onrender.com/sitemap.xml

@@ -6,6 +6,7 @@ import {
   faDownload,
   faGraduationCap,
   faCode,
+  faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
@@ -91,10 +92,10 @@ const Home = () => {
 
       console.log("Response:", response);
 
-      if (response.status === 200) {
+      if (response.status >= 200 && response.status < 300) {
         setResponseMessage({
           type: "success",
-          text: "Form submitted successfully!",
+          text: response.data?.message || "Form submitted successfully!",
         });
 
         console.log(responseMessage);
@@ -160,6 +161,27 @@ const Home = () => {
 
   useEffect(() => {
     document.body.style.overflow = isContactOpen || isAiOpen ? "hidden" : "";
+  }, [isContactOpen, isAiOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key !== "Escape") return;
+      if (isAiOpen) {
+        setIsAiOpen(false);
+        setAiPrompt("");
+        setAiResponse("");
+        setAiError(null);
+        setAiLoading(false);
+      } else if (isContactOpen) {
+        setIsContactOpen(false);
+      }
+    };
+
+    if (isContactOpen || isAiOpen) {
+      window.addEventListener("keydown", onKeyDown);
+    }
+
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [isContactOpen, isAiOpen]);
 
   useEffect(() => {
@@ -243,6 +265,17 @@ const Home = () => {
             about AI-driven innovation.
           </p>
           <div className="home_buttons container-fluid d-flex d-sm-inline-flex justify-content-center align-items-center gap-2 flex-column flex-sm-row px-5">
+            {/* <div className="col-10 col-sm-auto">
+              <a
+                className="hero-cta-btn linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
+                href="mailto:chikezie270@gmail.com?subject=Let's Build Something Great"
+                title="Primary call to action"
+              >
+                <FontAwesomeIcon className="icon fs-5" icon={faRocket} />
+                Hire Me for Your Next Build
+              </a>
+            </div> */}
+
             <div className="col-10 col-sm-auto">
               <Link className="linked-btn d-none d-sm-flex" to="/get-in-touch">
                 <div className="linked-btn">
@@ -251,11 +284,8 @@ const Home = () => {
                     data-aos="fade-right"
                     data-aos-delay="300"
                   >
-                    <FontAwesomeIcon
-                      className="icon fs-5"
-                      icon={faHandPointRight}
-                    />
-                    Get in Touch
+                    <FontAwesomeIcon className="icon fs-5" icon={faRocket} />
+                    Hire Me for Your Next Build
                   </button>
                 </div>
               </Link>
@@ -335,10 +365,10 @@ const Home = () => {
         </div>
         <div className="home_body px-4 d-flex flex-column justify-content-center align-items-center gap-2">
           <h2 className="display-5 fw-bolder">Paths</h2>
-          <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4 my-2 ">
-            <Link className="links zoom-out p-4" to="/tech">
+          <div className="paths-grid d-flex flex-column flex-sm-row justify-content-center align-items-stretch gap-4 my-2 w-100">
+            <Link className="links path-card zoom-out p-4 d-flex" to="/tech">
               <div
-                className="d-flex flex-column gap-2 justify-content-center align-items-start"
+                className="d-flex flex-column gap-2 justify-content-center align-items-start w-100"
                 data-aos="fade-left"
                 data-aos-duration="1000"
                 data-aos-offset="200"
@@ -356,9 +386,9 @@ const Home = () => {
                 </p>
               </div>
             </Link>
-            <Link className="links zoom-in p-4" to="/academic">
+            <Link className="links path-card zoom-in p-4 d-flex" to="/academic">
               <div
-                className="d-flex flex-column gap-2 justify-content-center align-items-start"
+                className="d-flex flex-column gap-2 justify-content-center align-items-start w-100"
                 data-aos="fade-right"
                 data-aos-duration="1000"
                 data-aos-offset="200"
@@ -387,6 +417,7 @@ const Home = () => {
             className="custom-modal modal-content custom-modal-surface"
             role="dialog"
             aria-modal="true"
+            aria-label="Send a message"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header custom-modal-header flex flex-row justify-content-between align-items-center px-2">
@@ -477,6 +508,7 @@ const Home = () => {
             className="custom-modal modal-content custom-modal-surface"
             role="dialog"
             aria-modal="true"
+            aria-label="Ask the AI assistant"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header custom-modal-header flex flex-row justify-content-between align-items-center ">

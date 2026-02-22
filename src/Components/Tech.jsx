@@ -53,7 +53,7 @@ function Tech() {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, [activeSession]);
+  }, []);
 
   return (
     <div className="w-100 ">
@@ -249,6 +249,8 @@ function Tech() {
                   data-aos-delay="700"
                   src={api6}
                   alt="API thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -286,6 +288,8 @@ function Tech() {
                   data-aos-delay="700"
                   src={api3}
                   alt="API thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -327,6 +331,8 @@ function Tech() {
                   data-aos-delay="700"
                   src={api1}
                   alt="API thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -372,6 +378,8 @@ function Tech() {
                   data-aos-delay="700"
                   src={api2}
                   alt="API thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -437,6 +445,8 @@ function Tech() {
                   data-aos-delay="100"
                   src={api7}
                   alt="mycyberclinics thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -480,6 +490,8 @@ function Tech() {
                   data-aos-delay="100"
                   src={api8}
                   alt="e-com thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -520,6 +532,8 @@ function Tech() {
                   data-aos-delay="100"
                   src={api5}
                   alt="Griggs hospital thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -558,6 +572,8 @@ function Tech() {
                   data-aos-delay="100"
                   src={api4}
                   alt="Griggs hospital thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -597,6 +613,8 @@ function Tech() {
                   data-aos-delay="100"
                   src={easydesign}
                   alt="whisper thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -637,6 +655,8 @@ function Tech() {
                   data-aos-delay="300"
                   src={whisper}
                   alt="whisper thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -673,6 +693,8 @@ function Tech() {
                   data-aos-delay="500"
                   src={movie}
                   alt="whisper thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
@@ -710,6 +732,8 @@ function Tech() {
                   data-aos-delay="700"
                   src={weather}
                   alt="weather thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
                   width="434px"
                 />
               </a>
