@@ -39,11 +39,11 @@ const Home = () => {
   const texts = [
     {
       text: "CHIKEZIE",
-      className: "text-danger, fw-bold, display-2",
+      className: "text-danger fw-bold display-2",
     },
     {
       text: "ILODIGWE",
-      className: "text-warning, fw-bold, display-2",
+      className: "text-warning fw-bold display-2",
     },
   ];
 

@@ -2,33 +2,30 @@ import express from "express";
 import cors from "cors";
 import submissionRoute from "./routes/formRoutes.js";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import axios from "axios";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-if (!process.env.GNEWS_API_KEY) {
-  console.error("GNEWS_API_KEY is not defined in .env");
-  process.exit(1);
-}
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-if (!process.env.NEWS_DATA_KEY) {
-  console.error("NEWS_DATA_KEY is not defined");
-  process.exit(1);
-}
+const warnMissingEnv = (name, feature) => {
+  if (!process.env[name]) {
+    console.warn(`${name} is not defined. ${feature} will be unavailable.`);
+  }
+};
 
-if (!process.env.MONGODB_URI) {
-  console.error("MONGODB_URI is not defined in .env");
-  process.exit(1);
-}
-
-if (!process.env.GERMINI_API_KEY) {
-  console.error("GERMINI_API_KEY is not defined in .env");
-  process.exit(1);
-}
+warnMissingEnv("GNEWS_API_KEY", "Top headlines");
+warnMissingEnv("NEWS_DATA_KEY", "AI news");
+warnMissingEnv("GERMINI_API_KEY", "AI assistant");
+warnMissingEnv("MONGODB_URI", "Contact form storage");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.locals.dbReady = false;
 
 const allowedOrigins = (process.env.CORS_ORIGINS || "")
   .split(",")
@@ -55,9 +52,13 @@ app.use(express.json());
 app.use("/api/", submissionRoute);
 
 app.get("/api/top-headlines", async (req, res) => {
-  try {
-    const { category, lang, country, max } = req.query;
+  if (!process.env.GNEWS_API_KEY) {
+    return res.status(503).json({
+      error: "GNEWS_API_KEY is not configured.",
+    });
+  }
 
+  try {
     const response = await axios.get("https://gnews.io/api/v4/top-headlines", {
       params: {
         apikey: process.env.GNEWS_API_KEY,
@@ -78,9 +79,13 @@ app.get("/api/top-headlines", async (req, res) => {
 });
 
 app.get("/api/news", async (req, res) => {
-  try {
-    const { category, language, country } = req.query;
+  if (!process.env.NEWS_DATA_KEY) {
+    return res.status(503).json({
+      error: "NEWS_DATA_KEY is not configured.",
+    });
+  }
 
+  try {
     const response = await axios.get("https://newsdata.io/api/1/news", {
       params: {
         apikey: process.env.NEWS_DATA_KEY,
@@ -102,6 +107,12 @@ app.get("/api/news", async (req, res) => {
 });
 
 app.post("/api/ai", async (req, res) => {
+  if (!process.env.GERMINI_API_KEY) {
+    return res.status(503).json({
+      error: "GERMINI_API_KEY is not configured.",
+    });
+  }
+
   const prompt = (req.body?.prompt || "").trim();
   const ip = req.ip || req.socket.remoteAddress || "unknown";
 
@@ -158,6 +169,12 @@ app.post("/api/ai", async (req, res) => {
 });
 
 app.get("/api/ai/models", async (req, res) => {
+  if (!process.env.GERMINI_API_KEY) {
+    return res.status(503).json({
+      error: "GERMINI_API_KEY is not configured.",
+    });
+  }
+
   try {
     const apiKey = process.env.GERMINI_API_KEY;
     const response = await axios.get(
@@ -176,14 +193,18 @@ app.get("/", (req, res) => {
   res.send("This portfolio Backend is running! 🎉");
 });
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB ✅"))
-  .catch((err) => {
-    console.error("Error connecting to MongoDB ⛔: ", err);
-    process.exit(1);
-  });
+if (process.env.MONGODB_URI) {
+  mongoose
+    .connect(process.env.MONGODB_URI)
+    .then(() => {
+      app.locals.dbReady = true;
+      console.log("Connected to MongoDB");
+    })
+    .catch((err) => {
+      console.error("Error connecting to MongoDB: ", err);
+    });
+}
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} 🚀`);
+  console.log(`Server running on port ${PORT}`);
 });

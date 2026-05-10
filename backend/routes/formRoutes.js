@@ -10,6 +10,13 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MESSAGE_LENGTH = 3000;
 
 router.post("/contact", async (req, res) => {
+  if (!req.app.locals.dbReady) {
+    return res.status(503).json({
+      success: false,
+      message: "Contact form storage is not configured.",
+    });
+  }
+
   const email = (req.body?.email || "").trim();
   const message = (req.body?.message || "").trim();
 

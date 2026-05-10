@@ -3,12 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const Home = lazy(() => import("./Components/Home"));
+import Home from "./Components/Home";
 const Contact = lazy(() => import("./Components/Contact"));
 const Academic = lazy(() => import("./Components/Academic"));
 const Tech = lazy(() => import("./Components/Tech"));
 
 const App = () => {
+  console.log("App rendering...");
   useEffect(() => {
     AOS.init({
       offset: 120,
