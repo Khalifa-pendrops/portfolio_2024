@@ -6,7 +6,7 @@ import {
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import resume4 from "/resume4.pdf";
+import resume2026 from "/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf";
 import movie from "../assets/movie-app.png";
 import weather from "../assets/weather-app.png";
 import whisper from "../assets/whisper-app.png";
@@ -17,8 +17,10 @@ import api3 from "../assets/bank-creation.png";
 import api4 from "../assets/Griggs.png";
 import api5 from "../assets/cmoPort.png";
 import api6 from "../assets/api4.png";
-import api7 from "../assets/klinic.png";
+import api7 from "../assets/kliniks.png";
 import api8 from "../assets/real.png";
+import api9 from "../assets/once.png";
+import api10 from "../assets/twelvet.png";
 import "./Home.css";
 
 function Tech() {
@@ -27,28 +29,23 @@ function Tech() {
   const getYear = () => {
     return new Date().getFullYear();
   };
-  //if you want to have a link opened on same browser tab
-  // const handleEasy = () => {
-  //   window.location.href = "https://easydesignuk.co.uk/index";
-  //   return;
-  // };
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
+      rootMargin: "-20% 0px -70% 0px", // Focus on the upper-middle of the viewport
+      threshold: [0, 0.1, 0.2],
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry.target.id, entry.isIntersecting);
         if (entry.isIntersecting) {
           setActiveSession(entry.target.id);
         }
       });
     }, observerOptions);
+
     sections.forEach((section) => observer.observe(section));
     return () => {
       sections.forEach((section) => observer.unobserve(section));
@@ -56,13 +53,13 @@ function Tech() {
   }, []);
 
   return (
-    <div className="w-100 ">
+    <div className="w-100">
       <section
         id="home"
-        className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5 "
+        className="container-sm d-flex flex-column justify-content-center align-items-center gap-4 my-5"
       >
-        <nav className="container-fluid transparent-bg d-flex justify-content-center align-items-center position-fixed top-0 left-0 w-100 z-3">
-          <ul className="d-flex justify-content-around align-items-center py-4 flex-wrap gap-2">
+        <nav className="container-fluid transparent-bg d-flex justify-content-center align-items-center position-fixed top-0 left-0 w-100 z-3 py-2">
+          <ul className="d-flex justify-content-center align-items-center flex-wrap gap-3 m-0 p-0">
             <li
               className="muted-bg px-5"
               data-aos="fade-left"
@@ -75,21 +72,21 @@ function Tech() {
 
             <li
               className={`muted-bg px-5 ${
-                activeSession === "home" ? "active" : " "
+                activeSession === "home" ? "active" : ""
               }`}
             >
               <a href="#home">Home</a>
             </li>
             <li
               className={`muted-bg px-5 ${
-                activeSession === "project" ? "active" : " "
+                activeSession === "project" ? "active" : ""
               }`}
             >
               <a href="#project">Projects</a>
             </li>
             <li
               className={`muted-bg px-5 ${
-                activeSession === "skills" ? "active" : " "
+                activeSession === "skills" ? "active" : ""
               }`}
             >
               <a href="#skills">Skills</a>
@@ -132,7 +129,7 @@ function Tech() {
             <div className="col-10 col-sm-auto">
               <a
                 className="linked-btn"
-                href={resume4}
+                href={resume2026}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -196,6 +193,122 @@ function Tech() {
         <div className=" row w-100  ">
           <div className="flex flex-col justify-content-center align-items-center ">
             <h2 className="text-capitalize font-monospace container">
+              <span
+                className="text-decoration-underline me-2"
+                style={{
+                  textUnderlineOffset: "8px",
+                  textDecorationThickness: "1px",
+                  textDecorationColor: "#F79D29",
+                }}
+              >
+                Full-Stack
+              </span>
+              Projects
+            </h2>
+
+            <div className="col-12 mb-4 mt-4 ">
+              <a
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
+                href="https://my-cyber-clinics.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    ONCE - Ephemeral Cyber-Vault
+                  </h4>
+                  <p>
+                    ONCE is a high-security, zero-knowledge encrypted messaging platform built on the principle of absolute ephemerality. The relay server is cryptographically blind - it never sees your plaintext, your keys, or your unencrypted metadata. Every device forges a unique x25519 Identity Key stored exclusively in hardware-backed SecureStore, which never leaves the device. Messages are encrypted per recipient using AES-GCM and ChaCha20-Poly1305, staged in a Redis TTL buffer, then permanently incinerated the moment delivery is confirmed. On the mobile side, the UI is OLED-hardened with Moti animations, haptic-driven navigation, biometric lock (FaceID/Fingerprint), physical QR Handshake verification, and a tiered trust system (Amber/Cyan/Purple). Features a Paystack-backed Elite Node premium tier for unlimited connection forges and priority relay access.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React Native</p>
+                    <p className="bg-secondary px-2 rounded">Expo</p>
+                    <p className="bg-secondary px-2 rounded">Typescript</p>
+                    <p className="bg-secondary px-2 rounded">Moti</p>
+                    <p className="bg-secondary px-2 rounded">Fastify</p>
+                    <p className="bg-secondary px-2 rounded">Nativewind</p>
+                    <p className="bg-secondary px-2 rounded">Nodejs</p>
+                    <p className="bg-secondary px-2 rounded">PostgreSQL</p>
+                    <p className="bg-secondary px-2 rounded">Prisma</p>
+                    <p className="bg-secondary px-2 rounded">Redis</p>
+                    <p className="bg-secondary px-2 rounded">X25519</p>
+                    <p className="bg-secondary px-2 rounded">AES-GCM</p>
+                    <p className="bg-secondary px-2 rounded">Docker</p>
+                    <p className="bg-secondary px-2 rounded">Zustand</p>
+                    
+                  </div>
+                </div>
+                <img
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={api9}
+                  alt="once thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
+                  width="434px"
+                />
+              </a>
+            </div>
+
+             <div className="col-12 mb-4 mt-4 ">
+              <a
+                className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
+                href="https://my-cyber-clinics.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div
+                  className="d-flex flex-column justify-content-center align-items-start gap-2 p-3"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <h4 className="fw-bolder text-primary">
+                    Mycyberclinics RN App (web & mobile)
+                  </h4>
+                  <p>
+                    This is a React Native application for healthcare
+                    professionals and those who needs to access medical
+                    services. It allows users to manage patient records,
+                    appointments, and communication. Built with React Native for
+                    cross-platform compatibility. Nativewind is used for
+                    styling, ensuring a responsive and user-friendly interface.
+                    The backend is powered by Nodejs + aok + TS, handling data
+                    storage and retrieval with mongoDB + redis . I built the
+                    client side of this mobile application with React Native +
+                    Tailwind, while contributing to the server side too.
+                  </p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <p className="bg-secondary px-2 rounded">React Native</p>
+                    <p className="bg-secondary px-2 rounded">Nativewind</p>
+                    <p className="bg-secondary px-2 rounded">Nodejs</p>
+                    <p className="bg-secondary px-2 rounded">Koa</p>
+                    <p className="bg-secondary px-2 rounded">Firebase Auth</p>
+                    <p className="bg-secondary px-2 rounded">CI/CD</p>
+                    <p className="bg-secondary px-2 rounded">MongoDB</p>
+                    <p className="bg-secondary px-2 rounded">Redis</p>
+                    <p className="bg-secondary px-2 rounded">Zustand</p>
+                    <p className="bg-secondary px-2 rounded">Tanstack Query</p>
+                  </div>
+                </div>
+                <img
+                  className="d-non d-xl-block img-fluid h-100 border rounded"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                  src={api7}
+                  alt="mycyberclinics thumb-nail image"
+                  loading="lazy"
+                  decoding="async"
+                  width="434px"
+                />
+              </a>
+            </div>
+
+            <h2 className="text-capitalize font-monospace container mt-5">
               <span
                 className="text-decoration-underline me-2"
                 style={{
@@ -357,7 +470,7 @@ function Tech() {
                     This program validates credit card numbers for various types
                     of credit cards. It is implemented on the command line (CL),
                     where users are prompted to enter a credit card number or
-                    press "0" to exit the program. The program first checks
+                    press \"0\" to exit the program. The program first checks
                     whether the entered number matches the criteria for the
                     supported card types (Verve, Visa, and Mastercard –
                     additional card types can be implemented). This is done by
@@ -404,8 +517,7 @@ function Tech() {
             <div className="col-12 mb-4 mt-4 ">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
-                // onClick={handleEasy}
-                href="https://my-cyber-clinics.web.app"
+                href="https://react-e-commerce-app-henna.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -415,36 +527,26 @@ function Tech() {
                   data-aos-delay="100"
                 >
                   <h4 className="fw-bolder text-primary">
-                    Mycyberclinics RN App (web & mobile)
+                    Twelvet Educational Services
                   </h4>
                   <p>
-                    This is a React Native application for healthcare
-                    professionals and those who needs to access medical
-                    services. It allows users to manage patient records,
-                    appointments, and communication. Built with React Native for
-                    cross-platform compatibility. Nativewind is used for
-                    styling, ensuring a responsive and user-friendly interface.
-                    The backend is powered by Nodejs + aok + TS, handling data
-                    storage and retrieval with mongoDB + redis . I built the
-                    client side of this mobile application with React Native +
-                    Tailwind, while contributing to the server side too.
+                    Twelvet is a production website built for an educational services business, designed and delivered independently from start to finish. It features multi-page routing, dynamic service sections, a WhatsApp CTA integration, contact form, newsletter subscription, and full SEO optimization via Next.js static generation. The site is deployed to Vercel with a zero-downtime CI/CD pipeline and Next.js image optimization for fast load times globally. Clean, responsive layout across all screen sizes with a professional look that matches the client's brand.
                   </p>
                   <div className="d-flex flex-wrap gap-2">
-                    <p className="bg-secondary px-2 rounded">React Native</p>
-                    <p className="bg-secondary px-2 rounded">Nativewind</p>
-                    <p className="bg-secondary px-2 rounded">Nodejs</p>
-                    <p className="bg-secondary px-2 rounded">MongoDB</p>
-                    <p className="bg-secondary px-2 rounded">Redis</p>
-                    <p className="bg-secondary px-2 rounded">Zustand</p>
-                    <p className="bg-secondary px-2 rounded">Tanstack Query</p>
+                    <p className="bg-secondary px-2 rounded">Next.js</p>
+                    <p className="bg-secondary px-2 rounded">Tailwind CSS</p>
+                    <p className="bg-secondary px-2 rounded">JavaScript</p>
+                     <p className="bg-secondary px-2 rounded">CI/CD</p>
+                     <p className="bg-secondary px-2 rounded">SEO Optimization</p>
+                     <p className="bg-secondary px-2 rounded">Responsive Design</p>
                   </div>
                 </div>
                 <img
                   className="d-non d-xl-block img-fluid h-100 border rounded"
                   data-aos="zoom-out"
                   data-aos-delay="100"
-                  src={api7}
-                  alt="mycyberclinics thumb-nail image"
+                  src={api10}
+                  alt="twelvet thumb-nail image"
                   loading="lazy"
                   decoding="async"
                   width="434px"
@@ -455,7 +557,6 @@ function Tech() {
             <div className="col-12 mb-4 mt-4 ">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
-                // onClick={handleEasy}
                 href="https://react-e-commerce-app-henna.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -499,7 +600,6 @@ function Tech() {
             <div className="col-12 mb-4 mt-4 ">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
-                // onClick={handleEasy}
                 href="https://cmonwezeandassociates.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -541,7 +641,6 @@ function Tech() {
             <div className="col-12 mb-4">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
-                // onClick={handleEasy}
                 href="https://griggsspecialisthospital.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -582,7 +681,6 @@ function Tech() {
             <div className="col-12 mb-4">
               <a
                 className="anchor-hover d-flex flex-column flex-md-row  justify-content-center align-items-stretch rounded"
-                // onClick={handleEasy}
                 href="https://easydesignuk.co.uk/index"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -747,7 +845,6 @@ function Tech() {
         className="container-sm d-flex justify-content-center align-items-center my-5 "
       >
         <div className="d-flex justify-content-center align-items-center flex-wrap gap-4">
-          {/* ADD MORE AS SKILLS IMPROVE */}
           <p
             className="border px-5 py-2 secondary-bg"
             data-aos="fade-up"
@@ -800,46 +897,60 @@ function Tech() {
           <p
             className="border px-5 py-2 secondary-bg"
             data-aos="fade-up"
-            data-aos-delay="1500"
-          >
-            React.js
-          </p>
-          <p
-            className="border px-5 py-2 secondary-bg"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            React Native
-          </p>
-          <p
-            className="border px-5 py-2 secondary-bg"
-            data-aos="fade-up"
-            data-aos-delay="1800"
+            data-aos-delay="2100"
           >
             Node.js
           </p>
           <p
             className="border px-5 py-2 secondary-bg"
             data-aos="fade-up"
-            data-aos-delay="1800"
+            data-aos-delay="2400"
           >
             Express.js
           </p>
           <p
             className="border px-5 py-2 secondary-bg"
             data-aos="fade-up"
-            data-aos-delay="2100"
+            data-aos-delay="2700"
           >
-            Git
+            MongoDB
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
+            data-aos-delay="3000"
+          >
+            MySQL
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
+            data-aos-delay="3300"
+          >
+            Redis
+          </p>
+          <p
+            className="border px-5 py-2 secondary-bg"
+            data-aos="fade-up"
+            data-aos-delay="3600"
+          >
+            Git/GitHub
           </p>
         </div>
       </section>
-      <footer className=" py-4 container-sm d-flex justify-content-center align-items-center text-center">
-        <p>
-          &copy; {getYear()}
-          <span className="text-primary "> Chikezie, Ilodigwe.</span> All Rights
-          Reserved
-        </p>
+
+      <footer className="w-100 py-4 mt-5 border-top border-secondary">
+        <div className="container d-flex justify-content-between align-items-center">
+          <p className="m-0">&copy; {getYear()} Chikezie Ilodigwe</p>
+          <div className="d-flex gap-3">
+            <a href="https://github.com/Khalifa-pendrops" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href="https://www.linkedin.com/in/chikezie-ilodigwe-942262113" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );

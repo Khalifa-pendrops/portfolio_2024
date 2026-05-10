@@ -11,7 +11,6 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./Home.css";
 import axios from "axios";
-import "./Home.css";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import BursBg from "./BursBg";
 // import Typewriter2 from "./TypeWriter2";
@@ -33,6 +32,17 @@ const Home = () => {
   const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
   const url = `${apiBase}/api/contact`;
   const aiUrl = `${apiBase}/api/ai`;
+
+  const formatLine = (text) => {
+    // Handle Bold Text (**bold**)
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return <strong key={i}>{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
 
   // for text animation on UI
 
@@ -122,10 +132,10 @@ const Home = () => {
 
     if (isiOS) {
       e.preventDefault();
-      window.open("/resume4.pdf", "_blank");
+      window.open("/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf", "_blank");
     } else {
       window.open(
-        "/resume4.pdf",
+        "/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf",
         "_blank",
         "location=yes,height=600,width=800,scrollbars=yes,status=yes",
       );
@@ -147,6 +157,7 @@ const Home = () => {
     try {
       const response = await axios.post(aiUrl, { prompt: aiPrompt.trim() });
       setAiResponse(response.data?.response || "No response received.");
+      setAiPrompt(""); // Clear input on success
     } catch (error) {
       setAiError(
         error.response?.data?.error ||
@@ -318,13 +329,13 @@ const Home = () => {
             <div className="col-10 col-sm-auto">
               <a
                 className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100 position-relative z-999"
-                href="/resume4.pdf"
+                href="/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-aos="fade-right"
                 data-aos-delay="100"
                 onClick={handleDownload}
-                download="resume4.pdf"
+                download="Chikezie_Ilodigwe_FullStack_Resume_2026.pdf"
                 title="Downloadable resume"
               >
                 <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
@@ -561,9 +572,35 @@ const Home = () => {
               </form>
               {aiError && <p className="text-danger mt-3">Error: {aiError}</p>}
               {aiResponse && (
-                <div className="mt-3">
-                  <h6 className="mb-2">Response</h6>
-                  <p className="custom-modal-response">{aiResponse}</p>
+                <div className="mt-4 p-3 rounded secondary-bg border border-info border-opacity-10">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h6 className="m-0 text-info">Response</h6>
+                    <button 
+                      className="btn btn-sm btn-outline-info py-0 px-2"
+                      onClick={() => {
+                        navigator.clipboard.writeText(aiResponse);
+                        alert("Copied to clipboard!");
+                      }}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <div className="custom-modal-response">
+                    {aiResponse.split('\n').map((line, i) => {
+                      // Handle Bullet Points
+                      if (line.trim().startsWith('* ')) {
+                        return <li key={i} className="mb-2 ms-3">{formatLine(line.trim().substring(2))}</li>;
+                      }
+                      // Handle Numbered Lists
+                      if (/^\d+\.\s/.test(line.trim())) {
+                        return <div key={i} className="mb-2 ms-3">{formatLine(line.trim())}</div>;
+                      }
+                      // Handle empty lines
+                      if (!line.trim()) return <br key={i} />;
+                      
+                      return <p key={i} className="mb-2">{formatLine(line)}</p>;
+                    })}
+                  </div>
                 </div>
               )}
             </div>

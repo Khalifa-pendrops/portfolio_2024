@@ -125,6 +125,18 @@ body {
 
 .custom-modal-response {
     color: #ccebf1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+}
+
+.custom-modal-response strong {
+    color: #4ecdc4 !important;
+}
+
+.custom-modal-response li {
+    list-style-type: disc;
+    color: #ccebf1;
 }
 
 .custom-modal-notice {
@@ -208,11 +220,11 @@ body {
 .contact-container button:hover,
 .contact-container a:hover,
 .linked-btn:hover {
-    background-color: #fff !important;
-    color: #030918 !important;
-    border: none !important;
-    border-radius: 0px !important;
-    transition: all 0.5s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #4ecdc4 !important;
+    border: 1px solid #4ecdc4 !important;
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.3) !important;
+    transition: all 0.3s ease-in-out;
 }
 
 .home-screen button:hover .icon,
@@ -248,34 +260,37 @@ p {
     min-width: 0;
     min-height: 320px;
 }
+footer span {
+    color: #030918 !important;
+}
 
 .zoom-in,
 .zoom-out {
-    transition: transform 0.5s ease !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
 .zoom-in:hover,
 .zoom-out:hover {
-    background-color: #4e3912 !important;
-    color: #030918 !important;
-}
-
-.zoom-in:hover {
-    transform: scale(1.05) !important;
+    background: rgba(26, 163, 177, 0.12) !important;
+    border: 1px solid #4ecdc4 !important;
+    box-shadow: 0 0 25px rgba(78, 205, 196, 0.3) !important;
+    transform: translateY(-8px) scale(1.05) !important;
+    color: #fff !important;
 }
 
 .zoom-out:hover {
-    transform: scale(0.92) !important;
+    transform: translateY(-8px) scale(0.95) !important;
 }
 
 .icon-2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4ecdc4 !important;
 }
 
 
 .email-text {
     width: 90%;
-
 }
 
 .pseudo-modal h1 {
@@ -286,11 +301,18 @@ p {
     background-color: #030918 !important;
     word-break: break-all;
     overflow-wrap: break-word;
+    border: 1px solid #4ecdc4 !important;
+    transition: all 0.3s ease !important;
+}
+
+.contact-btn:hover {
+    background: #4ecdc4 !important;
+    color: #030918 !important;
 }
 
 .email-text,
 label {
-    color: #6f6f6f !important;
+    color: #9fb9c4 !important;
 }
 
 .icon-right {
@@ -302,22 +324,23 @@ label {
     letter-spacing: 3px !important;
     border: none !important;
     background-color: transparent !important;
-    transition: transform (0.5s ease-in-out) !important;
+    transition: all 0.3s ease-in-out !important;
     word-break: break-all;
     overflow-wrap: break-word;
     font-size: .9rem !important;
+    color: #4ecdc4 !important;
 }
 
 .email-wider-letters:hover {
     background-color: transparent !important;
-    color: #4e3912 !important;
-    border: none !important;
-    transform: scale(0.8) !important;
+    color: #fff !important;
+    transform: scale(1.05) !important;
+    text-shadow: 0 0 10px #4ecdc4;
 }
 
 input:active,
 textarea:active {
-    border: none !important;
+    border: 1px solid #4ecdc4 !important;
 }
 
 .text-area-min-height {
@@ -328,23 +351,33 @@ textarea:active {
 #home li {
     list-style: none;
     text-decoration: none;
-    color: #4e3912;
 }
 
 .transparent-bg {
-    background-color: rgba(220, 220, 220, 0) !important;
+    background-color: rgba(3, 9, 24, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(78, 205, 196, 0.15);
+    transition: all 0.3s ease;
 }
 
 .secondary-bg {
-    background-color: rgba(128, 128, 128, 0.26) !important;
+    background-color: rgba(78, 205, 196, 0.08) !important;
+    border: 1px solid rgba(78, 205, 196, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+.secondary-bg:hover {
+    background-color: rgba(78, 205, 196, 0.15) !important;
+    border-color: #4ecdc4 !important;
+    transform: translateY(-3px);
 }
 
 footer span {
-    color: #030918 !important;
+    color: #4ecdc4 !important;
 }
 
 footer span:hover {
-    color: #4e3912 !important;
+    color: #fff !important;
 }
 
 .hero-section {
@@ -352,38 +385,43 @@ footer span:hover {
 }
 
 .hero-section p {
-    font-size: 105%;
+    font-size: 1.1rem;
+    color: #9fb9c4 !important;
 }
 
 .muted-bg a,
 .back-to-home {
-    color: #b7b7b7 !important;
-    transition: transform 0.3s ease-in-out;
+    color: #9fb9c4 !important;
+    transition: all 0.3s ease;
 }
 
 .muted-bg a:hover,
 .back-to-home:hover {
-    background-color: gray !important;
-    padding: .6rem 1.2rem !important;
-    outline: none !important;
+    color: #4ecdc4 !important;
+    background: transparent !important;
 }
 
 .active {
-    background-color: #4e39127a;
-    color: white;
-    font-size: .6rem !important;
-    padding: .4rem 0 !important;
-    transform: scale(1.1);
+    background-color: rgba(78, 205, 196, 0.15) !important;
+    color: #4ecdc4 !important;
+    border: 1px solid #4ecdc4 !important;
+    border-radius: 4px;
+    padding: .4rem 1rem !important;
 }
 
 .anchor-hover:hover {
-    background-color: #4e3912 !important;
-    color: #07112c !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
 }
 
 .anchor-hover {
-    align-items: center !important;
-    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.anchor-hover:hover {
+    border-color: rgba(78, 205, 196, 0.2);
 }
 
 .anchor-hover h4,
@@ -400,11 +438,16 @@ footer span:hover {
 
 .anchor-hover img {
     align-self: center;
+    transition: transform 0.5s ease;
+}
+
+.anchor-hover:hover img {
+    transform: scale(1.02);
 }
 
 .custom-btn {
-    background-color: #030918 !important;
-    color: #fff !important;
+    background-color: #4ecdc4 !important;
+    color: #030918 !important;
 }
 
 .custom-btn:hover {
@@ -414,11 +457,12 @@ footer span:hover {
 
 .hero-cta-btn {
     background: linear-gradient(90deg, rgba(26, 163, 177, 0.18), rgba(78, 205, 196, 0.08));
-    border-color: rgba(78, 205, 196, 0.7) !important;
+    border: 1px solid rgba(78, 205, 196, 0.4) !important;
 }
 
 .hero-cta-btn:hover {
     background: linear-gradient(90deg, rgba(78, 205, 196, 0.28), rgba(26, 163, 177, 0.18)) !important;
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
 }
 
 /* MOVING TEXT STYLING */
@@ -430,10 +474,11 @@ footer span:hover {
 }
 
 .typewriter-text {
-    border-right: 1px solid orange;
+    border-right: 2px solid #4ecdc4;
     white-space: nowrap;
     margin: 0 auto;
     animation: full-loop 15s steps(30, end) infinite, blink 1s step-end infinite;
+    color: #4ecdc4;
 }
 
 
@@ -470,12 +515,11 @@ footer span:hover {
     width: 100%;
     overflow: hidden;
     padding: 1rem;
-    font-family: monospace;
-    font-size: 1.5rem;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .typewriter-text2 {
-    border-right: 0.5px solid orange;
+    border-right: 2px solid #4ecdc4;
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;

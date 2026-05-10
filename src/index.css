@@ -6,26 +6,28 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top left;
-    background-size: cover;
     height: 100vh;
-    font-family: Exo;
+    font-family: 'Exo 2', sans-serif;
+    line-height: 1.6;
 }
 
 .whatsapp-a {
     position: fixed !important;
-    left: 5% !important;
-    bottom: 3% !important;
+    right: 5% !important;
+    bottom: 12% !important;
     width: 72px !important;
     height: 72px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     border-radius: 50% !important;
-    border: 2px solid rgba(37, 211, 102, 0.9) !important;
-    background: rgba(37, 211, 102, 0.16) !important;
-    color: #d9ffe8 !important;
+    border: 1px solid rgba(37, 211, 102, 0.4) !important;
+    background: rgba(3, 9, 24, 0.6) !important;
+    backdrop-filter: blur(8px) !important;
+    color: #25d366 !important;
     text-decoration: none !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 9999 !important;
 }
 
 
