@@ -7,6 +7,7 @@ const Home = lazy(() => import("./Components/Home"));
 const Contact = lazy(() => import("./Components/Contact"));
 const Academic = lazy(() => import("./Components/Academic"));
 const Tech = lazy(() => import("./Components/Tech"));
+import ScrollToTop from "./Components/ScrollToTop";
 
 const App = () => {
   useEffect(() => {
@@ -28,8 +29,9 @@ const App = () => {
           <Route path="/tech" element={<Tech />} />
         </Routes>
       </Suspense>
+      <ScrollToTop />
       <a
-        className="whatsapp-a d-none d-sm-flex"
+        className="whatsapp-a"
         href="https://wa.me/2348156416326"
         target="_blank"
         rel="noopener noreferrer"

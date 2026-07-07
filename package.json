@@ -6,7 +6,8 @@
   "scripts": {
     "start": "vite --host 0.0.0.0",
     "server": "node backend/server.js",
-    "dev": "vite",
+    "copy-images": "node scripts/copy-project-images.mjs",
+    "dev": "node scripts/copy-project-images.mjs && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

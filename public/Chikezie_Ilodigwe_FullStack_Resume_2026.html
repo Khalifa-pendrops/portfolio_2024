@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chikezie Ilodigwe — Full-Stack Resume 2026</title>
+    <style>
+      :root {
+        --text: #1a1a1a;
+        --muted: #444;
+        --accent: #0d5f68;
+        --rule: #d8d8d8;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        line-height: 1.45;
+        background: #f4f4f4;
+        padding: 2rem 1rem;
+      }
+
+      .page {
+        max-width: 8.5in;
+        margin: 0 auto;
+        background: #fff;
+        padding: 0.65in 0.7in;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        font-size: 1.65rem;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.15rem;
+      }
+
+      .headline {
+        font-size: 0.98rem;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 0.45rem;
+      }
+
+      .contact {
+        font-size: 0.86rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .contact a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h2 {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 0.2rem;
+        margin: 1rem 0 0.55rem;
+      }
+
+      p,
+      li {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      ul {
+        padding-left: 1.1rem;
+      }
+
+      li {
+        margin-bottom: 0.28rem;
+      }
+
+      .role {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 0.55rem;
+      }
+
+      .role-title {
+        font-size: 0.94rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .role-meta {
+        font-size: 0.84rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .role-org {
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin-bottom: 0.25rem;
+      }
+
+      .project-title {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-top: 0.45rem;
+      }
+
+      .project-stack {
+        font-size: 0.82rem;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 0.15rem;
+      }
+
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.55rem;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+
+      .note {
+        margin-top: 0.8rem;
+        font-size: 0.84rem;
+        color: #555;
+      }
+
+      .print-hint {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+        }
+
+        .page {
+          box-shadow: none;
+          max-width: none;
+          padding: 0.5in 0.55in;
+        }
+
+        .print-hint {
+          display: none;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="print-hint">
+      Save as PDF: open this page in your browser → Print → Save as PDF
+    </p>
+
+    <main class="page">
+      <h1>CHIKEZIE ILODIGWE</h1>
+      <p class="headline">
+        Full-Stack Engineer — React / Next.js / React Native / Node.js / TypeScript
+      </p>
+      <p class="contact">
+        Enugu, Nigeria ·
+        <a href="tel:+2348139308197">+234 813 930 8197</a> ·
+        <a href="mailto:dikee5200@gmail.com">dikee5200@gmail.com</a> ·
+        <a href="https://portfolio-2024-pq5d.onrender.com">Portfolio</a> ·
+        <a href="https://github.com/Khalifa-pendrops">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/chikezie-ilodigwe-942262113">LinkedIn</a>
+      </p>
+
+      <h2>Professional Summary</h2>
+      <p>
+        Full-stack engineer with 3+ years of hands-on experience taking products from
+        concept to production across web, mobile, and backend systems. Strong across
+        React, Next.js, React Native, TypeScript, and Node.js. Currently building
+        <strong>ONCE</strong>, a zero-knowledge encrypted messaging platform, and
+        shipping production APIs and client-facing applications. Comfortable across
+        system design, API architecture, CI/CD, Docker, and cloud deployment.
+      </p>
+
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <span><strong>Frontend:</strong> React, Next.js, React Native (Expo), TypeScript, Tailwind CSS, NativeWind, Redux Toolkit, Zustand, Styled Components</span>
+        <span><strong>Backend:</strong> Node.js, Fastify, Express.js, REST APIs, WebSockets, JWT, refresh token rotation, rate limiting</span>
+        <span><strong>Databases:</strong> PostgreSQL, MongoDB, Redis, Prisma, Mongoose</span>
+        <span><strong>Security:</strong> x25519, AES-GCM, ChaCha20-Poly1305, AES-256, zero-knowledge architecture, biometric auth</span>
+        <span><strong>DevOps & Tools:</strong> Docker, CI/CD, Git/GitHub, Vercel, Render, Expo, Postman, OpenAPI</span>
+      </div>
+
+      <h2>Experience</h2>
+
+      <div class="role">
+        <div class="role-title">Backend Engineer</div>
+        <div class="role-meta">Dec 2024 – Jun 2025</div>
+      </div>
+      <p class="role-org">Genesys Tech Hub — Learnable Backend Engineering Program, Enugu, Nigeria</p>
+      <ul>
+        <li>Built and maintained scalable RESTful APIs with Node.js and Express.js, including auth flows and MongoDB schema design.</li>
+        <li>Implemented JWT authentication with access/refresh token rotation, multi-session support, route-level authorization, and rate limiting.</li>
+        <li>Applied Docker and CI/CD practices for consistent, repeatable deployments.</li>
+      </ul>
+
+      <div class="role">
+        <div class="role-title">Frontend Engineer</div>
+        <div class="role-meta">Dec 2023 – Jun 2024</div>
+      </div>
+      <p class="role-org">Genesys Tech Hub — Learnable Frontend Engineering Program, Enugu, Nigeria</p>
+      <ul>
+        <li>Built reusable React component systems integrated with live APIs and responsive layouts across major browsers.</li>
+        <li>Collaborated with backend engineers and designers in agile sprint cycles using ClickUp.</li>
+      </ul>
+
+      <h2>Selected Projects</h2>
+
+      <p class="project-title">ONCE — Ephemeral Cyber-Vault</p>
+      <p class="project-stack">React Native · Fastify · PostgreSQL · Redis · TypeScript · Docker · Private repo</p>
+      <ul>
+        <li>Zero-knowledge encrypted messaging platform with hardware-backed x25519 identity keys and per-recipient AES-GCM encryption.</li>
+        <li>Redis TTL staging with permanent message incineration on confirmed delivery; biometric lock and QR handshake on mobile.</li>
+      </ul>
+
+      <p class="project-title">MyCyber Clinics App — Telehealth Platform</p>
+      <p class="project-stack">React Native · React.js · NativeWind · Node.js · MongoDB · Redis · Private repo</p>
+      <ul>
+        <li>Cross-platform healthcare application for patient records, appointments, and clinician communication.</li>
+        <li>Built the React Native client and contributed to the Koa + TypeScript backend with CI/CD delivery.</li>
+        <li>Live: <a href="https://app.mycyberclinics.com">app.mycyberclinics.com</a></li>
+      </ul>
+
+      <p class="project-title">MyCyber Clinics Website — Public Marketing Site</p>
+      <p class="project-stack">React · Tailwind CSS · Healthcare · SEO</p>
+      <ul>
+        <li>Contributed to the front-facing telehealth marketing site connecting patients and clinicians to the platform.</li>
+        <li>Responsive layout, service storytelling, and polished healthcare brand experience for 24/7 care in Nigeria.</li>
+        <li>Live: <a href="https://mycyberclinics.com">mycyberclinics.com</a></li>
+      </ul>
+
+      <p class="project-title">PocketSync — Personal Finance Platform</p>
+      <p class="project-stack">React · TypeScript · Express · MongoDB · Render · Vercel</p>
+      <ul>
+        <li>Consolidated finance API for the Nigerian market with email OTP, HttpOnly cookie auth, BVN onboarding, and linked accounts.</li>
+        <li>Dashboard summaries, transaction history, internal transfers, interbank transfers, and bill payments with OpenAPI docs.</li>
+        <li>Live: <a href="https://psync-client.vercel.app">psync-client.vercel.app</a></li>
+      </ul>
+
+      <p class="project-title">Evently AI — Luxury Event Invitations</p>
+      <p class="project-stack">Next.js 16 · OpenAI · Prisma · PostgreSQL · Paystack · Cloudinary</p>
+      <ul>
+        <li>Full-stack SaaS: 7-step creation wizard, GPT-4o-mini copy generation, six design templates, and animated guest microsites with RSVP, music, and gift payments.</li>
+        <li>Host dashboard with analytics, deduplicated view tracking, NextAuth (email + Google), and admin platform overview.</li>
+        <li>Live: <a href="https://event-ai-three.vercel.app/">event-ai-three.vercel.app</a></li>
+      </ul>
+
+      <p class="project-title">Breed Perfumes — E-commerce</p>
+      <p class="project-stack">Next.js 16 · Prisma · Supabase · Paystack · Upstash Redis · Resend</p>
+      <ul>
+        <li>Production fragrance store with guest checkout, server-side pricing, Paystack callback + webhook verification, and atomic stock decrement on payment.</li>
+        <li>Admin dashboard (products, orders, inventory, blog CMS, coupons, reviews) with ISR caching and role-based API guards.</li>
+        <li>Live: <a href="https://breed-perfumes.vercel.app/">breed-perfumes.vercel.app</a></li>
+      </ul>
+
+      <p class="project-title">Twelvet Educational Services</p>
+      <p class="project-stack">Next.js 14 · Tailwind CSS · Vercel · SEO</p>
+      <ul>
+        <li>Production business website delivered independently with multi-page routing, contact form, newsletter, and CI/CD pipeline.</li>
+        <li>Live: <a href="https://velvet-ochre-one.vercel.app">velvet-ochre-one.vercel.app</a></li>
+      </ul>
+
+      <p class="project-title">Secure Authentication API</p>
+      <p class="project-stack">Node.js · Express · TypeScript · MongoDB</p>
+      <ul>
+        <li>Production-grade auth with refresh token rotation, reuse detection, logout-all, rate limiting, and Postman-tested flows.</li>
+        <li>GitHub: <a href="https://github.com/Khalifa-pendrops/scalable-api">github.com/Khalifa-pendrops/scalable-api</a></li>
+      </ul>
+
+      <p class="project-title">Real Trift — E-commerce Platform</p>
+      <p class="project-stack">React · Redux Toolkit · Styled Components</p>
+      <ul>
+        <li>Modern e-commerce frontend with resilient data layer and dark/neon UI refresh.</li>
+      </ul>
+
+      <h2>Education & Training</h2>
+      <ul>
+        <li><strong>Backend Engineering</strong> — Learnable Cohort 2024, Genesys Tech Hub (Dec 2024 – Jun 2025)</li>
+        <li><strong>Frontend Engineering</strong> — Learnable Cohort 2023, Genesys Tech Hub (Dec 2023 – Jun 2024)</li>
+      </ul>
+
+      <p class="note">
+        <strong>Availability:</strong> Open to remote-first full-time and contract roles. Available immediately.<br />
+        <strong>Private repositories:</strong> ONCE and MyCyber Clinics available upon request with NDA.<br />
+        <strong>References:</strong> Available upon request.
+      </p>
+    </main>
+  </body>
+</html>

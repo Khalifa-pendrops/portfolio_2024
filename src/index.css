@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jacques+Francois+Shadow&family=Lexend:wght@100..900&family=Pacifico&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: #ffff;
     background: radial-gradient(circle at top left, rgb(85, 3, 185), rgb(111, 51, 222) 5%, rgb(62, 0, 128) 10%, transparent 30%), #030918;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: top left;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Exo 2', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .whatsapp-a {
@@ -66,6 +72,95 @@ body {
 .whatsapp-a:hover {
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.18), 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-to-top {
+    position: fixed;
+    left: 5%;
+    bottom: 12%;
+    width: 72px;
+    height: 72px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(78, 205, 196, 0.4);
+    background: rgba(3, 9, 24, 0.6);
+    backdrop-filter: blur(8px);
+    color: #4ecdc4;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(14px) scale(0.92);
+    transition:
+        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.scroll-to-top--visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top__icon {
+    font-size: 1.35rem;
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background-color: rgba(78, 205, 196, 0.18);
+    border-color: #4ecdc4;
+    color: #f2fffe;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow:
+        0 0 0 3px rgba(78, 205, 196, 0.16),
+        0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-to-top:hover .scroll-to-top__icon {
+    transform: translateY(-2px);
+}
+
+.scroll-to-top--visible:hover {
+    transform: translateY(-2px) scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-to-top {
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+}
+
+@media (max-width: 576px) {
+    .whatsapp-a {
+        right: 4% !important;
+        bottom: 10% !important;
+        width: 54px !important;
+        height: 54px !important;
+    }
+
+    .whatsapp-btn {
+        font-size: 0.58rem !important;
+    }
+
+    .scroll-to-top {
+        left: 4%;
+        bottom: 10%;
+        width: 54px;
+        height: 54px;
+    }
+
+    .scroll-to-top__icon {
+        font-size: 1.05rem;
+    }
 }
 
 .scrolling-text_2 {

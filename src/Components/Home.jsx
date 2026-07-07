@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHandPointRight,
   faDownload,
-  faGraduationCap,
-  faCode,
   faRocket,
+  faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import "./Home.css";
 import axios from "axios";
-import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import BursBg from "./BursBg";
-// import Typewriter2 from "./TypeWriter2";
+import MobileNav from "./MobileNav";
+import ProjectCard from "./ProjectCard";
+import TestimonialsSection from "./TestimonialsSection";
+import { SITE, SKILLS } from "../data/site";
+import {
+  featuredProjects,
+  projectsByCategory,
+  PROJECT_CATEGORIES,
+} from "../data/projects";
+
+const NAV_ITEMS = [
+  { id: "work", label: "Work" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
 
 const Home = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
   const [aiPrompt, setAiPrompt] = useState("");
@@ -28,13 +37,14 @@ const Home = () => {
   const [aiLoading, setAiLoading] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAiOpen, setIsAiOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showAiNotice, setShowAiNotice] = useState(false);
+
   const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
   const url = `${apiBase}/api/contact`;
   const aiUrl = `${apiBase}/api/ai`;
 
   const formatLine = (text) => {
-    // Handle Bold Text (**bold**)
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
@@ -44,38 +54,10 @@ const Home = () => {
     });
   };
 
-  // for text animation on UI
-
-  const texts = [
-    {
-      text: "CHIKEZIE",
-      className: "text-danger fw-bold display-2",
-    },
-    {
-      text: "ILODIGWE",
-      className: "text-warning fw-bold display-2",
-    },
-  ];
-
-  const typingSpeed = 200;
-  const deletingSpeed = 200;
-  const pauseAfterTyping = 2000;
-
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopIndex, setLoopIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-
-  const current = texts[loopIndex];
-  const fullText = current.text;
-
   const handleChange = (e) => {
     setIsSubmitting(false);
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -88,57 +70,29 @@ const Home = () => {
         type: "error",
         text: "Please fill out all fields.",
       });
-      console.log("Validation error message set:", responseMessage);
       setIsSubmitting(false);
       return;
     }
 
     try {
       const response = await axios.post(url, formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
-
-      console.log("Response:", response);
 
       if (response.status >= 200 && response.status < 300) {
         setResponseMessage({
           type: "success",
-          text: response.data?.message || "Form submitted successfully!",
+          text: response.data?.message || "Message sent successfully.",
         });
-
-        console.log(responseMessage);
-        console.log("Response status:", response.status);
-        console.log("Response data:", response.data);
       }
-
       setFormData({ email: "", message: "" });
-    } catch (error) {
-      console.log("Form submission error: ", error);
+    } catch {
       setResponseMessage({
         type: "error",
-        text: "An error occurred while submitting. Please try again later",
+        text: "Something went wrong. Please try again or email me directly.",
       });
     } finally {
       setIsSubmitting(false);
-    }
-    setFormData({ email: "", message: "" });
-  };
-
-  // handle logic to download or open pdf file authomatically on apple devices
-  const handleDownload = (e) => {
-    const isiOS = /ipad|iphone|ipod/.test(navigator.userAgent);
-
-    if (isiOS) {
-      e.preventDefault();
-      window.open("/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf", "_blank");
-    } else {
-      window.open(
-        "/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf",
-        "_blank",
-        "location=yes,height=600,width=800,scrollbars=yes,status=yes",
-      );
     }
   };
 
@@ -157,7 +111,7 @@ const Home = () => {
     try {
       const response = await axios.post(aiUrl, { prompt: aiPrompt.trim() });
       setAiResponse(response.data?.response || "No response received.");
-      setAiPrompt(""); // Clear input on success
+      setAiPrompt("");
     } catch (error) {
       setAiError(
         error.response?.data?.error ||
@@ -170,28 +124,33 @@ const Home = () => {
     }
   };
 
+  const closeAiModal = () => {
+    setIsAiOpen(false);
+    setAiPrompt("");
+    setAiResponse("");
+    setAiError(null);
+    setAiLoading(false);
+  };
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
-    document.body.style.overflow = isContactOpen || isAiOpen ? "hidden" : "";
-  }, [isContactOpen, isAiOpen]);
+    document.body.style.overflow =
+      isContactOpen || isAiOpen || isMenuOpen ? "hidden" : "";
+  }, [isContactOpen, isAiOpen, isMenuOpen]);
 
   useEffect(() => {
     const onKeyDown = (event) => {
       if (event.key !== "Escape") return;
-      if (isAiOpen) {
-        setIsAiOpen(false);
-        setAiPrompt("");
-        setAiResponse("");
-        setAiError(null);
-        setAiLoading(false);
-      } else if (isContactOpen) {
-        setIsContactOpen(false);
-      }
+      if (isAiOpen) closeAiModal();
+      else if (isContactOpen) setIsContactOpen(false);
     };
 
     if (isContactOpen || isAiOpen) {
       window.addEventListener("keydown", onKeyDown);
     }
-
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isContactOpen, isAiOpen]);
 
@@ -202,222 +161,241 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [isAiOpen]);
 
-  const closeAiModal = () => {
-    setIsAiOpen(false);
-    setAiPrompt("");
-    setAiResponse("");
-    setAiError(null);
-    setAiLoading(false);
-  };
-
   useEffect(() => {
-    let timeout;
+    const hash = window.location.hash?.replace("#", "");
+    if (!hash) return;
+    const timer = setTimeout(() => scrollToSection(hash), 300);
+    return () => clearTimeout(timer);
+  }, []);
 
-    if (!isDeleting && charIndex <= fullText.length) {
-      setDisplayText(fullText.substring(0, charIndex));
-      timeout = setTimeout(() => {
-        setCharIndex((prev) => prev + 1);
-      }, typingSpeed);
-    } else if (isDeleting && charIndex >= 0) {
-      setDisplayText(fullText.substring(0, charIndex));
-      timeout = setTimeout(() => {
-        setCharIndex((prev) => prev - 1);
-      }, deletingSpeed);
-    }
-
-    if (!isDeleting && charIndex === fullText.length + 1) {
-      timeout = setTimeout(() => {
-        setIsDeleting(true);
-      }, pauseAfterTyping);
-    }
-
-    if (isDeleting && charIndex === 0) {
-      setIsDeleting(false);
-      setLoopIndex((prev) => (prev + 1) % texts.length);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, loopIndex]);
+  const currentYear = new Date().getFullYear();
 
   return (
-    <section className="home-screen">
+    <div className="portfolio-page">
       <BursBg className="home-burst-bg" />
-      <div
-        className="home-content container-xxl d-flex flex-column justify-content-center align-items-center gap-5 py-5"
-        style={{ paddingBottom: "5rem" }}
-      >
-        {/* UNCOMMENT WHEN A NEW PROJECT STARTS */}
-        {/* <div className="container-fluid d-block typewriter-wraper">
-        <p className="container-fluid typewriter-text">On-going Project: SafeWatch NG🎉
-        </p>
-      </div> */}
 
-        <div className="home_heead container-xxl text-center d-flex flex-column justify-content-center align-items-center gap-3 px-4">
-          <div className="typewriter2-wrapper container-fluid">
-            <div className="container-fluid d-block typewriter-wrapper ">
-              <span
-                className={`typewriter-text2 ${current.className}`}
-                data-aos="zoom-in"
-                // data-aos-delay="300"
-                data-aos-once="false"
-                style={{ opacity: 1 }}
-              >
-                {displayText}
-              </span>
-            </div>
-          </div>
-          <p className=" w-100" data-aos="fade-down">
-            A Full-stack Software Engineer with 3+ years of experience building
-            and scaling production-grade web and cross-platform mobile
-            applications. Proficient in React, React Native, Next.js, Node.js,
-            Express, and TypeScript, with hands-on experience shipping
-            real-world products — including the MyCyber Clinics app. Focused on
-            performance, clean architecture, reliable systems, and passionate
-            about AI-driven innovation.
-          </p>
-          <div className="home_buttons container-fluid d-flex d-sm-inline-flex justify-content-center align-items-center gap-2 flex-column flex-sm-row px-5">
-            {/* <div className="col-10 col-sm-auto">
-              <a
-                className="hero-cta-btn linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                href="mailto:chikezie270@gmail.com?subject=Let's Build Something Great"
-                title="Primary call to action"
-              >
-                <FontAwesomeIcon className="icon fs-5" icon={faRocket} />
-                Hire Me for Your Next Build
-              </a>
-            </div> */}
+      <header className="portfolio-nav transparent-bg">
+        <nav className="portfolio-nav__inner container-xxl">
+          <button
+            type="button"
+            className="portfolio-nav__brand"
+            onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            {SITE.name.split(" ")[0]}
+          </button>
 
-            <div className="col-10 col-sm-auto">
-              <Link className="linked-btn d-none d-sm-flex" to="/get-in-touch">
-                <div className="linked-btn">
+          <div className="portfolio-nav__end">
+            <ul className="portfolio-nav__links portfolio-nav__links--desktop">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.id}>
                   <button
-                    className="bg-none-btn btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                    data-aos="fade-right"
-                    data-aos-delay="300"
+                    type="button"
+                    className="portfolio-nav__link"
+                    onClick={() => scrollToSection(item.id)}
                   >
-                    <FontAwesomeIcon className="icon fs-5" icon={faRocket} />
-                    Hire Me for Your Next Build
+                    {item.label}
                   </button>
+                </li>
+              ))}
+              <li>
+                <a
+                  className="portfolio-nav__link"
+                  href={SITE.resumePath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CV
+                </a>
+              </li>
+            </ul>
+
+            <MobileNav
+              isOpen={isMenuOpen}
+              onToggle={() => setIsMenuOpen((open) => !open)}
+              onClose={() => setIsMenuOpen(false)}
+              onNavigate={scrollToSection}
+              site={SITE}
+              onOpenAi={() => setIsAiOpen(true)}
+            />
+          </div>
+        </nav>
+      </header>
+
+      <main className="portfolio-main">
+        <section id="top" className="hero-section-block container-xxl">
+          <p className="hero-eyebrow" data-aos="fade-down">
+            {SITE.location}
+          </p>
+          <h1 className="hero-name" data-aos="zoom-in">
+            {SITE.name}
+          </h1>
+          <p className="hero-role" data-aos="fade-up" data-aos-delay="100">
+            {SITE.title} · {SITE.tagline}
+          </p>
+          <p className="hero-summary" data-aos="fade-up" data-aos-delay="200">
+            {SITE.summary}
+          </p>
+
+          <div
+            className="hero-actions"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <button
+              type="button"
+              className="btn hero-btn hero-btn--primary"
+              onClick={() => scrollToSection("work")}
+            >
+              <FontAwesomeIcon icon={faArrowDown} />
+              View Work
+            </button>
+            <a
+              className="btn hero-btn"
+              href={SITE.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faDownload} />
+              Download CV
+            </a>
+            <button
+              type="button"
+              className="btn hero-btn"
+              onClick={() => setIsContactOpen(true)}
+            >
+              <FontAwesomeIcon icon={faRocket} />
+              Hire Me
+            </button>
+            <button
+              type="button"
+              className="btn hero-btn hero-btn--ghost"
+              onClick={() => setIsAiOpen(true)}
+            >
+              Ask AI
+            </button>
+            <a
+              className="btn hero-btn hero-btn--icon"
+              href={SITE.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a
+              className="btn hero-btn hero-btn--icon"
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </div>
+        </section>
+
+        <section id="work" className="section-block container-xxl">
+          <div className="section-heading">
+            <h2>Selected Work</h2>
+            <p>Production systems across mobile, web, and backend.</p>
+          </div>
+          <div className="featured-grid">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+
+          {Object.values(PROJECT_CATEGORIES).map((category) => {
+            const items = projectsByCategory(category);
+            if (!items.length) return null;
+            return (
+              <div key={category} className="project-group">
+                <h3 className="project-group__title">{category}</h3>
+                <div className="project-grid">
+                  {items.map((project) => (
+                    <ProjectCard key={project.id} project={project} compact />
+                  ))}
                 </div>
-              </Link>
-              <button
-                className="get_in_touch_1 bg-none-btn btn border rounded-2 d-sm-none d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                data-aos="fade-right"
-                data-aos-delay="300"
-                type="button"
-                onClick={() => setIsContactOpen(true)}
-              >
-                <FontAwesomeIcon
-                  className="icon fs-5"
-                  icon={faHandPointRight}
-                />
-                Get in Touch
-              </button>
-            </div>
+              </div>
+            );
+          })}
+        </section>
 
-            <div className="col-10 col-sm-auto">
-              <button
-                className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                title="Ask the AI assistant"
-                type="button"
-                onClick={() => setIsAiOpen(true)}
-              >
-                Ask AI
-              </button>
-            </div>
+        <TestimonialsSection />
 
-            <div className="col-10 col-sm-auto">
-              <a
-                className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100 position-relative z-999"
-                href="/Chikezie_Ilodigwe_FullStack_Resume_2026.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="fade-right"
-                data-aos-delay="100"
-                onClick={handleDownload}
-                download="Chikezie_Ilodigwe_FullStack_Resume_2026.pdf"
-                title="Downloadable resume"
+        <section id="skills" className="section-block container-xxl">
+          <div className="section-heading">
+            <h2>Skills</h2>
+            <p>Technologies I use to ship reliable products.</p>
+          </div>
+          <div className="skills-grid">
+            {SKILLS.map((skill, index) => (
+              <span
+                key={skill}
+                className="skill-pill secondary-bg"
+                data-aos="fade-up"
+                data-aos-delay={(index % 6) * 80}
               >
-                <FontAwesomeIcon className="icon fs-5" icon={faDownload} />
-                CV
+                {skill}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="section-block container-xxl">
+          <div className="section-heading">
+            <h2>Contact</h2>
+            <p>Open to remote full-time and contract roles. Available immediately.</p>
+          </div>
+          <div className="contact-panel secondary-bg">
+            <div className="contact-panel__info">
+              <a href={`mailto:${SITE.email}`} className="email-wider-letters">
+                {SITE.email}
               </a>
+              <p className="contact-panel__phone">{SITE.phone}</p>
+              <div className="contact-panel__links">
+                <a href={SITE.github} target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <a
+                  href={SITE.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a href={SITE.resumePath} target="_blank" rel="noopener noreferrer">
+                  Resume
+                </a>
+              </div>
             </div>
+            <button
+              type="button"
+              className="btn hero-btn hero-btn--primary"
+              onClick={() => setIsContactOpen(true)}
+            >
+              Send a Message
+            </button>
+          </div>
+        </section>
+      </main>
 
-            <div className="col-10 col-sm-auto">
-              <a
-                className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-                href="https://github.com/Khalifa-pendrops"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="fade-left"
-                data-aos-delay="100"
-                title="Github connect"
-              >
-                <FontAwesomeIcon className="icon fs-5" icon={faGithub} />
-                GitHub
-              </a>
-            </div>
-
-            <div className="col-10 col-sm-auto">
-              <a
-                href="https://www.linkedin.com/in/chikezie-ilodigwe-942262113?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="fade-left"
-                data-aos-delay="300"
-                title="LinkedIn connect"
-                className="linked-btn get_in_touch btn border rounded-2 d-flex justify-content-center align-items-center flex-wrap gap-2 w-100"
-              >
-                <FontAwesomeIcon className="icon fs-5" icon={faLinkedin} />
-                LinkedIn
-              </a>
-            </div>
+      <footer className="portfolio-footer">
+        <div className="container-xxl portfolio-footer__inner">
+          <p>&copy; {currentYear} {SITE.name}</p>
+          <div className="portfolio-footer__links">
+            <a href={SITE.github} target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
           </div>
         </div>
-        <div className="home_body px-4 d-flex flex-column justify-content-center align-items-center gap-2">
-          <h2 className="display-5 fw-bolder">Paths</h2>
-          <div className="paths-grid d-flex flex-column flex-sm-row justify-content-center align-items-stretch gap-4 my-2 w-100">
-            <Link className="links path-card zoom-out p-4 d-flex" to="/tech">
-              <div
-                className="d-flex flex-column gap-2 justify-content-center align-items-start w-100"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-offset="200"
-              >
-                <FontAwesomeIcon
-                  className="icon-2 text-warning"
-                  icon={faCode}
-                />
-                <h4 className="fw-bolder text-primary">Tech Spectrum</h4>
-                <p>
-                  A tech odyssey: from the basic HTML through CSS and JavaScript
-                  to cutting-edge frameworks and libraries in React.js,
-                  Typescript, Node.js, Express, Next.js, React Native, and more.
-                  Also exploring the latest in AI.
-                </p>
-              </div>
-            </Link>
-            <Link className="links path-card zoom-in p-4 d-flex" to="/academic">
-              <div
-                className="d-flex flex-column gap-2 justify-content-center align-items-start w-100"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-                data-aos-offset="200"
-              >
-                <FontAwesomeIcon
-                  className="icon-2 text-warning"
-                  icon={faGraduationCap}
-                />
-                <h4 className="fw-bolder text-primary">Tech News & Research</h4>
-                <p>
-                  Exploring Tech and societal intricacies: A blend of tech
-                  insights and societal analysis.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </div>
+      </footer>
 
       {isContactOpen && (
         <div
@@ -435,32 +413,25 @@ const Home = () => {
               <h5 className="modal-title custom-modal-title">Send a Message</h5>
               <button
                 type="button"
-                className="btn-close custom-modal-close  "
+                className="btn-close custom-modal-close"
                 aria-label="Close"
                 onClick={() => setIsContactOpen(false)}
-              ></button>
+              />
             </div>
             <div className="pseudo-modal contact-container d-flex flex-column justify-content-center align-items-center gap-3 container-fluid my-3">
               <div className="contact_top d-flex flex-column justify-content-center align-items-start text-center">
                 <p className="custom-modal-subtitle text-center align-self-center">
-                  Send a quick note or reach out directly at
+                  Reach me at{" "}
+                  <a href={`mailto:${SITE.email}`} className="email-wider-letters">
+                    {SITE.email}
+                  </a>
                 </p>
-                <p className="email-text text-center align-self-center">
-                  Fill out the form below or contact me with your favourite
-                  email client at
-                </p>
-                <a
-                  href="mailto:chikezie270@gmail.com?subject=Let's Talk About Your Services "
-                  className="email-wider-letters text-danger align-self-center"
-                >
-                  chikezie270@gmail.com
-                </a>
               </div>
               <form
-                className="d-flex flex-column justify-content-center align-items-center gap-2"
+                className="d-flex flex-column justify-content-center align-items-center gap-2 w-100"
                 onSubmit={handleSubmit}
               >
-                <div className="d-flex flex-column gap-4 email-text custom-modal-body">
+                <div className="d-flex flex-column gap-4 email-text custom-modal-body w-100">
                   <label className="d-flex flex-column justify-content-center align-items-start gap-2">
                     Email
                     <input
@@ -470,39 +441,37 @@ const Home = () => {
                       onChange={handleChange}
                       className="form-control rounded border p-2 custom-modal-input"
                       required
-                    ></input>
+                    />
                   </label>
                   <label className="d-flex flex-column justify-content-center align-items-start gap-2">
                     Message
                     <textarea
-                      type="text"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       className="border rounded p-2 form-control text-area-min-height custom-modal-input"
                       required
-                    ></textarea>
+                    />
                   </label>
                 </div>
                 <p className="email-text text-start">
-                  Please include your name or/and the name of your organization
-                  in the message.
+                  Include your name or organization in the message.
                 </p>
-                <div className="d-flex justify-content-center align-items-center gap-4 w-50">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="contact-btn text-white py-1 px-2 btn d-flex justify-content-center align-items-center gap-2 custom-modal-cta"
-                  >
-                    <FontAwesomeIcon className="fs-1" icon={faCaretRight} />
-                    {isSubmitting ? "Submitting..." : "Send Message"}
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="contact-btn text-white py-2 px-4 btn d-flex justify-content-center align-items-center gap-2 custom-modal-cta"
+                >
+                  <FontAwesomeIcon icon={faCaretRight} />
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
                 {responseMessage && (
                   <p
-                    style={{
-                      color: responseMessage === "success" ? "green" : "red",
-                    }}
+                    className={
+                      responseMessage.type === "success"
+                        ? "text-success"
+                        : "text-danger"
+                    }
                   >
                     {responseMessage.text}
                   </p>
@@ -522,24 +491,24 @@ const Home = () => {
             aria-label="Ask the AI assistant"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-header custom-modal-header flex flex-row justify-content-between align-items-center ">
+            <div className="modal-header custom-modal-header flex flex-row justify-content-between align-items-center">
               <h5 className="modal-title custom-modal-title">
                 Ask the AI Assistant
               </h5>
               <button
                 type="button"
-                className="btn-close custom-modal-close mx-2 "
+                className="btn-close custom-modal-close mx-2"
                 aria-label="Close"
                 onClick={closeAiModal}
-              ></button>
+              />
             </div>
             <div className="modal-body custom-modal-body">
               <p className="custom-modal-subtitle">
-                Ask anything about tech, my work, or ideas you want to explore.
+                Ask about my projects, stack, or experience.
               </p>
               {showAiNotice && (
                 <div className="custom-modal-notice">
-                  Hey there! This chat clears when you close this modal.
+                  This chat clears when you close the modal.
                 </div>
               )}
               <form
@@ -560,7 +529,7 @@ const Home = () => {
                     }}
                     placeholder="Ask anything..."
                     rows={4}
-                  ></textarea>
+                  />
                 </label>
                 <button
                   type="submit"
@@ -575,30 +544,38 @@ const Home = () => {
                 <div className="mt-4 p-3 rounded secondary-bg border border-info border-opacity-10">
                   <div className="d-flex justify-content-between align-items-center mb-3">
                     <h6 className="m-0 text-info">Response</h6>
-                    <button 
+                    <button
+                      type="button"
                       className="btn btn-sm btn-outline-info py-0 px-2"
                       onClick={() => {
                         navigator.clipboard.writeText(aiResponse);
-                        alert("Copied to clipboard!");
                       }}
                     >
                       Copy
                     </button>
                   </div>
                   <div className="custom-modal-response">
-                    {aiResponse.split('\n').map((line, i) => {
-                      // Handle Bullet Points
-                      if (line.trim().startsWith('* ')) {
-                        return <li key={i} className="mb-2 ms-3">{formatLine(line.trim().substring(2))}</li>;
+                    {aiResponse.split("\n").map((line, i) => {
+                      if (line.trim().startsWith("* ")) {
+                        return (
+                          <li key={i} className="mb-2 ms-3">
+                            {formatLine(line.trim().substring(2))}
+                          </li>
+                        );
                       }
-                      // Handle Numbered Lists
                       if (/^\d+\.\s/.test(line.trim())) {
-                        return <div key={i} className="mb-2 ms-3">{formatLine(line.trim())}</div>;
+                        return (
+                          <div key={i} className="mb-2 ms-3">
+                            {formatLine(line.trim())}
+                          </div>
+                        );
                       }
-                      // Handle empty lines
                       if (!line.trim()) return <br key={i} />;
-                      
-                      return <p key={i} className="mb-2">{formatLine(line)}</p>;
+                      return (
+                        <p key={i} className="mb-2">
+                          {formatLine(line)}
+                        </p>
+                      );
                     })}
                   </div>
                 </div>
@@ -607,7 +584,7 @@ const Home = () => {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
