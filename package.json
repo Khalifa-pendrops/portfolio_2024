@@ -8,7 +8,7 @@
     "server": "node backend/server.js",
     "copy-images": "node scripts/copy-project-images.mjs",
     "dev": "node scripts/copy-project-images.mjs && vite",
-    "build": "vite build",
+    "build": "node scripts/copy-project-images.mjs && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

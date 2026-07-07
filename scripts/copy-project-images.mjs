@@ -31,6 +31,5 @@ for (const [src, dest] of copies) {
 }
 
 if (copied === 0) {
-  console.error("No project images were copied.");
-  process.exit(1);
+  console.warn("No project images were copied from Downloads — using committed assets.");
 }
