@@ -1,9 +1,9 @@
 export const SITE = {
   name: "Chikezie Ilodigwe",
-  title: "Full-Stack Engineer",
-  tagline: "React · React Native · Node.js · TypeScript",
+  title: "Software Engineer",
+  tagline: "React · Next.js · React Native · Node.js · TypeScript",
   summary:
-    "Full-stack engineer with 3+ years shipping production web and mobile applications — including AI event platforms, e-commerce, healthcare, fintech APIs, and zero-knowledge encrypted messaging.",
+    "Software Engineer delivering web, mobile and backend systems across healthcare, e-commerce, SaaS, fintech, etc. Experienced in React, Next.js, React Native, TypeScript, Node.js with a focus on authorization, reliable processing and maintainable architecture.",
   location: "Enugu, Nigeria",
   email: "dikee5200@gmail.com",
   phone: "+234 813 930 8197",
