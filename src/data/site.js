@@ -3,7 +3,7 @@ export const SITE = {
   title: "Software Engineer",
   tagline: "React · Next.js · React Native · Node.js · TypeScript",
   summary:
-    "Software Engineer delivering web, mobile and backend systems across healthcare, e-commerce, SaaS, fintech, etc. Experienced in React, Next.js, React Native, TypeScript, Node.js with a focus on authorization, reliable processing and maintainable architecture.",
+    "Software Engineer with over 3 years of experience, delivering web, mobile and backend systems across healthcare, e-commerce, SaaS, fintech, etc. Experienced in React, Next.js, React Native, TypeScript, Node.js with a focus on authorization, reliable processing and maintainable architecture.",
   location: "Enugu, Nigeria",
   email: "dikee5200@gmail.com",
   phone: "+234 813 930 8197",
